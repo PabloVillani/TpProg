@@ -1,3 +1,4 @@
+public class Admin {
 public class Admin  {
     String usuario;
     String contraseña;
