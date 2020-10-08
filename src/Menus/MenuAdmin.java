@@ -1,7 +1,7 @@
 package Menus;
-
 import util.Scanner;
-
+import Ciudadano.Ciudadano;
+import java.io.*;
 public class MenuAdmin {
     public static void Menu() {
         int i = 0;
@@ -10,19 +10,19 @@ public class MenuAdmin {
             i = Scanner.getInt("Que operacion desea realizar?:");
             switch (i) {
                 case 1:
-                    //Registrar contacto.
+                    //Dar de alta sintoma
                     break;
                 case 2:
-                    //Administrar solicitudes.
+                    //Dar de baja sintoma
                     break;
                 case 3:
-                    //Registrar sintomas.
+                    //Modificar sintomas.
                     break;
                 case 4:
-                    //Dar de baja sintomas.
+                    //Desbloquear usuario.
                     break;
                 case 5:
-                    //Centro de notificaciones.
+                    //Salir.
                     break;
                 default:
                     System.out.println("invalido.");

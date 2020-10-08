@@ -5,7 +5,7 @@ import util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Bienvenido. Eres admin o ciudadano?:");
-        int k = Scanner.getInt("1. Admin \n2. Ciudadano");
+        int k = Scanner.getInt("1. Admin \n2. Ciudadano.Ciudadano");
         if (k == 2) {
             String cuil = Scanner.getString("CUIL: ");
             String contra = Scanner.getString("Contraseña: ");
