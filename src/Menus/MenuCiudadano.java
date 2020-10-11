@@ -1,25 +1,28 @@
 package Menus;
-
+import Ciudadano.Ciudadano;
 import util.Scanner;
-
 public class MenuCiudadano {
-    public static void Menu() {
+
+    public static void Menu(String contra, String cuil, String celular) {
+
         int n = 0;
+        Ciudadano c = new Ciudadano(cuil, celular);
         do {
-            System.out.println("1. Registrar contacto.\n2. Solicitudes. \n 3. Registrar Sintomas.\n 4.Dar de baja sintomas.\n 5. Centro de notificaciones \n6. Abrir mapa\n7. Cerrar sesion.");
+            System.out.println("1. Registrar contacto.\n2. Solicitudes. \n3. Registrar Sintomas.\n4.Dar de baja sintomas.\n5. Centro de notificaciones \n6. Abrir mapa\n7. Cerrar sesion.");
             n = Scanner.getInt("Que operacion desea realizar?:");
             switch (n) {
                 case 1:
-                    //Registrar contacto.
+                    c.registrarContacto();
+                    System.out.println("");
                     break;
                 case 2:
                     //Administrar solicitudes.
                     break;
                 case 3:
-                    //Registrar sintomas.
+                    c.reportarSintomas();
                     break;
                 case 4:
-                    //Dar de baja sintomas.
+
                     break;
                 case 5:
                     //Centro de notificaciones.
