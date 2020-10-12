@@ -2,7 +2,6 @@ package GestionUsuarios;
 
 import util.Finder;
 import util.Scanner;
-
 import java.util.ArrayList;
 
 public class PasswordUsuario {

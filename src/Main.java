@@ -9,9 +9,7 @@ public class Main {
         System.out.println("Bienvenido. Eres admin o ciudadano?:");
         int k = Scanner.getInt("1. Admin \n2. Ciudadano\n");
         if (k == 2) {
-            String cuil = Scanner.getString("CUIL: ");
-            String celular = Scanner.getString("Celular: ");
-            LoginUser.loginUser(cuil, celular);
+            LoginUser.loginUser();
         }
         if (k == 1) {
             String usuario = Scanner.getString("Usuario: ");
