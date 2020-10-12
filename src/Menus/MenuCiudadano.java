@@ -4,7 +4,6 @@ import util.Scanner;
 public class MenuCiudadano {
 
     public static void Menu(String contra, String cuil, String celular) {
-
         int n = 0;
         Ciudadano c = new Ciudadano(cuil, celular);
         do {
@@ -31,6 +30,7 @@ public class MenuCiudadano {
                     //Abrir mapa.
                     break;
                 case 7:
+                    System.out.println("Gracias por usar TraceIT.");
                     //Salir.
                     break;
                 default:
