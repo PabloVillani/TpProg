@@ -18,6 +18,7 @@ public class Admin  {
     }
 
     public void desbloquear(Ciudadano c) {
+        c.setBloqueado(false);
 
     }
 
