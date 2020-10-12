@@ -9,11 +9,12 @@ import java.util.ArrayList;
 public class ArrayMaker {
     ArrayList<String[]> baseANSES = new ArrayList<String[]>();
     ArrayList<String[]> usuarios = new ArrayList<String[]>();
+    ArrayList<String[]> admins = new ArrayList<String[]>();
     String line;
     public static ArrayList<String[]> ansesMaker() {
         ArrayList<String[]> baseANSES = new ArrayList<String[]>();
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/BaseDeDatos/BaseANSES.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/BaseDeDatos/BasesPreexistentes/BaseANSES.txt"));){
             String head = bufferedReader.readLine();
             while((line = bufferedReader.readLine()) != null){
                 String[] ciudadano = line.split(",");
@@ -30,7 +31,7 @@ public class ArrayMaker {
     public static ArrayList<String[]> usuariosMaker(){
         ArrayList<String[]> usuarios = new ArrayList<String[]>();
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/BaseDeDatos/Usuarios.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/BaseDeDatos/BasesModificables/Usuarios.txt"));){
             String head = bufferedReader.readLine();
             while((line = bufferedReader.readLine()) != null){
                 String[] usuario = line.split(",");
@@ -43,5 +44,23 @@ public class ArrayMaker {
             e.printStackTrace();
         }
         return usuarios;
+    }
+
+    public static ArrayList<String[]> adminsMaker() {
+        ArrayList<String[]> admins = new ArrayList<String[]>();
+        String line;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/BaseDeDatos/BasesModificables/Admins.txt"));){
+            String head = bufferedReader.readLine();
+            while((line = bufferedReader.readLine()) != null){
+                String[] admin = line.split(",");
+                admins.add(admin);
+            }
+        }
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return admins;
     }
 }
