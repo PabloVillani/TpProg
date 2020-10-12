@@ -42,7 +42,7 @@ public class Ciudadano {
     public void setBloqueado(boolean bloqueado) {
         this.bloqueado = bloqueado;
     }
-   
+
     public void registrarContacto() {
         String cuilCiudadanoContactado = Scanner.getString("Ingrese el cuil del ciudadano con el que tuvo contacto: ");
         //Tendremos que comparar el cuil de ciudadanoContactado con la lista de cuils de Usuarios.txt, si encuentra una coincidencia debe enviar una solicitud
@@ -70,10 +70,10 @@ public class Ciudadano {
             reportarSintomas();
         } else {
             try {
-                FileReader fr = new FileReader("src/BaseDeDatos/Ciudadnos.txt");
-                BufferedReader br = new BufferedReader(fr);
-                FileWriter fw = new FileWriter("src/BaseDeDatos/Usuarios.txt");
-                BufferedWriter bw = new BufferedWriter(fw);
+                File archivo = new File("src/BaseDeDatos/Ciudadanos.txt");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true));
+                bw.write("ola");
+                bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
