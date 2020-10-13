@@ -1,5 +1,5 @@
 import Ciudadano.Ciudadano;
-
+//Objeto de admin, con sus capacidades de trabajo.
 public class Admin  {
     String usuario;
     String contra;
@@ -17,9 +17,8 @@ public class Admin  {
         return contra;
     }
 
-    public void desbloquear(Ciudadano c) {
+    public void desbloquear(Ciudadano c) { //Desbloquea el usuario.
         c.setBloqueado(false);
-
     }
 
 }

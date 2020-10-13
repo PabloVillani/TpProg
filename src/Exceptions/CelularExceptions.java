@@ -1,5 +1,5 @@
 package Exceptions;
-
+//Maneja todos los errores que podria causar el Scanner.getString para el numero celular.
 public class CelularExceptions extends Exception{
     private int codigoError;
     public CelularExceptions(int codigoError){

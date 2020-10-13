@@ -1,5 +1,5 @@
 package Exceptions;
-
+//Maneja todos los posibles errores que puede arrojar la creacion de una contraseña con medidas de seguridad (Longitud)
 public class PasswordExceptions extends Exception{
     private int codigoError;
     public PasswordExceptions(int codigoError){
