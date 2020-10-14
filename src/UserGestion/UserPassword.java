@@ -5,15 +5,15 @@ import Util.Scanner;
 import java.util.ArrayList;
 //Verifica la contraseña.
 public class UserPassword {
-    public static boolean passwordUsuario(String cuil, String celular, String contra, ArrayList<String[]> usuarios) {
+    public static boolean userPassword(String cuil, String mobile, String password, ArrayList<String[]> users) {
         boolean passStart; //Crea un booleano, y busca la contraseña con el Finder.password.
-        if (Finder.password(cuil, celular, contra, usuarios)) {
+        if (Finder.password(cuil, mobile, password, users)) {
             passStart = true; //Si lo encuentra, devuelve true y termina el proceso de PasswordUsuario.
         } else {
             passStart = false;
             System.out.println("Incorrect password.");
             String contra2 = Scanner.getString("Password: "); //No lo encuentra, pide un nuevo string.
-            passwordUsuario(cuil,celular,contra2,usuarios); //Recursion con el nuevo String.
+            userPassword(cuil,mobile,password,users); //Recursion con el nuevo String.
         }
         return passStart; //Devuelve el booleano
     }
