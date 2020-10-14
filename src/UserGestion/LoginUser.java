@@ -15,7 +15,7 @@ public class LoginUser {
             loginUser(); //Recursion del inicio de sesion.
         }
         String mobile = Scanner.getString("Celular: ");
-        if(!MobileValidator.celuValidador(mobile)){ //Valida que el celular cumpla con los requisitos.
+        if(!MobileValidator.mobileValidator(mobile)){ //Valida que el celular cumpla con los requisitos.
             loginUser(); //Recursion del inicio de sesion
         }
         ArrayList<String[]> ANSESbase = ArrayMaker.ansesMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
