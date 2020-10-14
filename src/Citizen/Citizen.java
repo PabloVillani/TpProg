@@ -8,69 +8,69 @@ import java.util.List;
 
 public class Citizen {
     String cuil;
-    String celular;
-    ArrayList<String> sintomas;
-    int solicitudesRechazadas;
-    public boolean bloqueado;
+    String mobile;
+    ArrayList<String> symptoms;
+    int rejectedRequests;
+    public boolean blocked;
 
-    public Citizen(String cuil, String celular){ //Un Ciudadano Base, recien registrado al sistema.
+    public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
-        this.celular = celular;
-        sintomas = null;
-        solicitudesRechazadas = 0;
-        bloqueado = false;
+        this.mobile = mobile;
+        symptoms = null;
+        rejectedRequests = 0;
+        blocked = false;
     }
-    public Citizen(String cuil, String celular, ArrayList<String>sintomas, int solicitudesRechazadas, boolean bloqueado){ //Un ciudadano con todas las variables.
+    public Citizen(String cuil, String mobile, ArrayList<String>symptoms, int rejectedRequests, boolean blocked){ //Un ciudadano con todas las variables.
         this.cuil = cuil;
-        this.celular = celular;
-        this.sintomas = sintomas;
-        this.solicitudesRechazadas = solicitudesRechazadas;
-        this.bloqueado = bloqueado;
+        this.mobile = mobile;
+        this.symptoms = symptoms;
+        this.rejectedRequests = rejectedRequests;
+        this.blocked = blocked;
     }
     //----------------------------------------GETTERS Y SETTERS---------------------------
     public String getCuil() {
         return cuil;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getMobile() {
+        return mobile;
     }
-    public boolean isBloqueado() {
-        return bloqueado;
+    public boolean isBlocked() {
+        return blocked;
     }
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
     //-------------------------------------------------------------------------------------
-    public static void registrarContacto() {
-        String cuilCiudadanoContactado = Scanner.getString("Ingrese el cuil del ciudadano con el que tuvo contacto: ");
+    public static void registerContact() {
+        String contactCitizenCUIL = Scanner.getString("Enter the cuil of the citizen with you had contact: ");
         //Tendremos que comparar el cuil de ciudadanoContactado con la lista de cuils de Users.txt, si encuentra una coincidencia debe enviar una solicitud
         //todo
     }
 
-    public static void reportarSintomas() {
+    public static void symptomsReport() {
         try {
-            FileReader fr = new FileReader("src/BaseDeDatos/BaseSintomas.txt.txt");
+            FileReader fr = new FileReader("src/DataBase/SymptomsBase.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while (line != null) {
                 System.out.println(line); //Imprime la lista de sintomas.
                 line = br.readLine(); //lee la primer linea y despues pasa a la siguiente, si no hay más devuelve null, y se termina el while.
             }
-            List<String> sintomas = new ArrayList<>(); //Crea el array de sintomas.
+            List<String> symptoms = new ArrayList<>(); //Crea el array de sintomas.
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println();
-        int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
+        int i = Scanner.getInt("Enter your symptom: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {
-            System.out.println("Numero invalido"); //Recursion en caso de ingresar un numero invalido.
-            reportarSintomas();
+            System.out.println("Invalid Number"); //Recursion en caso de ingresar un numero invalido.
+            symptomsReport();
         } else {
             try {
-                File archivo = new File("src/BaseDeDatos/BasesModificables/UsersSymptoms.txt");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true));
-                BufferedReader br = new BufferedReader(new FileReader("src/BaseDeDatos/BasesModificables/UsersSymptoms.txt"));
+                File archive = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
+                BufferedReader br = new BufferedReader(new FileReader("src/DataBase/ModificableBases/UsersSymptoms.txt"));
                 String n = br.readLine();
                 int j = n.length();
                 br.skip(j+1);
@@ -104,10 +104,10 @@ public class Citizen {
             }
         }
     }
-    public void darDeBajaSintomas() {
+    public void getDownSymptoms() {
 
     }
-    public void confirmacionDeEncuentro() {
+    public void meetingConfirmation() {
 
     }
 }
