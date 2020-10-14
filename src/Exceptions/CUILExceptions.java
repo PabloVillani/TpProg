@@ -1,16 +1,16 @@
 package Exceptions;
 //Maneja todos los errores que podria causar el Scanner.getString para el numero de CUIL.
 public class CUILExceptions extends Exception{
-    private int CodeError;
-    public CUILExceptions(int CodeError){
+    private int codeError;
+    public CUILExceptions(int codeError){
         super();
-        this.CodeError=CodeError;
+        this.codeError=codeError;
     }
 
     @Override
     public String getMessage(){
         String message = "";
-        switch(CodeError){
+        switch(codeError){
             case 13:
                 message= "Error, el CUIL tiene que incluir solo numeros.";
                 break;
