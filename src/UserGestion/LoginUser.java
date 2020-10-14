@@ -23,11 +23,11 @@ public class LoginUser {
             ArrayList<String[]> usuarios = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
             if (Finder.userFinder(cuil, mobile, usuarios)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String contra = Scanner.getString("Password: "); //Si existe, le pide la contraseña.
-                UserPassword.passwordUsuario(cuil, mobile, contra, usuarios); //Verifica la contraseña.
+                UserPassword.userPassword(cuil, mobile, contra, usuarios); //Verifica la contraseña.
             }
             else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
-                RegisterUser.registrarUsuario();
+                RegisterUser.RegisterUser();
             }
             CitizenMenu.Menu(cuil, mobile); //Abre el Menu del ciudadano.
         } else {
