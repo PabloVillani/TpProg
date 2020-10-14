@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class LoginAdmin {
     public static void loginAdmin(){
         ArrayList<String[]> admins = ArrayMaker.adminsMaker();
-        String usuario = Scanner.getString("Usuario: ");
-        String contra = Scanner.getString("Password: ");
-        if(Finder.adminFinder(usuario,contra,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
+        String user = Scanner.getString("Usuario: ");
+        String password = Scanner.getString("Password: ");
+        if(Finder.adminFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
             AdminMenu.Menu(); //Si se encuentra, se ejecuta el menu.
         }
         else{
