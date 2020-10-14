@@ -1,26 +1,26 @@
 package Exceptions;
 //Maneja todos los errores que podria causar el Scanner.getString para el numero de CUIL.
 public class CUILExceptions extends Exception{
-    private int codigoError;
-    public CUILExceptions(int codigoError){
+    private int CodeError;
+    public CUILExceptions(int CodeError){
         super();
-        this.codigoError=codigoError;
+        this.CodeError=CodeError;
     }
 
     @Override
     public String getMessage(){
-        String mensaje = "";
-        switch(codigoError){
+        String message = "";
+        switch(CodeError){
             case 13:
-                mensaje= "Error, el CUIL tiene que incluir solo numeros.";
+                message= "Error, el CUIL tiene que incluir solo numeros.";
                 break;
             case 14:
-                mensaje="Error, el CUIL no comienza con 20 o 27."; //El CUIL siempre empieza dos numeros (20 = hombre, 27 = mujer)
+                message="Error, el CUIL no comienza con 20 o 27."; //El CUIL siempre empieza dos numeros (20 = hombre, 27 = mujer)
                 break;
             case 15:
-                mensaje="Error, el CUIL es demasiado corto.";
+                message="Error, el CUIL es demasiado corto.";
         }
-        return mensaje;
+        return message;
     }
 }
 
