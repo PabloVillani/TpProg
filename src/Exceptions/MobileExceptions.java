@@ -1,23 +1,23 @@
 package Exceptions;
 //Maneja todos los errores que podria causar el Scanner.getString para el numero celular.
 public class MobileExceptions extends Exception{
-    private int codigoError;
-    public MobileExceptions(int codigoError){
+    private int CodeError;
+    public MobileExceptions(int CodeError){
         super();
-        this.codigoError=codigoError;
+        this.CodeError=CodeError;
     }
 
     @Override
     public String getMessage(){
-        String mensaje="";
-        switch(codigoError){
+        String message="";
+        switch(CodeError){
             case 21:
-                mensaje= "Error, el celular tiene que incluir solo numeros.";
+                message= "Error, el celular tiene que incluir solo numeros.";
                 break;
             case 22:
-                mensaje="Error, el celular tiene mas de 10 digitos.";
+                message="Error, el celular tiene mas de 10 digitos.";
                 break;
         }
-        return mensaje;
+        return message;
     }
 }
