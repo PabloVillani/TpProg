@@ -3,23 +3,23 @@ package Admin;
 import Citizen.Citizen;
 //Objeto de admin, con sus capacidades de trabajo.
 public class Admin  {
-    String usuario;
-    String contra;
+    String user;
+    String password;
 
-    public Admin(String usuario, String contra){
-        this.contra = contra;
-        this.usuario = usuario;
+    public Admin(String user, String password){
+        this.password = password;
+        this.user = user;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUser() {
+        return user;
     }
 
-    public String getContra() {
-        return contra;
+    public String getPassword() {
+        return password;
     }
 
-    public void desbloquear(Citizen c) { //Desbloquea el usuario.
+    public void unLock(Citizen c) { //Desbloquea el usuario.
         c.setBloqueado(false);
     }
 
