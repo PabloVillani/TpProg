@@ -50,7 +50,7 @@ public class Citizen {
 
     public static void reportarSintomas() {
         try {
-            FileReader fr = new FileReader("src/BaseDeDatos/BaseSintomas.txt.txt");
+            FileReader fr = new FileReader("src/BaseDeDatos/SymptomsBase.txt.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while (line != null) {

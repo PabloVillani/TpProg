@@ -1,2 +1,2 @@
-CUIL, Celular, Contra, Ubicacion,
+CUIL, Mobile, Password, Ubication,
 20439209969,1549156556,1234
