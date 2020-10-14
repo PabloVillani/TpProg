@@ -1,12 +1,11 @@
 package util;
-import java.io.*;
+
 import java.util.Iterator;
-import java.util.List;
 import java.util.ArrayList;
-import Ciudadano.Ciudadano;
+
 public class Finder {
-    String line;
-    public static boolean finder(String cuil, String celular, ArrayList<String[]> list){
+    //Busca a el usuario por su cuil y celular en una lista.
+    public static boolean userFinder(String cuil, String celular, ArrayList<String[]> list){
         Iterator i = list.iterator();
         for(String[] a : list){
             for(String s : a ){
@@ -17,6 +16,19 @@ public class Finder {
         }
         return false;
     }
+    //Busca al admin por su usuario y contraseña en una lista.
+    public static boolean adminFinder(String usuario, String contra, ArrayList<String[]> list){
+        Iterator i = list.iterator();
+        for(String[] a : list){
+            for(String s : a ){
+                if(usuario.equals(s) && contra.equals(a[1])){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    //Comprueba que concuerden el cuil, el celular, y la contraseña.
     public static boolean password(String cuil,String celular, String contra, ArrayList<String[]> list){
         Iterator i = list.iterator();
         for(String[] a : list){
@@ -27,13 +39,6 @@ public class Finder {
             }
         }
         return false;
-    }
-    public static int indexOf(String a, List<Ciudadano> ciudadanos) {
-        for(int i= 0; i< ciudadanos.size(); i++){
-            if(a != null && a.equals(ciudadanos.get(i).getCuil()) || a==null && ciudadanos.get(i).getCuil() == null){
-                return i;
-            }
-        } return -1;
     }
 }
 

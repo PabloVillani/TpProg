@@ -2,7 +2,7 @@ package Menus;
 import Ciudadano.Ciudadano;
 import util.Scanner;
 public class MenuCiudadano {
-
+//Despliega el menu del ciudadano en el Main.
     public static void Menu(String cuil, String celular) {
         int n = 0;
         Ciudadano c = new Ciudadano(cuil, celular);
@@ -11,17 +11,18 @@ public class MenuCiudadano {
             n = Scanner.getInt("Que operacion desea realizar?:");
             switch (n) {
                 case 1:
+                    //Registra contacto con otro ciudadano
                     c.registrarContacto();
-                    System.out.println("");
                     break;
                 case 2:
                     //Administrar solicitudes.
                     break;
                 case 3:
+                    //Reporta un sintoma, y lo agrega al SintomasUsuarios.txt
                     c.reportarSintomas();
                     break;
                 case 4:
-
+                    //Dar de baja sintomas.
                     break;
                 case 5:
                     //Centro de notificaciones.
@@ -36,6 +37,6 @@ public class MenuCiudadano {
                 default:
                     System.out.println("Lo siento, eso no es una opcion valida. Intente con un numero del 1-7.");
             }
-        } while (n != 7);
+        } while (n != 7); //El menu se seguira inicializando hasta que n = 7, o sea, el usuario quiera salir.
     }
 }
