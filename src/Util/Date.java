@@ -1,26 +1,26 @@
 package Util;
 //Metodo sacado de la Practica1 de Prog2.
 public class Date {
-        int dia;
-        int mes;
-        public Date(int dia, int mes) {
-            this.dia = dia;
-            this.mes = mes;
+        int day;
+        int month;
+        public Date(int day, int month) {
+            this.day = day;
+            this.month = month;
         }
         public int getDia() {
-            return dia;
+            return day;
         }
 
-        public void setDia(int dia) {
-            this.dia = dia;
+        public void setDia(int day) {
+            this.day = day;
         }
 
         public int getMes() {
-            return mes;
+            return month;
         }
 
-        public void setMes(int mes) {
-            this.mes = mes;
+        public void setMes(int month) {
+            this.month = month;
         }
 }
 
