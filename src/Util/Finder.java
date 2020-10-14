@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Finder {
     //Busca a el usuario por su cuil y celular en una lista.
-    public static boolean userFinder(String cuil, String celular, ArrayList<String[]> list){
+    public static boolean userFinder(String cuil, String mobile, ArrayList<String[]> list){
         Iterator i = list.iterator();
         for(String[] a : list){
             for(String s : a ){
-                if(cuil.equals(s) && celular.equals(a[1])){
+                if(cuil.equals(s) && mobile.equals(a[1])){
                     return true;
                 }
             }
@@ -17,11 +17,11 @@ public class Finder {
         return false;
     }
     //Busca al admin por su usuario y contraseña en una lista.
-    public static boolean adminFinder(String usuario, String contra, ArrayList<String[]> list){
+    public static boolean adminFinder(String user, String password, ArrayList<String[]> list){
         Iterator i = list.iterator();
         for(String[] a : list){
             for(String s : a ){
-                if(usuario.equals(s) && contra.equals(a[1])){
+                if(user.equals(s) && password.equals(a[1])){
                     return true;
                 }
             }
@@ -29,11 +29,11 @@ public class Finder {
         return false;
     }
     //Comprueba que concuerden el cuil, el celular, y la contraseña.
-    public static boolean password(String cuil,String celular, String contra, ArrayList<String[]> list){
+    public static boolean password(String cuil,String mobile, String password, ArrayList<String[]> list){
         Iterator i = list.iterator();
         for(String[] a : list){
             for(String s : a ){
-                if(cuil.equals(s) && celular.equals(a[1]) && contra.equals(a[2])){
+                if(cuil.equals(s) && mobile.equals(a[1]) && password.equals(a[2])){
                     return true;
                 }
             }
