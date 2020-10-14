@@ -14,22 +14,22 @@ public class LoginUser {
         if(!CUILValidator.cuilValidador(cuil)){ //Valida que el CUIL cumpla con los requisitos
             loginUser(); //Recursion del inicio de sesion.
         }
-        String celular = Scanner.getString("Celular: ");
-        if(!MobileValidator.celuValidador(celular)){ //Valida que el celular cumpla con los requisitos.
+        String mobile = Scanner.getString("Celular: ");
+        if(!MobileValidator.celuValidador(mobile)){ //Valida que el celular cumpla con los requisitos.
             loginUser(); //Recursion del inicio de sesion
         }
-        ArrayList<String[]> baseANSES = ArrayMaker.ansesMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
-        if (Finder.userFinder(cuil, celular, baseANSES)) { //Busca el CUIL y el celular en la base de datos del ANSES.
+        ArrayList<String[]> ANSESbase = ArrayMaker.ansesMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
+        if (Finder.userFinder(cuil, mobile, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
             ArrayList<String[]> usuarios = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
-            if (Finder.userFinder(cuil, celular, usuarios)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
+            if (Finder.userFinder(cuil, mobile, usuarios)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String contra = Scanner.getString("Password: "); //Si existe, le pide la contraseña.
-                UserPassword.passwordUsuario(cuil, celular, contra, usuarios); //Verifica la contraseña.
+                UserPassword.passwordUsuario(cuil, mobile, contra, usuarios); //Verifica la contraseña.
             }
             else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
                 RegisterUser.registrarUsuario();
             }
-            CitizenMenu.Menu(cuil, celular); //Abre el Menu del ciudadano.
+            CitizenMenu.Menu(cuil, mobile); //Abre el Menu del ciudadano.
         } else {
             System.out.println("CUIL/Celular incorrecto."); //Si no se encuentra en la base ANSES, recursion del inicio de sesion.
             loginUser();
