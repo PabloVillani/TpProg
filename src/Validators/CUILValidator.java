@@ -3,8 +3,8 @@ package Validators;
 import Exceptions.CUILExceptions;
 //Comprueba que el numero celular sea valido.
 public class CUILValidator {
-    public static boolean cuilValidador(String cuil){
-        boolean validacion = true;
+    public static boolean cuilValidator(String cuil){
+        boolean validation = true;
         try {
             if (!cuil.matches("[0-9]+")) { //Controla que el CUIL solo tenga numeros
                 throw new CUILExceptions(13);
@@ -19,9 +19,9 @@ public class CUILValidator {
 
         } catch (CUILExceptions ex) {
             System.out.println(ex.getMessage());
-            validacion = false;
+            validation = false;
         }
-        return validacion;
+        return validation;
     }
  }
 

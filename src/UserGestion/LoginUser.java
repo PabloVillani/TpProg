@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LoginUser {
     public static void loginUser() {
         String cuil = Scanner.getString("CUIL: ");
-        if(!CUILValidator.cuilValidador(cuil)){ //Valida que el CUIL cumpla con los requisitos
+        if(!CUILValidator.cuilValidator(cuil)){ //Valida que el CUIL cumpla con los requisitos
             loginUser(); //Recursion del inicio de sesion.
         }
         String mobile = Scanner.getString("Celular: ");
