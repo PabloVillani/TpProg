@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Citizen {
-    String cuil;
-    String mobile;
+    public String cuil;
+    public String mobile;
     ArrayList<String> symptoms;
     int rejectedRequests;
     public boolean blocked;

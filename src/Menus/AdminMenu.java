@@ -7,8 +7,8 @@ public class AdminMenu {
     public static void Menu() {
         int i = 0;
         do { //Presenta las opciones a realizar:
-            System.out.println("1. Dar de alta sintoma.\n2. Dar de baja\n 3. Modificar sintomas\n4. Desbloquear usuario\n5. Cerrar sesion.");
-            i = Scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
+            System.out.println("1. Dar de alta sintoma.\n2. Cancel a Symptom\n 3. Modify Symptom\n4. Unblock User\n5. Close Session.");
+            i = Scanner.getInt("What operation do you want to perform?:"); //Pregunta que opcion realizar
             switch (i) {
                 case 1:
                     //Dar de alta sintoma.
@@ -23,11 +23,11 @@ public class AdminMenu {
                     //Desbloquear usuario.
                     break;
                 case 5:
-                    System.out.println("Gracias por trabajar con TraceIT.");
+                    System.out.println("Thanks for working whit TraceIT.");
                     //Salir.
                     break;
                 default:
-                    System.out.println("Opcion invalida.");
+                    System.out.println("Invalid Option.");
                     break;
             }
 

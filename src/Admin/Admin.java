@@ -20,7 +20,7 @@ public class Admin  {
     }
 
     public void unLock(Citizen c) { //Desbloquea el usuario.
-        c.setBloqueado(false);
+        c.setBlocked(false);
     }
 
 }

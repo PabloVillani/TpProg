@@ -12,8 +12,8 @@ public class UserPassword {
         } else {
             passStart = false;
             System.out.println("Incorrect password.");
-            String contra2 = Scanner.getString("Password: "); //No lo encuentra, pide un nuevo string.
-            userPassword(cuil,mobile,password,users); //Recursion con el nuevo String.
+            String secondPassword = Scanner.getString("Password: "); //No lo encuentra, pide un nuevo string.
+            userPassword(cuil,mobile,secondPassword,users); //Recursion con el nuevo String.
         }
         return passStart; //Devuelve el booleano
     }
