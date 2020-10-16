@@ -10,7 +10,7 @@ public class LoginAdmin {
     public static void loginAdmin(){
         ArrayList<String[]> admins = ArrayMaker.adminsMaker();
         String user = Scanner.getString("Usuario: ");
-        String password = Scanner.getString("Password: ");
+        String password = Scanner.getString("Contraseña: ");
         if(Finder.adminFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
             AdminMenu.Menu(); //Si se encuentra, se ejecuta el menu.
         }
