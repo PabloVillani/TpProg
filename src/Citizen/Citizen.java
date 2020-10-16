@@ -1,5 +1,6 @@
 package Citizen;
 
+import Util.ArrayMaker;
 import Util.Scanner;
 
 import java.io.*;
@@ -49,18 +50,7 @@ public class Citizen {
     }
 
     public static void symptomsReport() {
-        try {
-            FileReader fr = new FileReader("src/DataBase/SymptomsBase.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            while (line != null) {
-                System.out.println(line); //Imprime la lista de sintomas.
-                line = br.readLine(); //lee la primer linea y despues pasa a la siguiente, si no hay más devuelve null, y se termina el while.
-            }
-            List<String> symptoms = new ArrayList<>(); //Crea el array de sintomas.
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> symptoms = ArrayMaker.SymptomsMaker();
         System.out.println();
         int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {
