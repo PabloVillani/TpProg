@@ -8,7 +8,7 @@ public class CitizenMenu {
         Citizen c = new Citizen(cuil, mobile);
         do {
             System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
-            n = Scanner.getInt("What operation do you want to perform?:");
+            n = Scanner.getInt("Elija la operacion a realizar: ");
             switch (n) {
                 case 1:
                     //Registra contacto con otro ciudadano
@@ -19,7 +19,7 @@ public class CitizenMenu {
                     break;
                 case 3:
                     //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
-                    c.symptomsReport();
+                    c.symptomsReport(cuil);
                     break;
                 case 4:
                     //Dar de baja sintomas.
