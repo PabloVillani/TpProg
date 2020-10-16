@@ -1,19 +1,21 @@
 package UserGestion;
 
 import Util.ArrayMaker;
+import Util.Writers.UserSymptomCUILRegister;
+import Util.Writers.UserWriter;
 import Validators.PasswordValidator;
 import Util.Scanner;
 import java.util.List;
 
 public class RegisterUser {
-    public static void RegisterUser() { //Si no lo encontro en la base de datos de TraceIT, le pedira una contraseña.
+    public static void RegisterUser(String cuil, String mobile) { //Si no lo encontro en la base de datos de TraceIT, le pedira una contraseña.
         String password = Scanner.getString("Ingrese una contraseña: ");
         if (PasswordValidator.passwordValidator(password)) { //Verifica que la contraseña cumple con los requisitos.
             String ubication = ubicationChooser(); //Pide la ubicacion
-            //ANOTA AL USUARIO EN USERS.TXT
-            //ANOTAR SOLO EL CUIL EN EL USERSYMPTOMS.TXT
+            UserWriter.userWriter(cuil, mobile, password, ubication); //Lo registra en la base de datos de Users.txt
+            //UserSymptomCUILRegister.CuilWriter(cuil);
         } else {
-            RegisterUser(); //La contraseña no cumple con los requisitos, entonces repite el proceso.
+            RegisterUser(cuil, mobile); //La contraseña no cumple con los requisitos, entonces repite el proceso.
         }
 
     }

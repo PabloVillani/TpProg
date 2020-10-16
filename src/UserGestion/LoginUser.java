@@ -20,14 +20,14 @@ public class LoginUser {
         }
         ArrayList<String[]> ANSESbase = ArrayMaker.ansesMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (Finder.userFinder(cuil, mobile, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
-            ArrayList<String[]> usuarios = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
-            if (Finder.userFinder(cuil, mobile, usuarios)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
-                String contra = Scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
-                UserPassword.userPassword(cuil, mobile, contra, usuarios); //Verifica la contraseña.
+            ArrayList<String[]> users = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
+            if (Finder.userFinder(cuil, mobile, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
+                String password = Scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
+                UserPassword.userPassword(cuil, mobile, password, users); //Verifica la contraseña.
             }
             else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
-                RegisterUser.RegisterUser();
+                RegisterUser.RegisterUser(cuil, mobile);
             }
             CitizenMenu.Menu(cuil, mobile); //Abre el Menu del ciudadano.
         } else {
