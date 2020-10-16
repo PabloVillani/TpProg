@@ -61,7 +61,7 @@ public class ArrayMaker {
         return admins;
     }
 
-    public static List<String> SymptomsMaker() {
+    public static List<String> symptomsMaker() {
         List<String> symptoms = new ArrayList<>();
         try {
             FileReader fr = new FileReader("src/DataBase/PreexistingBases/SymptomsBase.txt");
@@ -76,5 +76,21 @@ public class ArrayMaker {
             e.printStackTrace();
         }
         return symptoms;
+    }
+    public static List<String> ubicationMaker(){
+        List<String> ubications = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader("src/DataBase/PreexistingBases/Ubications.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while (line != null) {
+                System.out.println(line); //Imprime la lista de ubicaciones.
+                line = br.readLine(); //lee la primer linea y despues pasa a la siguiente, si no hay más devuelve null, y se termina el while.
+            }
+            ubications.add(line);//Crea el array de ubicaciones.
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ubications;
     }
 }
