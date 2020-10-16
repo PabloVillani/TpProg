@@ -43,7 +43,7 @@ public class Citizen {
     }
     //-------------------------------------------------------------------------------------
     public static void registerContact() {
-        String contactCitizenCUIL = Scanner.getString("Enter the cuil of the citizen with you had contact: ");
+        String contactCitizenCUIL = Scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
         //Tendremos que comparar el cuil de ciudadanoContactado con la lista de cuils de Users.txt, si encuentra una coincidencia debe enviar una solicitud
         //todo
     }
@@ -62,9 +62,9 @@ public class Citizen {
             e.printStackTrace();
         }
         System.out.println();
-        int i = Scanner.getInt("Enter your symptom: "); //Pide el numero del sintoma.
+        int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {
-            System.out.println("Invalid Number"); //Recursion en caso de ingresar un numero invalido.
+            System.out.println("Numero invalido."); //Recursion en caso de ingresar un numero invalido.
             symptomsReport();
         } else {
             try {
