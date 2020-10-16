@@ -64,7 +64,7 @@ public class Citizen {
         System.out.println();
         int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {
-            System.out.println("Numero invalido."); //Recursion en caso de ingresar un numero invalido.
+            System.out.println("Numero Invalido."); //Recursion en caso de ingresar un numero invalido.
             symptomsReport();
         } else {
             try {

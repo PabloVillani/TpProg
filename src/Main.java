@@ -7,7 +7,7 @@ import UserGestion.LoginUser;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Bienvenido. Eres Admin o Ciudadano:");
-        int k = Scanner.getInt("1. Admin\n 2. Ciudadano\n"); //Le pide que elija un inicio de sesion.
+        int k = Scanner.getInt("1. Admin \n2. Ciudadano\n"); //Le pide que elija un inicio de sesion.
         if (k == 2) {
             LoginUser.loginUser(); //Corre el codigo para que un usuario inicie sesion.
         }
