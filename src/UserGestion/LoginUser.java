@@ -22,7 +22,7 @@ public class LoginUser {
         if (Finder.userFinder(cuil, mobile, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
             ArrayList<String[]> usuarios = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
             if (Finder.userFinder(cuil, mobile, usuarios)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
-                String contra = Scanner.getString("Password: "); //Si existe, le pide la contraseña.
+                String contra = Scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
                 UserPassword.userPassword(cuil, mobile, contra, usuarios); //Verifica la contraseña.
             }
             else {

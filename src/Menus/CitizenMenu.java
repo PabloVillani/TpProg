@@ -7,7 +7,7 @@ public class CitizenMenu {
         int n = 0;
         Citizen c = new Citizen(cuil, mobile);
         do {
-            System.out.println("1. Register contact.\n2. Requests.\n3. Report Symptom.\n4. Cancel a Symptom.\n5. Notification center.\n6. Open map.\n7. Close Session.");
+            System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
             n = Scanner.getInt("What operation do you want to perform?:");
             switch (n) {
                 case 1:
@@ -31,11 +31,11 @@ public class CitizenMenu {
                     //Abrir mapa.
                     break;
                 case 7:
-                    System.out.println("Thanks for working whit TraceIT.");
+                    System.out.println("Gracias por usar TraceIT.");
                     //Salir.
                     break;
                 default:
-                    System.out.println("Invalid Option.");
+                    System.out.println("Opcion invalida.");
             }
         } while (n != 7); //El menu se seguira inicializando hasta que n = 7, o sea, el usuario quiera salir.
     }
