@@ -7,10 +7,6 @@ public class Writer {
         try{
             File archive = new File(path);
             BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
-//            BufferedReader br = new BufferedReader(new FileReader(path));
-//            String n = br.readLine();
-//            int j = n.length();
-//            br.skip(j+1);//Skippea la 1ra linea del archivo
             bw.write("\n" + cuil + "\n");
             bw.close();
         } catch (Exception e) {
@@ -21,10 +17,6 @@ public class Writer {
         try {
             File archive = new File(path);
             BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String n = br.readLine();
-            int j = n.length();
-            br.skip(j + 1);//Skippea la 1ra linea del archivo
             bw.write("\n" + value1 + "," + value2 + "\n");
             bw.close();
         } catch (Exception e) {
@@ -36,10 +28,6 @@ public class Writer {
         try{
             File archive = new File("src/DataBase/ModificableBases/Users.txt");
             BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
-            BufferedReader br = new BufferedReader(new FileReader("src/DataBase/ModificableBases/Users.txt"));
-            String n = br.readLine();
-            int j = n.length();
-            br.skip(j); //Skippea la 1ra de Users.txt
             bw.write("\n" + cuil + "," + mobile + "," + password + "," + ubication + "\n");
             bw.close();
         } catch (Exception e) {
