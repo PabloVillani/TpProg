@@ -1,7 +1,7 @@
 package Menus;
 
 import Citizen.Citizen;
-import UserGestion.Blocker;
+//import UserGestion.Blocker;
 import Util.Scanner;
 
 public class CitizenMenu {
@@ -9,7 +9,7 @@ public class CitizenMenu {
     public static void Menu(Citizen c) {
         int n = 0;
         do {
-            Blocker.blocker(c);
+            //Blocker.blocker(c);
             if (!c.isBlocked()) {
                 System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
                 n = Scanner.getInt("Elija la operacion a realizar: ");
