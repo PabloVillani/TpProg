@@ -50,7 +50,7 @@ public class Citizen {
     }
 
     public static void symptomsReport(String cuil) {
-        List<String> symptoms = ArrayMaker.symptomsMaker();
+        List<String> symptoms = ArrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
         System.out.println();
         int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {

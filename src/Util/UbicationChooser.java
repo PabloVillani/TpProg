@@ -4,7 +4,7 @@ import java.util.List;
 
 public class UbicationChooser {
     public static String ubicationChooser() {
-        List<String> ubications = ArrayMaker.ubicationMaker();
+        List<String> ubications = ArrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
         System.out.println();
         String linea = "";
         int i = Scanner.getInt("Elija su ubicacion: ");
