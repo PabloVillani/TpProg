@@ -20,7 +20,7 @@ public class ABM {
     }
 
     public static void remove(Admin admin) throws IOException {
-        admins.remove(admin);
+        admins.remove(admin);//
     }
         public void mod (String user, String password){
 
