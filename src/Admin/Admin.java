@@ -5,7 +5,6 @@ import Citizen.Citizen;
 public class Admin  {
     String user;
     String password;
-    boolean superAdmin;
 
     public Admin(String user, String password){
         this.password = password;
@@ -20,21 +19,13 @@ public class Admin  {
         return password;
     }
 
-    public boolean isSuperAdmin() {
-        return superAdmin;
-    }
-
-    public void setSuperAdmin(boolean superAdmin) {
-        this.superAdmin = superAdmin;
-    }
-
     public void unLock(Citizen c) { //Desbloquea el usuario.
         c.setBlocked(false);
     }
 
-    public void symptomRelease() { } //Dar de baja sintomas
+    public void deactivateSymptom() { } //Dar de baja sintomas
 
-    public void notifySymptom() { } //Agrega-Notifica sintomas
+    public void ActivateSymptom() { } //Agrega-Notifica sintomas
 
 
 }

@@ -94,7 +94,7 @@ public class Citizen {
             }
         }
     }
-    public void getDownSymptoms() {
+    public void SolveSymptoms() {
 
     }
     public void meetingConfirmation() {
