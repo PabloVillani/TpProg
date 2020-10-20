@@ -8,7 +8,7 @@ public class AdminMenu {
         int i = 0;
         do { //Presenta las opciones a realizar:
             System.out.println("1. Dar de alta sintoma.\n2. Dar de baja un sintoma\n 3. Modificar sintomas\n4. Desbloquear usuario\n5. Cerrar sesion.");
-            i = Scanner.getInt("What operation do you want to perform?:"); //Pregunta que opcion realizar
+            i = Scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
             switch (i) {
                 case 1:
                     //Dar de alta sintoma.
