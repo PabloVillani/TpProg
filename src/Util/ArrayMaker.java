@@ -1,7 +1,6 @@
 package Util;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,18 +8,16 @@ import java.util.List;
 
 //Crea los diferentes ArrayList<String[]>
 public class ArrayMaker {
-    //------------------------------Crea el ArrayList<String[]> del ANSES -----------------------------------------
-    public static ArrayList<String[]> ansesMaker() {
+    //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
+    public static ArrayList<String[]> tripleStringMaker(String path) {
         ArrayList<String[]> ANSESbase = new ArrayList<String[]>();
-        String line; //Lee la ANSESBase.txt
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/DataBase/PreexistingBases/ANSESBase.txt"));) {
+        String line; //Lee el txt.
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) { //Hasta que la linea sea nula (o sea, sin texto)
-                String[] citizen = line.split(","); //Copiara los ciudadanos en un String[]
-                ANSESbase.add(citizen);                  //Que luego agregara al  ArrayList<String[]> del ANSES.
+                String[] citizen = line.split(","); //Copiara los datos en un String[]
+                ANSESbase.add(citizen);                  //Que luego agregara al  ArrayList<String[]>
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,8 +34,6 @@ public class ArrayMaker {
                 String[] user = line.split(",");     //Copiara los datos de los usuarios a un String[]
                 users.add(user);                       //Y los agrega al ArrayList<String[]>
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +43,7 @@ public class ArrayMaker {
     //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de dos valores.
     public static ArrayList<String[]> doubleStringMaker(String path) {
         ArrayList<String[]> array = new ArrayList<String[]>();
-        String line; //Lee el Admins.txt
+        String line; //Lee el txt
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
