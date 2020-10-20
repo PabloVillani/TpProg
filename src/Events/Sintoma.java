@@ -1,4 +1,4 @@
-package Events.Symptoms;
+package Events;
 
 import Events.Diseases.Enfermedad;
 import Util.Date;
