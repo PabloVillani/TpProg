@@ -10,7 +10,7 @@ import Util.Finder;
 import Util.Scanner;
 import java.util.ArrayList;
 
-public class LoginUser {
+public class LoginCitizen {
     public static void loginUser() {
         String cuil = Scanner.getString("CUIL: ");
         if(!CUILValidator.cuilValidator(cuil)){ //Valida que el CUIL cumpla con los requisitos
@@ -30,7 +30,7 @@ public class LoginUser {
             }
             else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
-                RegisterUser.RegisterUser(cuil, mobile, ubication);
+                RegisterCitizen.RegisterUser(cuil, mobile, ubication);
             }
             System.out.println("Bienvenido.");
             Citizen c = new Citizen(cuil, mobile);

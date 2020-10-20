@@ -4,7 +4,7 @@ import Util.Scanner;
 import Validators.PasswordValidator;
 import Util.Writer;
 
-public class RegisterUser {
+public class RegisterCitizen {
     public static void RegisterUser(String cuil, String mobile, String ubication) { //Si no lo encontro en la base de datos de TraceIT, le pedira una contraseña.
         String password = Scanner.getString("Ingrese una contraseña: ");
         if (PasswordValidator.passwordValidator(password)) { //Verifica que la contraseña cumple con los requisitos.
