@@ -11,14 +11,14 @@ import Util.Scanner;
 import java.util.ArrayList;
 
 public class LoginCitizen {
-    public static void loginUser() {
+    public static void loginCitizen() {
         String cuil = Scanner.getString("CUIL: ");
         if (!CUILValidator.cuilValidator(cuil)) { //Valida que el CUIL cumpla con los requisitos
-            loginUser(); //Recursion del inicio de sesion.
+            loginCitizen(); //Recursion del inicio de sesion.
         }
         String mobile = Scanner.getString("Celular: ");
         if (!MobileValidator.mobileValidator(mobile)) { //Valida que el celular cumpla con los requisitos.
-            loginUser(); //Recursion del inicio de sesion
+            loginCitizen(); //Recursion del inicio de sesion
         }
         String ubication = UbicationChooser.ubicationChooser();
         ArrayList<String[]> ANSESbase = ArrayMaker.ansesMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
@@ -29,14 +29,14 @@ public class LoginCitizen {
                 userPassword(cuil, mobile, password, ubication, users); //Verifica la contraseña.
             } else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
-                RegisterCitizen.RegisterUser(cuil, mobile, ubication);
+                RegisterCitizen.registerCitizen();
             }
             System.out.println("Bienvenido.");
             Citizen c = new Citizen(cuil, mobile);
             CitizenMenu.Menu(c); //Abre el Menu del ciudadano.
         } else {
             System.out.println("CUIL/Celular/Ubicacion incorrecto."); //Si no se encuentra en la base ANSES, recursion del inicio de sesion.
-            loginUser();
+            loginCitizen();
         }
     }
 
