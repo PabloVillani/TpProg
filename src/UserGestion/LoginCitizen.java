@@ -26,7 +26,7 @@ public class LoginCitizen {
             ArrayList<String[]> users = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
             if (Finder.tripleValueFinder(cuil, mobile, ubication, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String password = Scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
-                UserPassword.userPassword(cuil, mobile, password, ubication, users); //Verifica la contraseña.
+                userPassword(cuil, mobile, password, ubication, users); //Verifica la contraseña.
             }
             else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
@@ -40,4 +40,18 @@ public class LoginCitizen {
             loginUser();
         }
     }
+        public static boolean userPassword(String cuil, String mobile, String password, String ubication, ArrayList<String[]> users) {
+            boolean passStart; //Crea un booleano, y busca la contraseña con el Finder.fourValueFinder.
+            if (Finder.fourValueFinder(cuil, mobile, password, ubication, users)) {
+                passStart = true; //Si lo encuentra, devuelve true y termina el proceso de PasswordUsuario.
+            } else {
+                passStart = false;
+                System.out.println("Contraseña incorrecta.");
+                String secondPassword = Scanner.getString("Contraseña: "); //No lo encuentra, pide un nuevo string.
+                userPassword(cuil,mobile,secondPassword, ubication, users); //Recursion con el nuevo String.
+            }
+            return passStart; //Devuelve el booleano
+        }
+    }
+
 }
