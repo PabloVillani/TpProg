@@ -11,7 +11,7 @@ public class AdminMenu {
             i = Scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
             switch (i) {
                 case 1:
-                    //Dar de alta sintoma.
+                    //Notificar sintoma.
                     break;
                 case 2:
                     //Dar de baja sintoma.

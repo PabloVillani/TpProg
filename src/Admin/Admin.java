@@ -32,4 +32,9 @@ public class Admin  {
         c.setBlocked(false);
     }
 
+    public void symptomRelease() { } //Dar de baja sintomas
+
+    public void notifySymptom() { } //Agrega-Notifica sintomas
+
+
 }
