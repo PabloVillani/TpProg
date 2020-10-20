@@ -1,9 +1,8 @@
 package Events;
 
-import Events.Diseases.Enfermedad;
 import Util.Date;
 
-public class Sintoma extends Enfermedad {
+public class Sintoma extends Disease {
     String nombre;
     int numero;
     Date inicio;
