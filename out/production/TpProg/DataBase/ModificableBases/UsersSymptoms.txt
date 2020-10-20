@@ -1,2 +1,2 @@
-CUIL, Sintomas
-20439209969,
+CUIL,Symptoms
+20439209969
