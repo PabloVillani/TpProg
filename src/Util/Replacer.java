@@ -12,16 +12,16 @@ public class Replacer {
         try
         {
             br = new BufferedReader(new FileReader(file));
-            //Reading all the lines of input text file into oldContent
+            // Lectura de todas las líneas del archivo de texto de entrada en oldContent
             String line = br.readLine();
             while (line != null)
             {
                 oldContent.append(line).append(System.lineSeparator());
                 line = br.readLine();
             }
-            //Replacing oldString with newString in the oldContent
+            //Remplaza oldString con newString en OldContent
             String newContent = oldContent.toString().replaceAll(oldString, newString);
-            //Rewriting the input text file with newContent
+            // Resscribe el archivo de texto de entrada con newContent
             fw = new FileWriter(file);
             fw.write(newContent);
         }
@@ -33,7 +33,7 @@ public class Replacer {
         {
             try
             {
-                //Closing the resources
+                // Cierre de ciclo
                 br.close();
                 fw.close();
             }

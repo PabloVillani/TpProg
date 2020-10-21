@@ -38,9 +38,9 @@ public class ABMSymptoms {
         }
     }
 
-    public void mod(Symptom s){
+    public void mod (Symptom s){
         symptoms.remove(s);
-        String newName = Scanner.getString("Eliga el nuevo nombre del sintoma: ");
+        String newName = Scanner.getString("Elija el nuevo nombre del sintoma: ");
         Replacer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt", s.getName(), newName);
         s.setName(newName);
         symptoms.add(s);
