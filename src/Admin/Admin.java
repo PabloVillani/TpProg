@@ -23,4 +23,9 @@ public class Admin  {
         c.setBlocked(false);
     }
 
+    public void deactivateSymptom() { } //Dar de baja sintomas
+
+    public void ActivateSymptom() { } //Agrega-Notifica sintomas
+
+
 }

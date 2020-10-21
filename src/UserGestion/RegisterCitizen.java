@@ -18,7 +18,7 @@ public class RegisterCitizen {
             registerCitizen(); //Recursion del inicio de sesion
         }
         String ubication = UbicationChooser.ubicationChooser();
-        ArrayList<String[]> ANSESbase = ArrayMaker.TripleStringMaker(); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
+        ArrayList<String[]> ANSESbase = ArrayMaker.tripleStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (Finder.tripleValueFinder(cuil, mobile, ubication, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
             ArrayList<String[]> users = ArrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
             if (Finder.tripleValueFinder(cuil, mobile, ubication, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.

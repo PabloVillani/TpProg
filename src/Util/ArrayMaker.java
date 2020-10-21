@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //Crea los diferentes ArrayList<String[]>
@@ -47,7 +48,7 @@ public class ArrayMaker {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
-                String[] strings = line.split(",");       //Copiara los datos de los usuarios a un String[]
+                String[] strings = line.split(",");//Copiara los datos de los usuarios a un String[]
                 array.add(strings);                           //Y los agrega al ArrayList<String[]>
             }
         } catch (IOException e) {
