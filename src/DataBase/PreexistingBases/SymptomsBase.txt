@@ -1,10 +1,10 @@
 Symptoms
-1. Fiebre
-2. Tos seca
-3. Cansancio
-4. Sarpullidos
-5. Inflamacion de los Ojos
-6. Tos con flema
-7. Escalofrios
-8. Dificultad para respirar
-9. Perdida de olfato/gusto
+Fiebre
+Tos seca
+Cansancio
+Sarpullidos
+Inflamacion de los Ojos
+Tos con flema
+Escalofrios
+Dificultad para respirar
+Perdida de olfato/gusto
