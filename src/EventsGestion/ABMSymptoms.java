@@ -1,6 +1,5 @@
-package GestionEventos;
+package EventsGestion;
 
-import Admin.Admin;
 import Events.Symptom;
 import Util.Replacer;
 import Util.Scanner;
