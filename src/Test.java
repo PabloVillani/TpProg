@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException {
         Admin admin = new Admin("user1","pass1");
-        ABM.add("admin","adminp");
+        ABM.add("user","pass");
+        ABM.remove("admin","adminp");
     }
 }

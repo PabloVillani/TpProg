@@ -1,3 +1,3 @@
 User,Password
-blabla,blabla
-user1,pass1
+admin,adminp
+usu,ps

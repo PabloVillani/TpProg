@@ -4,6 +4,7 @@ import Admin.Admin;
 import Util.*;
 import Util.Writer;
 import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,20 +22,25 @@ public class ABM {
         Writer.twoValueWriter(user, password, "src/DataBase/ModificableBases/Admins.txt");
     }
 
-    public static void remove(Admin admin) throws IOException {
+    public static void remove(String user, String password) throws IOException {
+        Admin admin = new Admin(user, password);
         admins.remove(admin);
-        stringedAdmins.remove(admin.getUser());
-        stringedAdmins.remove(admin.getPassword());
-        File oldFile = new File("src/DataBase/ModificableBases/Admins.txt");
-        Iterator i = stringedAdmins.iterator();
-        for (String[] a : stringedAdmins) {
-            for (String s : a) {
-                Writer.twoValueWriter(s, a[1], "src/DataBase/ModificableBases/Admins.txt");
-            }
+        Replacer.replace("src/DataBase/ModificableBases/Admins.txt",user + "," + password, "");
+        FileChannel src = new FileInputStream("src/DataBase/ModificableBases/Admins.txt").getChannel();
+        FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/Admins2.txt").getChannel();
+        dest.transferFrom(src, 0, src.size());
+        try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/Admins2.txt"));
+             PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/Admins.txt"))) {
+             String lineOfText;
+             while ((lineOfText = inputFile.readLine()) != null) {
+                 lineOfText = lineOfText.trim();
+                 if (!lineOfText.isEmpty()) {
+                    outputFile.println(lineOfText);
+                 }
+             }
         }
     }
         public void mod (String user, String password){
-
-        }
-    }
+     }
+}
 
