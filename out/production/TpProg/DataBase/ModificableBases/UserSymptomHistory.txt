@@ -1,2 +1,2 @@
-CUIL,Symptoms
+CUIL,Symptoms,dateStart,dateEnd
 20439209969

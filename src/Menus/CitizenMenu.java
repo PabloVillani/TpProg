@@ -16,7 +16,7 @@ public class CitizenMenu {
                 switch (n) {
                     case 1:
                         //Registra contacto con otro ciudadano
-                        c.registerContact();
+                        c.ContactRequest();
                         break;
                     case 2:
                         //Administrar solicitudes.

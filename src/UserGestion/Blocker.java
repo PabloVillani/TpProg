@@ -3,7 +3,6 @@ package UserGestion;
 import Citizen.Citizen;
 import Util.ArrayMaker;
 import Util.Finder;
-
 import java.util.ArrayList;
 
 public class Blocker {

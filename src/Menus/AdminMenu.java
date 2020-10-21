@@ -1,5 +1,8 @@
 package Menus;
 
+import Admin.Admin;
+import Util.ArrayMaker;
+import Util.Finder;
 import Util.Scanner;
 
 //Despliega el menu del administrador en el Main.
@@ -20,7 +23,12 @@ public class AdminMenu {
                     //Modificar sintomas.
                     break;
                 case 4:
-                    //Desbloquear usuario.
+                    String cuil = Scanner.getString("Introduzca el CUIL del ciudadano.");
+                    if(Finder.singleValueFinder(cuil, ArrayMaker.usuariosMaker())){
+                        Admin.unlock(cuil);
+                    }else{
+                        System.out.println("El ciudadano no existe.");
+                    }
                     break;
                 case 5:
                     System.out.println("Gracias por usar TraceIT.");

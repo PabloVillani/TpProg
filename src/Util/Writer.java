@@ -23,11 +23,11 @@ public class Writer {
             e.printStackTrace();
         }
     }
-    public static void userWriter(String cuil, String mobile, String password, String ubication){
+    public static void fourValueWriter(String value1, String value2, String value3, String value4, String path){
         try{
-            File archive = new File("src/DataBase/ModificableBases/Users.txt");
+            File archive = new File(path);
             BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
-            bw.write("\n" + cuil + "," + mobile + "," + password + "," + ubication);
+            bw.write("\n" + value1 + "," + value2 + "," + value3 + "," + value4);
             bw.close();
         } catch (Exception e) {
             e.printStackTrace();
