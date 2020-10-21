@@ -1,6 +1,7 @@
 package Citizen;
 
 import Util.ArrayMaker;
+import Util.Date;
 import Util.Scanner;
 
 import java.io.*;
@@ -45,8 +46,10 @@ public class Citizen {
     //-------------------------------------------------------------------------------------
     public static void registerContact() {
         String contactCitizenCUIL = Scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
-        //Tendremos que comparar el cuil de ciudadanoContactado con la lista de cuils de Users.txt, si encuentra una coincidencia debe enviar una solicitud
-        //todo
+        System.out.println("Inicio del contacto:");
+        Date start = Date.dateGenerator();
+        System.out.println("Fin del contacto:");
+        Date end = Date.dateGenerator();
     }
 
     public static void symptomsReport(String cuil) {

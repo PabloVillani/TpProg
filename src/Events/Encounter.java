@@ -2,13 +2,13 @@ package Events;
 
 import Util.Date;
 
-public class Encouter {
+public class Encounter {
     String CUILsender;
     String CUILreceiver;
     Date start;
     Date end;
 
-    public Encouter(String CUILsender, String CUILreceiver, Date start, Date end){
+    public Encounter(String CUILsender, String CUILreceiver, Date start, Date end){
         this.CUILsender = CUILsender;
         this.CUILreceiver = CUILreceiver;
         this.start = start;
