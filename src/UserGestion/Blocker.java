@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 public class Blocker {
     public static void blocker(Citizen c){
-        ArrayList<String[]> rejectedRequests;
-        rejectedRequests = ArrayMaker.doubleStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
+        ArrayList<String[]> rejectedRequests = ArrayMaker.doubleStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
         if(Finder.doubleValueFinder(c.cuil, "5", rejectedRequests)){
             //Escribir true al lado del CUIL en el BlockedUsers.txt
             ArrayList<String[]> blockedUsers;
@@ -17,7 +16,6 @@ public class Blocker {
             if(Finder.doubleValueFinder(c.cuil, "true", blockedUsers)){
                 c.setBlocked(true);
             }
-
         }
     }
 }

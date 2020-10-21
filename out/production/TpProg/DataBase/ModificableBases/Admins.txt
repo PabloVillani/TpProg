@@ -1,2 +1,3 @@
-User,Password,superAdmin
-
+User,Password
+admin,adminp
+usu,ps
