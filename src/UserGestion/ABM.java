@@ -27,9 +27,9 @@ public class ABM {
         admins.remove(admin);
         Replacer.replace("src/DataBase/ModificableBases/Admins.txt",user + "," + password, "");
         FileChannel src = new FileInputStream("src/DataBase/ModificableBases/Admins.txt").getChannel();
-        FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/Admins2.txt").getChannel();
+        FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/AdminsSupport.txt").getChannel();
         dest.transferFrom(src, 0, src.size());
-        try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/Admins2.txt"));
+        try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/AdminsSupport.txt"));
              PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/Admins.txt"))) {
              String lineOfText;
              while ((lineOfText = inputFile.readLine()) != null) {

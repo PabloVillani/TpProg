@@ -3,19 +3,25 @@ package Events;
 import Util.Date;
 
 public class Symptom {
-    String nombre;
-    int numero;
-    Date inicio;
-    Date finalizo;
+    String name;
+    Date start;
+    Date end;
 
-    public Symptom(String nombre, int numero){
-        this.nombre = nombre;
-        this.numero = numero;
+    public Symptom(String nombre){
+        this.name = nombre;
     }
-    Symptom(String nombre, int numero, Date inicio, Date finalizo){
-        this.nombre = nombre;
-        this.numero = numero;
-        this.inicio = inicio;
-        this.finalizo = finalizo;
+    Symptom(String nombre,Date inicio, Date finalizo){
+        this.name = nombre;
+        this.start = inicio;
+        this.end = finalizo;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
