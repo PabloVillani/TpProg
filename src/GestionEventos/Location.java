@@ -1,4 +1,4 @@
-
+package GestionEventos;
 
 import Events.Disease;
 import Events.Symptom;
