@@ -1,4 +1,0 @@
-User,Password
-
-usu,ps
-user,pass

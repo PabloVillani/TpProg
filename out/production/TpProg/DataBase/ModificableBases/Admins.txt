@@ -1,3 +1,5 @@
 User,Password
-admin,adminp
 usu,ps
+admin,adminp
+user,pass
+
