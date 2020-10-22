@@ -1,8 +1,8 @@
 package UserGestion;
 
 import Citizen.Citizen;
+import EventsGestion.Location;
 import Menus.CitizenMenu;
-import Util.LocationChooser;
 import Validators.CUILValidator;
 import Validators.MobileValidator;
 import Util.ArrayMaker;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class LoginCitizen {
     CitizenMenu menu = new CitizenMenu();
     Scanner scanner = new Scanner();
-    LocationChooser locationChooser = new LocationChooser();
+    Location location = new Location();
     ArrayMaker arrayMaker = new ArrayMaker();
     Finder finder = new Finder();
     RegisterCitizen registerCitizen = new RegisterCitizen();
@@ -26,7 +26,7 @@ public class LoginCitizen {
         if (!MobileValidator.mobileValidator(mobile)) { //Valida que el celular cumpla con los requisitos.
             loginCitizen(); //Recursion del inicio de sesion
         }
-        String ubication = locationChooser.locationChooser();
+        String ubication = location.locationChooser();
         ArrayList<String[]> ANSESbase = arrayMaker.tripleStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (finder.tripleValueFinder(cuil, mobile, ubication, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
             ArrayList<String[]> users = arrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.

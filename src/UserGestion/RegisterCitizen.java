@@ -1,6 +1,7 @@
 package UserGestion;
 
 import Citizen.Citizen;
+import EventsGestion.Location;
 import Menus.CitizenMenu;
 import Util.*;
 import Validators.CUILValidator;
@@ -15,7 +16,7 @@ public class RegisterCitizen {
     Finder finder = new Finder();
     CitizenMenu menu = new CitizenMenu();
     Scanner scanner = new Scanner();
-    LocationChooser locationChooser = new LocationChooser();
+    Location location = new Location();
 
     public void registerCitizen() {//Si no lo encontro en la base de datos de TraceIT, le pedira una contraseña.
         String cuil = scanner.getString("CUIL: ");
@@ -26,7 +27,7 @@ public class RegisterCitizen {
         if (!MobileValidator.mobileValidator(mobile)) { //Valida que el celular cumpla con los requisitos.
             registerCitizen(); //Recursion del inicio de sesion
         }
-        String ubication = locationChooser.locationChooser();
+        String ubication = location.locationChooser();
         ArrayList<String[]> ANSESbase = arrayMaker.tripleStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (finder.tripleValueFinder(cuil, mobile, ubication, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
             ArrayList<String[]> users = arrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.

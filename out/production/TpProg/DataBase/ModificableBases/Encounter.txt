@@ -1,1 +1,1 @@
-CUILsender,CUILreceiver,DateStart,DateEnd
+CUILsender,CUILreceiver,DateStart,DateEnd,Location

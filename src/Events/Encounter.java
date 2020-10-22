@@ -1,5 +1,7 @@
 package Events;
 
+import EventsGestion.Location;
+
 import java.util.GregorianCalendar;
 
 public class Encounter {
@@ -7,12 +9,13 @@ public class Encounter {
     String CUILreceiver;
     GregorianCalendar start;
     GregorianCalendar end;
-
-    public Encounter(String CUILsender, String CUILreceiver, GregorianCalendar start, GregorianCalendar end){
+    Location location;
+    public Encounter(String CUILsender, String CUILreceiver, GregorianCalendar start, GregorianCalendar end, Location location){
         this.CUILsender = CUILsender;
         this.CUILreceiver = CUILreceiver;
         this.start = start;
         this.end = end;
+        this.location = location;
     }
 
     public GregorianCalendar getStart() {

@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 public class HashMapMaker {
-    public static HashMap<String, String> cuilAndSymptomsMaker(String path) {
+    public  HashMap<String, String> cuilAndSymptomsMaker(String path) {
         HashMap<String, String> cuilAndSymptoms = new HashMap<String, String>();
         String line; //Lee el txt.
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
