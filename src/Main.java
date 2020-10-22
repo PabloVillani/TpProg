@@ -7,7 +7,7 @@ import UserGestion.LoginCitizen;
 
 public class Main {
     public static void main(String[] args) {
-        int o = Scanner.getInt("Bienvenido a TraceIt: \n 1. Iniciar sesión. \n 2. Registrarse.");
+        int o = Scanner.getInt("Bienvenido a TraceIt: \n 1. Iniciar sesión. \n 2. Registrarse. \n");
         if (o == 1) {
             System.out.println("Bienvenido. Eres Admin o Ciudadano:");
             int k = Scanner.getInt("1. Admin \n2. Ciudadano\n"); //Le pide que elija un inicio de sesion.

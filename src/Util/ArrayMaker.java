@@ -4,24 +4,25 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 //Crea los diferentes ArrayList<String[]>
 public class ArrayMaker {
     //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
     public static ArrayList<String[]> tripleStringMaker(String path) {
-        ArrayList<String[]> ANSESbase = new ArrayList<String[]>();
+        ArrayList<String[]> aL = new ArrayList<String[]>();
         String line; //Lee el txt.
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) { //Hasta que la linea sea nula (o sea, sin texto)
-                String[] citizen = line.split(","); //Copiara los datos en un String[]
-                ANSESbase.add(citizen);                  //Que luego agregara al  ArrayList<String[]>
+                String[] arr = line.split(","); //Copiara los datos en un String[]
+                aL.add(arr);                  //Que luego agregara al  ArrayList<String[]>
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ANSESbase;
+        return aL;
     }
 
     //-------------------- Crea el ArrayList<String[]> de la base de datos de usuarios de TraceIT. -----------------------------
@@ -57,7 +58,7 @@ public class ArrayMaker {
     }
 
     public static List<String> singleStringMaker(String path) {
-        List<String> symptoms = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         try {
             FileReader fr = new FileReader(path);
             BufferedReader br = new BufferedReader(fr);
@@ -66,11 +67,11 @@ public class ArrayMaker {
                 System.out.println(line); //Imprime la lista de String.
                 line = br.readLine(); //lee la primer linea y despues pasa a la siguiente, si no hay más devuelve null, y se termina el while.
             }
-            symptoms.add(line);//Crea el array de Strings.
+            list.add(line);//Crea el array de Strings.
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return symptoms;
+        return list;
     }
 
 }

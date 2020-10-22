@@ -1,9 +1,13 @@
 package Admin;
 
+import Events.Symptom;
+import EventsGestion.ABMSymptoms;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Replacer;
 import Util.Writer;
+
+import java.io.IOException;
 
 //Objeto de admin, con sus capacidades de trabajo.
 public class Admin  {
@@ -33,9 +37,32 @@ public class Admin  {
         }
     }
 
-    public void deactivateSymptom() { } //Dar de baja sintomas
+    public static void deactivateSymptom(String symptom) { //Dar de baja sintomas
+        Symptom s = new Symptom(symptom);
+        try {
+            ABMSymptoms.remove(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void ActivateSymptom() { } //Agrega-Notifica sintomas
+    public static void activateSymptom(String symptom) { //Agrega sintomas
+        Symptom s = new Symptom(symptom);
+        try {
+            ABMSymptoms.add(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void modificateSymptom(String symptom){//Modifica el nombre de un sintoma
+    Symptom s = new Symptom(symptom);
+    try {
+        ABMSymptoms.mod(s);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
 
 
 }
