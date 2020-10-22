@@ -2,9 +2,9 @@ package Citizen;
 
 import Util.ArrayMaker;
 import Util.Scanner;
-
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Citizen {
@@ -13,6 +13,8 @@ public class Citizen {
     ArrayList<String> symptoms;
     int rejectedRequests;
     public boolean blocked;
+    ArrayMaker arrayMaker = new ArrayMaker();
+    Scanner scanner = new Scanner();
 
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
@@ -43,16 +45,19 @@ public class Citizen {
         this.blocked = blocked;
     }
     //-------------------------------------------------------------------------------------
-    public static void registerContact() {
-        String contactCitizenCUIL = Scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
-        //Tendremos que comparar el cuil de ciudadanoContactado con la lista de cuils de Users.txt, si encuentra una coincidencia debe enviar una solicitud
-        //todo
+    public void ContactRequest() {
+        String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
+        System.out.println("Inicio del contacto:");
+        Date start = new Date();
+        System.out.println("Fin del contacto:");
+        Date end = new Date();
+        //Util.Writer.fourValueWriter(this.cuil, contactCitizenCUIL, start, end);
     }
 
-    public static void symptomsReport(String cuil) {
-        List<String> symptoms = ArrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
+    public void symptomsReport(String cuil) {
+        List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
         System.out.println();
-        int i = Scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
+        int i = scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
         if(i < 1 || i > 9) {
             System.out.println("Numero Invalido."); //Recursion en caso de ingresar un numero invalido.
             symptomsReport(cuil);

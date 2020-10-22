@@ -1,1 +1,10 @@
 ActiveSymptoms
+Fiebre
+Tos seca
+Cansancio
+Sarpullidos
+Inflamacion de los Ojos
+Tos con flema
+Escalofrios
+Dificultad para respirar
+Perdida de olfato/gusto

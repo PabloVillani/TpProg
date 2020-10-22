@@ -1,30 +1,62 @@
 package Menus;
 
+import Admin.Admin;
+import Util.ArrayMaker;
+import Util.Finder;
 import Util.Scanner;
+
+import java.util.List;
 
 //Despliega el menu del administrador en el Main.
 public class AdminMenu {
-    public static void Menu() {
+    Admin admin;
+    Scanner scanner = new Scanner();
+    ArrayMaker arrayMaker = new ArrayMaker();
+    Finder finder = new Finder();
+    public void Menu() {
         int i = 0;
         do { //Presenta las opciones a realizar:
-            System.out.println("1. Dar de alta sintoma.\n2. Dar de baja un sintoma\n 3. Modificar sintomas\n4. Desbloquear usuario\n5. Cerrar sesion.");
-            i = Scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
+            System.out.println("1. Notificar sintoma.\n2. Dar de baja un sintoma\n3. Modificar sintomas\n4. Desbloquear usuario\n5. Cerrar sesion.");
+            i = scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
             switch (i) {
-                case 1:
-                    //Notificar sintoma.
+                case 1:  //Activar sintoma.
+                    List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/SymptomsBase.txt");
+                    System.out.println();
+                    String symptom = scanner.getString("Introduzca el nombre del sintoma: ");
+                    if(!finder.singleValueFinder(symptom, symptoms)){
+                        System.out.println("El sintoma no existe.");
+                    }else{
+                        admin.activateSymptom(symptom);
+                    }
                     break;
-                case 2:
-                    //Dar de baja sintoma.
+                case 2: //Desactivar sintomas.
+                    List<String> symptoms2 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
+                    System.out.println();
+                    String symptom2 = scanner.getString("Introduzca el nombre del sintoma a eliminar: ");
+                    if(!finder.singleValueFinder(symptom2, symptoms2)){
+                        System.out.println("El sintoma no existe");
+                    }else{
+                        admin.deactivateSymptom(symptom2);
+                    }
                     break;
-                case 3:
-                    //Modificar sintomas.
+                case 3: //Modificar sintomas.
+                    String symptom1 = scanner.getString("Introduzca el nombre del sintoma a modificar: ");
+                    if(!finder.singleValueFinder(symptom1, arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt"))){
+                        System.out.println("El sintoma no existe");
+                    }else{
+                        admin.modificateSymptom(symptom1);
+                    }
                     break;
-                case 4:
-                    //Desbloquear usuario.
+                case 4: //Desbloquear usuario
+                    String cuil = scanner.getString("Introduzca el CUIL del ciudadano: ");
+                    if(finder.singleValueFinder(cuil, arrayMaker.singleStringMaker("src/DataBase/ModificableBases/CuilOnlyDataBase.txt"))){
+                        admin.unlock(cuil);
+                    }else{
+                        System.out.println("El ciudadano no existe.");
+                    }
                     break;
-                case 5:
+                case 5: //Salir.
                     System.out.println("Gracias por usar TraceIT.");
-                    //Salir.
                     break;
                 default:
                     System.out.println("Opcion invalida.");
