@@ -3,14 +3,18 @@ package Util;
 import java.util.List;
 
 public class LocationChooser {
-    public static String ubicationChooser() {
-        List<String> ubications = ArrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
+    ArrayMaker arrayMaker;
+    Scanner scanner = new Scanner();
+
+    public LocationChooser(){}
+    public String locationChooser() {
+        List<String> ubications = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
         System.out.println();
         String linea = "";
-        int i = Scanner.getInt("Elija su ubicacion: ");
+        int i = scanner.getInt("Elija su ubicacion: ");
         if (i < 0 || i > 5) {
             System.out.println("Numero Invalido."); //Recursion en caso de ingresar un numero invalido.
-            ubicationChooser();
+            locationChooser();
         } else {
             if (i == 1) {
                 linea = "Escobar";

@@ -2,13 +2,13 @@ package Events;
 
 import java.util.GregorianCalendar;
 
-public class Encounter {
+public class Invite {
     String CUILsender;
     String CUILreceiver;
     GregorianCalendar start;
     GregorianCalendar end;
 
-    public Encounter(String CUILsender, String CUILreceiver, GregorianCalendar start, GregorianCalendar end){
+    public Invite(String CUILsender, String CUILreceiver, GregorianCalendar start, GregorianCalendar end){
         this.CUILsender = CUILsender;
         this.CUILreceiver = CUILreceiver;
         this.start = start;

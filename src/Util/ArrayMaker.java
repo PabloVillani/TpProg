@@ -9,8 +9,10 @@ import java.util.List;
 
 //Crea los diferentes ArrayList<String[]>
 public class ArrayMaker {
+    public ArrayMaker(){
+    }
     //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
-    public static ArrayList<String[]> tripleStringMaker(String path) {
+    public ArrayList<String[]> tripleStringMaker(String path) {
         ArrayList<String[]> aL = new ArrayList<String[]>();
         String line; //Lee el txt.
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
@@ -26,7 +28,7 @@ public class ArrayMaker {
     }
 
     //-------------------- Crea el ArrayList<String[]> de la base de datos de usuarios de TraceIT. -----------------------------
-    public static ArrayList<String[]> usuariosMaker() {
+    public ArrayList<String[]> usuariosMaker() {
         ArrayList<String[]> users = new ArrayList<String[]>();
         String line; //Lee el Users.txt
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/DataBase/ModificableBases/Users.txt"));) {
@@ -42,7 +44,7 @@ public class ArrayMaker {
     }
 
     //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de dos valores.
-    public static ArrayList<String[]> doubleStringMaker(String path) {
+    public ArrayList<String[]> doubleStringMaker(String path) {
         ArrayList<String[]> array = new ArrayList<String[]>();
         String line; //Lee el txt
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
@@ -57,7 +59,7 @@ public class ArrayMaker {
         return array;
     }
 
-    public static List<String> singleStringMaker(String path) {
+    public List<String> singleStringMaker(String path) {
         List<String> list = new ArrayList<>();
         try {
             FileReader fr = new FileReader(path);

@@ -7,12 +7,16 @@ import Util.Scanner;
 import java.util.ArrayList;
 
 public class LoginAdmin {
-    public static void loginAdmin(){
-        ArrayList<String[]> admins = ArrayMaker.doubleStringMaker("src/DataBase/ModificableBases/Admins.txt");
-        String user = Scanner.getString("Usuario: ");
-        String password = Scanner.getString("Contraseña: ");
-        if(Finder.doubleValueFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
-            AdminMenu.Menu(); //Si se encuentra, se ejecuta el menu.
+    AdminMenu menu = new AdminMenu();
+    ArrayMaker arrayMaker = new ArrayMaker();
+    Scanner scanner = new Scanner();
+    Finder finder = new Finder();
+    public void loginAdmin(){
+        ArrayList<String[]> admins = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/Admins.txt");
+        String user = scanner.getString("Usuario: ");
+        String password = scanner.getString("Contraseña: ");
+        if(finder.doubleValueFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
+            menu.Menu(); //Si se encuentra, se ejecuta el menu.
         }
         else{
             System.out.println("El usuario o la contraseña es incorrecta.");

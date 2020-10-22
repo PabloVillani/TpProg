@@ -1,16 +1,16 @@
 package Events;
 
-import Util.Date;
+import java.util.GregorianCalendar;
 
 public class Symptom {
     String name;
-    Date start;
-    Date end;
+    GregorianCalendar start;
+    GregorianCalendar end;
 
     public Symptom(String nombre){
         this.name = nombre;
     }
-    Symptom(String nombre,Date inicio, Date finalizo){
+    Symptom(String nombre,GregorianCalendar inicio, GregorianCalendar finalizo){
         this.name = nombre;
         this.start = inicio;
         this.end = finalizo;

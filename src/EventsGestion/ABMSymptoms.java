@@ -1,7 +1,6 @@
 package EventsGestion;
 
 import Events.Symptom;
-import Util.Replacer;
 import Util.Scanner;
 import Util.Writer;
 
@@ -10,19 +9,21 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 public class ABMSymptoms {
-    static ArrayList<Symptom> symptoms = new ArrayList<Symptom>();
-    public ABMSymptoms(ArrayList<Symptom> symptoms) {
+    ArrayList<Symptom> symptoms = new ArrayList<Symptom>();
+    Writer writer = new Writer();
+    Scanner scanner = new Scanner();
+    public ABMSymptoms() {
         this.symptoms = symptoms;
     }
 
-    public static void add(Symptom s) throws IOException {
+    public void add(Symptom s) throws IOException {
         symptoms.add(s);
-        Writer.singleValueWriter(s.getName(),"src/DataBase/ModificableBases/ActiveSymptoms.txt");
+        writer.singleValueWriter(s.getName(),"src/DataBase/ModificableBases/ActiveSymptoms.txt");
     }
 
-    public static void remove(Symptom s) throws IOException {
+    public void remove(Symptom s) throws IOException {
         symptoms.remove(s);
-        Replacer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt",s.getName(), "");
+        writer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt",s.getName(), "");
         FileChannel src = new FileInputStream("src/DataBase/ModificableBases/ActiveSymptoms.txt").getChannel();
         FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/ActiveSymptomsSupport.txt").getChannel();
         dest.transferFrom(src, 0, src.size());
@@ -38,10 +39,10 @@ public class ABMSymptoms {
         }
     }
 
-    public static void mod (Symptom s){
+    public void mod (Symptom s){
         symptoms.remove(s);
-        String newName = Scanner.getString("Elija el nuevo nombre del sintoma: ");
-        Replacer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt", s.getName(), newName);
+        String newName = scanner.getString("Elija el nuevo nombre del sintoma: ");
+        writer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt", s.getName(), newName);
         s.setName(newName);
         symptoms.add(s);
     }

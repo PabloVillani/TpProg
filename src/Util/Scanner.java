@@ -5,15 +5,15 @@ package Util;
  */
 public class Scanner {
 
-    private static final java.util.Scanner scanner = new java.util.Scanner(System.in);
+    private final java.util.Scanner scanner = new java.util.Scanner(System.in);
 
-    private Scanner() { }
+    public Scanner() { }
 
     /** Displays the given message and waits for user to enter some text.
      * @param message to be displayed.
      * @return text entered by the user.
      */
-    public static String getString(String message) {
+    public String getString(String message) {
         System.out.print(message);
         final String result = scanner.nextLine().trim();
         if(result.isEmpty()) {
@@ -27,7 +27,7 @@ public class Scanner {
      * @param message to be displayed.
      * @return char entered by the user.
      */
-    public static char getChar(String message) {
+    public  char getChar(String message) {
         return getString(message).charAt(0);
     }
 
@@ -35,7 +35,7 @@ public class Scanner {
      * @param message to be displayed.
      * @return integer entered by the user.
      */
-    public static int getInt(String message) {
+    public  int getInt(String message) {
         System.out.print(message);
         try {
             return Integer.parseInt(scanner.nextLine());
@@ -49,7 +49,7 @@ public class Scanner {
      * @param message to be displayed.
      * @return long entered by the user.
      */
-    public static long getLong(String message) {
+    public  long getLong(String message) {
         System.out.print(message);
         try {
             return Long.parseLong(scanner.nextLine());
@@ -63,7 +63,7 @@ public class Scanner {
      * @param message to be displayed.
      * @return float entered by the user.
      */
-    public static float getFloat(String message) {
+    public  float getFloat(String message) {
         System.out.print(message);
         try {
             return Float.parseFloat(scanner.nextLine());
@@ -77,7 +77,7 @@ public class Scanner {
      * @param message to be displayed.
      * @return double entered by the user.
      */
-    public static double getDouble(String message) {
+    public  double getDouble(String message) {
         System.out.print(message);
         try {
             return Double.parseDouble(scanner.nextLine());
