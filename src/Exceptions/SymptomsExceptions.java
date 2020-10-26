@@ -6,6 +6,7 @@ public class SymptomsExceptions extends Exception{
         super();
         this.codeError= codeError;
     }
+
     @Override
     public String getMessage(){
         String message="";

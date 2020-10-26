@@ -1,1 +1,3 @@
 CUIL,Blocked
+20439209969,false
+20439087749,false

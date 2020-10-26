@@ -62,6 +62,17 @@ public class Finder {
             }
         } return -1;
     }
+    public boolean singleValueFinderArray(String value1, ArrayList<String[]> list, int position){
+        Iterator i = list.iterator();
+        for(String[] a : list){
+            for(String s : a ){
+                if(a[position].equals(value1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 
 

@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 import Util.Scanner;
 
 public class Invite {
+
     Scanner scanner = new Scanner();
     String CUILsender;
     String CUILreceiver;
@@ -12,7 +13,9 @@ public class Invite {
     GregorianCalendar end;
     Location location;
     String locationName;
+
     public Invite(){}
+
     public Invite(String CUILsender, String CUILreceiver, GregorianCalendar start, GregorianCalendar end, String locationName){
         this.CUILsender = CUILsender;
         this.CUILreceiver = CUILreceiver;

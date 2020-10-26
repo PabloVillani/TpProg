@@ -5,11 +5,7 @@ import EventsGestion.Location;
 import Util.*;
 import Util.Writer;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class Citizen {
@@ -26,7 +22,7 @@ public class Citizen {
     Location location = new Location();
     HashMapMaker hashMapMaker = new HashMapMaker();
     GregorianCalendar gc = new GregorianCalendar();
-    GregorianCalendarManager gcm = new GregorianCalendarManager();
+    GregorianCalendar gcm = new GregorianCalendar();
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
@@ -57,13 +53,13 @@ public class Citizen {
     }
     //-------------------------------------------------------------------------------------
     public void ContactRequest() {
-//        String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
-//        System.out.println("Inicio del contacto:");
-//        GregorianCalendar start = gcm.dateGenerator();
-//        System.out.println("Fin del contacto:");
-//        GregorianCalendar end = gcm.dateGenerator();
-//        String locationName = location.locationChooser();
-//        //writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.toString(), end.toString(), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
+        String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
+        System.out.println("Inicio del contacto:");
+        GregorianCalendar start = gcm.dateGenerator();
+        System.out.println("Fin del contacto:");
+        GregorianCalendar end = gcm.dateGenerator();
+        String locationName = location.locationChooser();
+        writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.gCToString(start), end.gCToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
     }
 
   /*  public void symptomsReport(String cuil) {
