@@ -30,7 +30,7 @@ public class CitizenMenu {
                         break;
                     case 3:
                         //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
-                        //c.symptomsReport(c.cuil);
+                        c.symptomsReport();
                         break;
                     case 4:
                         //Dar de baja sintomas.

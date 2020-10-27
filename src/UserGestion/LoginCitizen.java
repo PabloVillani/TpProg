@@ -31,7 +31,7 @@ public class LoginCitizen {
         String ubication = location.locationChooser();
         ArrayList<String[]> ANSESbase = arrayMaker.tripleStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (finder.tripleValueFinder(cuil, mobile, ubication, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
-            ArrayList<String[]> users = arrayMaker.usuariosMaker(); //Crea el ArrayList<String[]> de Usuarios.
+            ArrayList<String[]> users = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/Users.txt"); //Crea el ArrayList<String[]> de Usuarios.
             if (finder.tripleValueFinder(cuil, mobile, ubication, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String password = scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
                 userPassword(cuil, mobile, password, ubication, users); //Verifica la contraseña.

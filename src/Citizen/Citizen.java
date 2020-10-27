@@ -27,6 +27,7 @@ public class Citizen {
     HashMapMaker hashMapMaker = new HashMapMaker();
     GregorianCalendar gc = new GregorianCalendar();
     GregorianCalendar gcm = new GregorianCalendar();
+    Finder finder = new Finder();
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
@@ -66,49 +67,29 @@ public class Citizen {
         writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.gCToString(start), end.gCToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
     }
 
-    public void symptomsReport(String cuil) {
-
+    public void symptomsReport() {
+        List<String> activeSymptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
+        String line;
+        try{
+            String symptom = scanner.getString("Ingrese su sintoma: ");
+            if(finder.singleValueFinder(symptom,activeSymptoms)){
+                ArrayList<String[]> userSymptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+                if (!finder.doubleValueFinder(this.cuil, symptom, userSymptoms)) {
+                    System.out.println("Inicio del sintoma:");
+                    GregorianCalendar start = gcm.dateGenerator();
+                    String locationName = location.locationChooser();
+                    writer.fourValueWriter(this.cuil, symptom, start.gCToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
+                    writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/" + locationName + "Symptoms.txt");
+                } else {
+                    throw new SymptomsExceptions(35);
+                }
+            }else{
+                throw new SymptomsExceptions(34);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-//        List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
-//        String line;
-//        try {
-//            String symptom = scanner.getString("Ingrese su sintoma: "); //Pide el nombre del sintoma.
-//            String archive1 = "src/DataBase/PreexistingBases/SymptomsBase.txt";
-//            BufferedReader br = new BufferedReader(new FileReader(archive1));
-//            while ((line = br.readLine()) != null) {
-//                if (symptom.toLowerCase().equals(line.toLowerCase())) {
-//                    System.out.println(line); // de prueba
-//                    try {
-//                        String archive = "src/DataBase/ModificableBases/UsersSymptoms.txt";
-//                        File file = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
-//                        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-//                        BufferedReader br2 = new BufferedReader(new FileReader(archive));
-//                        HashMap<String, String> uS = hashMapMaker.cuilAndSymptomsMaker(archive);
-//                        System.out.println(uS); // de prueba
-//                        while ((line = br2.readLine()) != null) {
-//                            if (line.equals(cuil))  {
-//                                uS.put(cuil, symptom);
-//                                bw.write( "," + symptom.toUpperCase());
-//                                bw.close();
-//                            }
-//                            if (uS.get(cuil).equals(symptom)) {
-//
-//
-//                        }
-//                        //Anota el sintoma en el .txt, junto al CUIL del usuario.
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                } else {
-//                    throw new SymptomsExceptions(34); //Recursion en caso de ingresar un string invalido.
-//                }
-//
-//            }
-//        } catch (SymptomsExceptions | IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
     public void SolveSymptoms() {
 
     }

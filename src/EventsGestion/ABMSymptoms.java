@@ -13,10 +13,9 @@ public class ABMSymptoms {
     Writer writer = new Writer();
     Scanner scanner = new Scanner();
     public ABMSymptoms() {
-        this.symptoms = symptoms;
     }
 
-    public void add(Symptom s) throws IOException {
+    public void addSymptom(Symptom s) throws NullPointerException {
         symptoms.add(s);
         writer.singleValueWriter(s.getName(),"src/DataBase/ModificableBases/ActiveSymptoms.txt");
     }

@@ -1,1 +1,3 @@
-CUIL,Symptoms
+CUIL,Symptom,StartDate,Location
+-,-,-,-
+20439209969,Cansancio,5-1-2020~20,Escobar

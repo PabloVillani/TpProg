@@ -23,6 +23,9 @@ public class Admin  {
         this.user = user;
     }
 
+    public Admin() {
+    }
+
     public String getUser() {
         return user;
     }
@@ -53,11 +56,7 @@ public class Admin  {
 
     public void activateSymptom(String symptom) { //Agrega sintomas
         Symptom s = new Symptom(symptom);
-        try {
-            abmSymptoms.add(s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        abmSymptoms.addSymptom(s);
     }
 
     public void modificateSymptom(String symptom){//Modifica el nombre de un sintoma
