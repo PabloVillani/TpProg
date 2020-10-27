@@ -1,13 +1,15 @@
 package Citizen;
 
-import Util.ArrayMaker;
-import Util.Scanner;
-import java.io.*;
+import Events.Invite;
+import EventsGestion.Location;
+import Util.*;
+import Util.Writer;
+
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 public class Citizen {
+
     public String cuil;
     public String mobile;
     ArrayList<String> symptoms;
@@ -15,7 +17,12 @@ public class Citizen {
     public boolean blocked;
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
-
+    Invite invite = new Invite();
+    Writer writer = new Writer();
+    Location location = new Location();
+    HashMapMaker hashMapMaker = new HashMapMaker();
+    GregorianCalendar gc = new GregorianCalendar();
+    GregorianCalendar gcm = new GregorianCalendar();
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
@@ -48,57 +55,58 @@ public class Citizen {
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
         System.out.println("Inicio del contacto:");
-        Date start = new Date();
+        GregorianCalendar start = gcm.dateGenerator();
         System.out.println("Fin del contacto:");
-        Date end = new Date();
-        //Util.Writer.fourValueWriter(this.cuil, contactCitizenCUIL, start, end);
+        GregorianCalendar end = gcm.dateGenerator();
+        String locationName = location.locationChooser();
+        writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.gCToString(start), end.gCToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
     }
 
-    public void symptomsReport(String cuil) {
+  /*  public void symptomsReport(String cuil) {
         List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
-        System.out.println();
-        int i = scanner.getInt("Ingrese su sintoma: "); //Pide el numero del sintoma.
-        if(i < 1 || i > 9) {
-            System.out.println("Numero Invalido."); //Recursion en caso de ingresar un numero invalido.
-            symptomsReport(cuil);
-        } else {
-            try {
-                File archive = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
-                BufferedReader br = new BufferedReader(new FileReader("src/DataBase/ModificableBases/UsersSymptoms.txt"));
-                String n = br.readLine();
-                int j = n.length();
-                br.skip(j+1);
-                String w = br.readLine();
-                int e = n.length();
-                br.skip(e);
-                String linea = "";
-                if(i == 1) {
-                    linea = "Fiebre";
-                }if(i == 2) {
-                    linea = "Tos seca";
-                }if(i == 3) {
-                    linea = "Cansancio";
-                }if(i == 4) {
-                    linea = "Sarpullidos";
-                }if(i == 5) {
-                    linea = "Inflamacion de los Ojos";
-                }if(i == 6) {
-                    linea = "Tos con flema";
-                }if(i == 7) {
-                    linea = "Escalofrios";
-                }if(i == 8) {
-                    linea = "Dificultad para respirar";
-                }if(i == 9) {
-                    linea = "Perdida de olfato/gusto";
+        String line;
+        try {
+            String symptom = Scanner.getString("Ingrese su sintoma: "); //Pide el nombre del sintoma.
+            String archive1 = "src/DataBase/PreexistingBases/SymptomsBase.txt";
+            BufferedReader br = new BufferedReader(new FileReader(archive1));
+            while ((line = br.readLine()) != null) {
+                if (symptom.toLowerCase().equals(line.toLowerCase())) {
+                    System.out.println(line); // de prueba
+                    try {
+                        String archive = "src/DataBase/ModificableBases/UsersSymptoms.txt";
+                        File file = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+                        BufferedReader br2 = new BufferedReader(new FileReader(archive));
+                        HashMap<String, String> uS = HashMapMaker.cuilAndSymptomsMaker(archive);
+                        System.out.println(uS); // de prueba
+                        while ((line = br2.readLine()) != null) {
+                            if (line.equals(cuil))  {
+                                uS.put(cuil, symptom);
+                                bw.write( "," + symptom.toUpperCase());
+                                bw.close();
+                            }
+                            // if (uS.get(cuil).equals(symptom)) {
+
+
+                        }
+                        //Anota el sintoma en el .txt, junto al CUIL del usuario.
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+//                } else {
+//                    throw new SymptomExceptions(34); //Recursion en caso de ingresar un string invalido.
                 }
-                bw.write(linea);
-                bw.close(); //Anota el sintoma en el .txt, junto al CUIL del usuario.
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+//        } catch (SymptomExceptions symptomExceptions) {
+//            symptomExceptions.printStackTrace();
         }
-    }
+ }   */
     public void SolveSymptoms() {
 
     }

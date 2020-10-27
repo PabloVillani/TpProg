@@ -6,11 +6,13 @@ import Util.Scanner;
 
 public class CitizenMenu {
     Scanner scanner = new Scanner();
+    Blocker blocker = new Blocker();
     //Despliega el menu del ciudadano en el Main.
     public void Menu(Citizen c) {
         int n = 0;
         do {
-            //Blocker.blocker(c);
+            blocker.blocker(c);
+            //Notificaciones de contacto
             if (!c.isBlocked()) {
                 System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
                 n = scanner.getInt("Elija la operacion a realizar: ");
@@ -24,7 +26,7 @@ public class CitizenMenu {
                         break;
                     case 3:
                         //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
-                        c.symptomsReport(c.cuil);
+                        //c.symptomsReport(c.cuil);
                         break;
                     case 4:
                         //Dar de baja sintomas.
