@@ -2,17 +2,21 @@ package Menus;
 
 import Citizen.Citizen;
 import UserGestion.Blocker;
+import UserGestion.ConfirmContact;
 import Util.Scanner;
+
+import java.io.IOException;
 
 public class CitizenMenu {
     Scanner scanner = new Scanner();
     Blocker blocker = new Blocker();
+    ConfirmContact confirmContact = new ConfirmContact();
     //Despliega el menu del ciudadano en el Main.
-    public void Menu(Citizen c) {
+    public void Menu(Citizen c){
         int n = 0;
         do {
             blocker.blocker(c);
-            //Notificaciones de contacto
+            confirmContact.confirmContact(c);
             if (!c.isBlocked()) {
                 System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
                 n = scanner.getInt("Elija la operacion a realizar: ");
