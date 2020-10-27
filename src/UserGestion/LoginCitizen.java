@@ -8,6 +8,8 @@ import Validators.MobileValidator;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Scanner;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LoginCitizen {
@@ -17,7 +19,7 @@ public class LoginCitizen {
     ArrayMaker arrayMaker = new ArrayMaker();
     Finder finder = new Finder();
     RegisterCitizen registerCitizen = new RegisterCitizen();
-    public void loginCitizen() {
+    public void loginCitizen(){
         String cuil = scanner.getString("CUIL: ");
         if (!CUILValidator.cuilValidator(cuil)) { //Valida que el CUIL cumpla con los requisitos
             loginCitizen(); //Recursion del inicio de sesion.

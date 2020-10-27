@@ -35,7 +35,7 @@ public class RegisterCitizen {
                 String password = scanner.getString("Ingrese una contraseña: ");
                 if (PasswordValidator.passwordValidator(password)) { //Verifica que la contraseña cumple con los requisitos.
                     writer.fourValueWriter(cuil, mobile, password, ubication,"src/DataBase/ModificableBases/Users.txt"); //Lo registra en la base de datos de Users.txt
-                    writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/RejectedRequests.txt"); //Anota el CUIL en el RejectedRequests.txt
+                    writer.twoValueWriter(cuil,"0","src/DataBase/ModificableBases/RejectedRequests.txt"); //Anota el CUIL en el RejectedRequests.txt
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/UsersSymptoms.txt"); //Anota el CUIL en el UsersSymptoms.txt
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/UserSymptomHistory.txt");
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CuilOnlyDataBase.txt");

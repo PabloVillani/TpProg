@@ -2,10 +2,14 @@ package Citizen;
 
 import Events.Invite;
 import EventsGestion.Location;
+import Exceptions.SymptomsExceptions;
 import Util.*;
 import Util.Writer;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class Citizen {
@@ -62,51 +66,49 @@ public class Citizen {
         writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.gCToString(start), end.gCToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
     }
 
-  /*  public void symptomsReport(String cuil) {
-        List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
-        String line;
-        try {
-            String symptom = Scanner.getString("Ingrese su sintoma: "); //Pide el nombre del sintoma.
-            String archive1 = "src/DataBase/PreexistingBases/SymptomsBase.txt";
-            BufferedReader br = new BufferedReader(new FileReader(archive1));
-            while ((line = br.readLine()) != null) {
-                if (symptom.toLowerCase().equals(line.toLowerCase())) {
-                    System.out.println(line); // de prueba
-                    try {
-                        String archive = "src/DataBase/ModificableBases/UsersSymptoms.txt";
-                        File file = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-                        BufferedReader br2 = new BufferedReader(new FileReader(archive));
-                        HashMap<String, String> uS = HashMapMaker.cuilAndSymptomsMaker(archive);
-                        System.out.println(uS); // de prueba
-                        while ((line = br2.readLine()) != null) {
-                            if (line.equals(cuil))  {
-                                uS.put(cuil, symptom);
-                                bw.write( "," + symptom.toUpperCase());
-                                bw.close();
-                            }
-                            // if (uS.get(cuil).equals(symptom)) {
+    public void symptomsReport(String cuil) {
 
-
-                        }
-                        //Anota el sintoma en el .txt, junto al CUIL del usuario.
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+    }
+//        List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
+//        String line;
+//        try {
+//            String symptom = scanner.getString("Ingrese su sintoma: "); //Pide el nombre del sintoma.
+//            String archive1 = "src/DataBase/PreexistingBases/SymptomsBase.txt";
+//            BufferedReader br = new BufferedReader(new FileReader(archive1));
+//            while ((line = br.readLine()) != null) {
+//                if (symptom.toLowerCase().equals(line.toLowerCase())) {
+//                    System.out.println(line); // de prueba
+//                    try {
+//                        String archive = "src/DataBase/ModificableBases/UsersSymptoms.txt";
+//                        File file = new File("src/DataBase/ModificableBases/UsersSymptoms.txt");
+//                        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+//                        BufferedReader br2 = new BufferedReader(new FileReader(archive));
+//                        HashMap<String, String> uS = hashMapMaker.cuilAndSymptomsMaker(archive);
+//                        System.out.println(uS); // de prueba
+//                        while ((line = br2.readLine()) != null) {
+//                            if (line.equals(cuil))  {
+//                                uS.put(cuil, symptom);
+//                                bw.write( "," + symptom.toUpperCase());
+//                                bw.close();
+//                            }
+//                            if (uS.get(cuil).equals(symptom)) {
+//
+//
+//                        }
+//                        //Anota el sintoma en el .txt, junto al CUIL del usuario.
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
 //                } else {
-//                    throw new SymptomExceptions(34); //Recursion en caso de ingresar un string invalido.
-                }
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-//        } catch (SymptomExceptions symptomExceptions) {
-//            symptomExceptions.printStackTrace();
-        }
- }   */
+//                    throw new SymptomsExceptions(34); //Recursion en caso de ingresar un string invalido.
+//                }
+//
+//            }
+//        } catch (SymptomsExceptions | IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void SolveSymptoms() {
 
     }
