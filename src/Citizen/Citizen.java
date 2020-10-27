@@ -5,20 +5,22 @@ import EventsGestion.Location;
 import Exceptions.SymptomsExceptions;
 import Util.*;
 import Util.Writer;
-
 import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
 public class Citizen {
 
     public String cuil;
-    public String mobile;
-    ArrayList<String> symptoms;
+    private String mobile;
+    private ArrayList<String> symptoms;
     int rejectedRequests;
-    public boolean blocked;
+    private boolean blocked;
+
+
+
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
     Invite invite = new Invite();
@@ -46,10 +48,10 @@ public class Citizen {
     public String getCuil() {
         return cuil;
     }
-
     public String getMobile() {
         return mobile;
     }
+    public ArrayList<String> getSymptoms() {return symptoms;}
     public boolean isBlocked() {
         return blocked;
     }
@@ -91,7 +93,65 @@ public class Citizen {
         }
     }
     public void SolveSymptoms() {
-
+        ArrayList<String[]> userSymptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+        List<String> mySymptoms = new ArrayList<String>();
+        System.out.println("Estos son sus sintomas activos:");
+        for (int i = 0; i < userSymptoms.size(); i++) {
+            if(finder.singleValueFinderArray(getCuil(), userSymptoms, 0)){//Devuelve todos, esta funcionando mal
+                String[] line = userSymptoms.get(i);
+                System.out.println(line[1]);
+                mySymptoms.add(line[1]);
+            }
+        }
+        String symptom = scanner.getString("Ingrese su sintoma: ");
+        if (finder.singleValueFinder(symptom, mySymptoms)){
+            System.out.println("Fecha final del sintoma:");
+            GregorianCalendar end = gcm.dateGenerator();
+            int j = finder.indexOf2(this.cuil,symptom,userSymptoms); //Se frena en la primera linea (-,-,-,-)
+            if(j != -1){
+                System.out.println();
+                String[] s = userSymptoms.get(j);
+                String startDate = s[2];
+                String location = s[3];
+                writer.fourValueWriter(this.cuil,symptom,startDate,end.gCToString(end),"src/DataBase/ModificableBases/UserSymptomHistory.txt");
+                writer.replace("src/DataBase/ModificableBases/UsersSymptoms.txt",this.cuil + "," + symptom + "," + startDate + "," + location,"");
+                FileChannel src = null;
+                try {
+                    src = new FileInputStream("src/DataBase/ModificableBases/UsersSymptoms.txt").getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                FileChannel dest = null;
+                try {
+                    dest = new FileOutputStream("src/DataBase/ModificableBases/UsersSymptomsSupport.txt").getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    dest.transferFrom(src, 0, src.size());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/UsersSymptomsSupport.txt"));
+                     PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/UsersSymptoms.txt"))) {
+                    String lineOfText;
+                    while ((lineOfText = inputFile.readLine()) != null) {
+                        lineOfText = lineOfText.trim();
+                        if (!lineOfText.isEmpty()) {
+                            outputFile.println(lineOfText);
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            try {
+                throw new SymptomsExceptions(36);
+            } catch (SymptomsExceptions symptomsExceptions) {
+                symptomsExceptions.printStackTrace();
+            }
+        }
     }
     public void meetingConfirmation() {
 

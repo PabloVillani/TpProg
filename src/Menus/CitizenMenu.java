@@ -34,6 +34,7 @@ public class CitizenMenu {
                         break;
                     case 4:
                         //Dar de baja sintomas.
+                        c.SolveSymptoms();
                         break;
                     case 5:
                         //Centro de notificaciones.

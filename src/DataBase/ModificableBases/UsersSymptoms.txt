@@ -1,3 +1,4 @@
 CUIL,Symptom,StartDate,Location
 -,-,-,-
-20439209969,Cansancio,5-1-2020~20,Escobar
+20413040350,Fiebre,4343142,Zarate
+20439209969,Cansancio,1234,Escobar

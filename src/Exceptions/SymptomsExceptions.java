@@ -10,13 +10,14 @@ public class SymptomsExceptions extends Exception{
     @Override
     public String getMessage(){
         String message="";
-        switch(codeError){
-            case 34:
-                message= "Error, sintoma no existente.";
-                break;
-            case 35:
-                message="Error, ya escribio ese sintoma.";
-                break;
+        if(codeError == 34) {
+            message = "Error, sintoma no existente.";
+        }
+        if(codeError == 35){
+            message="Error, ya escribio ese sintoma.";
+        }
+        if(codeError == 36){
+            message="Error, no tiene este sintoma.";
         }
         return message;
     }
