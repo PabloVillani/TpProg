@@ -81,7 +81,7 @@ public class Citizen {
                     GregorianCalendar start = gcm.dateGenerator();
                     String locationName = location.locationChooser();
                     writer.fourValueWriter(this.cuil, symptom, start.gCToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
-                    writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/" + locationName + "Symptoms.txt");
+                    writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
                 } else {
                     throw new SymptomsExceptions(35);
                 }
@@ -98,16 +98,16 @@ public class Citizen {
         System.out.println("Estos son sus sintomas activos:");
         for (int i = 0; i < userSymptoms.size(); i++) {
             String[] line = userSymptoms.get(i);
-            if(this.cuil.equals(line[0])){//Devuelve todos, esta funcionando mal
+            if(this.cuil.equals(line[0])){ //Busca solo los sintomas del usuario y se los imprime para elegir.
                 System.out.println(line[1]);
                 mySymptoms.add(line[1]);
             }
         }
         String symptom = scanner.getString("Ingrese su sintoma: ");
-        if (finder.singleValueFinder(symptom, mySymptoms)){
+        if (finder.singleValueFinder(symptom, mySymptoms)){ //Crea el fin del sintoma para imprimirlo en el historial.
             System.out.println("Fecha final del sintoma:");
             GregorianCalendar end = gcm.dateGenerator();
-            int j = finder.indexOf2(this.cuil,symptom,userSymptoms); //Se frena en la primera linea (-,-,-,-)
+            int j = finder.indexOf2(this.cuil,symptom,userSymptoms);
             if(j != -1){
                 System.out.println();
                 String[] s = userSymptoms.get(j);
@@ -152,8 +152,5 @@ public class Citizen {
                 symptomsExceptions.printStackTrace();
             }
         }
-    }
-    public void meetingConfirmation() {
-
     }
 }

@@ -1,8 +1,5 @@
 package Util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class GregorianCalendar {
     Scanner scanner = new Scanner();
     ArrayMaker arrayMaker = new ArrayMaker();
@@ -12,13 +9,16 @@ public class GregorianCalendar {
     Integer hour;
     Integer minute;
     Integer second;
+
     public GregorianCalendar(){}
+
     public GregorianCalendar(Integer year, Integer month, Integer day, Integer hour){
         this.year = year;
         this.month = month;
         this.day = day;
         this.hour = hour;
     }
+
     public Integer getYear() {
        return year;
     }
@@ -49,6 +49,7 @@ public class GregorianCalendar {
         hour = validHour(hour);
         return new GregorianCalendar(year,month,day,hour);
     }
+
     public Integer validMonth(Integer month){
         Integer month1 = month;
         if(month<0 || month>11){
@@ -57,6 +58,7 @@ public class GregorianCalendar {
         }
         return month1;
     }
+
     public Integer validDay(Integer month, Integer day){
         Integer day1 = day;
         if((month == 2 && day > 29) || ((month == 4 || month == 6 || month == 9 || month == 11) && day>30) || ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day>31)){
@@ -65,6 +67,7 @@ public class GregorianCalendar {
         }
         return day1;
     }
+
     public Integer validHour(Integer hour){
         Integer hour1 = hour;
         if(hour < 0 || hour > 23){
@@ -73,7 +76,32 @@ public class GregorianCalendar {
         }
         return hour1;
     }
+
+    public boolean endDateMatch(GregorianCalendar start, GregorianCalendar end){
+        if(start.getYear() > end.getYear()){
+            return false;
+        }else if(start.getMonth() > end.getMonth()){
+            return false;
+        }else if(start.getDay() > end.getDay()){
+            return false;
+        }else if(start.getHour() > end.getHour()){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     public String gCToString(GregorianCalendar gc){
         return gc.getDay() + "-" + gc.getMonth() + "-" + gc.getYear() + "~" + gc.getHour();
+    }
+
+    public GregorianCalendar stringToGc(String s){
+        String[] dateArray = s.split("-");
+        Integer day = Integer.parseInt(dateArray[0]);
+        Integer month = Integer.parseInt(dateArray[1]);
+        Integer year = Integer.parseInt(dateArray[2]);
+        String[] hourArray = dateArray[3].split("~");
+        Integer hour = Integer.parseInt(hourArray[0]);
+        return new GregorianCalendar(year,month,day,hour);
     }
 }

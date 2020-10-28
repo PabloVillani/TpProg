@@ -16,7 +16,7 @@ public class AdminMenu {
     public void Menu() {
         int i = 0;
         do { //Presenta las opciones a realizar:
-            System.out.println("1. Activar sintoma.\n2. Desactivar sintoma\n3. Desbloquear usuario\n4. Cerrar sesion.");
+            System.out.println("1. Activar sintoma\n2. Desactivar sintoma\n3. Desbloquear usuario\n4. Estadisticas\n5. Cerrar sesion.");
             i = scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
             switch (i) {
                 case 1:  //Activar sintoma.
@@ -47,7 +47,9 @@ public class AdminMenu {
                         System.out.println("El ciudadano no existe.");
                     }
                     break;
-                case 4:  //Salir.
+                case 4: //Estadisticas
+
+                case 5:  //Salir.
                     System.out.println("Gracias por usar TraceIT.");
                     break;
                 default:
@@ -55,6 +57,6 @@ public class AdminMenu {
                     break;
             }
 
-        }while (i != 4); //No saldra del sistema hasta que introduzca el valor de 4.
+        }while (i != 5); //No saldra del sistema hasta que introduzca el valor de 4.
     }
 }
