@@ -44,7 +44,7 @@ public class Admin  {
         }
     }
 
-    public void deactivateSymptom(String symptom) { //Dar de baja sintomas
+    public void deactivateSymptom(String symptom){ //Dar de baja sintomas
         ArrayList<Symptom> symptoms;
         Symptom s = new Symptom(symptom);
         try {
@@ -55,6 +55,7 @@ public class Admin  {
     }
 
     public void activateSymptom(String symptom) { //Agrega sintomas
+
         Symptom s = new Symptom(symptom);
         abmSymptoms.addSymptom(s);
     }

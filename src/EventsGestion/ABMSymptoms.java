@@ -36,6 +36,7 @@ public class ABMSymptoms {
                  }
              }
         }
+        writer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt", " ","");
     }
 
     public void mod (Symptom s){
