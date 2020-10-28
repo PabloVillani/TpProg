@@ -92,13 +92,13 @@ public class Citizen {
             e.printStackTrace();
         }
     }
-    public void SolveSymptoms() {
+    public void solveSymptoms() {
         ArrayList<String[]> userSymptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
         List<String> mySymptoms = new ArrayList<String>();
         System.out.println("Estos son sus sintomas activos:");
         for (int i = 0; i < userSymptoms.size(); i++) {
-            if(finder.singleValueFinderArray(getCuil(), userSymptoms, 0)){//Devuelve todos, esta funcionando mal
-                String[] line = userSymptoms.get(i);
+            String[] line = userSymptoms.get(i);
+            if(this.cuil.equals(line[0])){//Devuelve todos, esta funcionando mal
                 System.out.println(line[1]);
                 mySymptoms.add(line[1]);
             }
