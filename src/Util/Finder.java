@@ -15,7 +15,7 @@ public class Finder {
                 return true;
             }
         }
-        return true;
+        return false;
     }
     //Busca datos en un array de dos valores por su usuario y contraseña en una lista.
     public boolean doubleValueFinder(String value1, String value2, ArrayList<String[]> list){
