@@ -57,13 +57,23 @@ public class Finder {
     }
     public int indexOf(String item, ArrayList<String[]> list, int position){
         for(int i= 0; i< list.size(); i++){
-            if(singleValueFinderArray(item, list, position)){
+            String[] line = list.get(i);
+            if(item.equals(line[position])){
                 return i;
             }
         } return -1;
     }
+
+    public int indexOf2(String item, String item2, ArrayList<String[]> list){
+        for(int i= 0; i< list.size(); i++){
+            String[] line = list.get(i);
+            if(item.equals(line[0]) && item2.equals(line[1])){
+                return i;
+            }
+        } return -1;
+    }
+
     public boolean singleValueFinderArray(String value1, ArrayList<String[]> list, int position){
-        Iterator i = list.iterator();
         for(String[] a : list){
             for(String s : a ){
                 if(a[position].equals(value1)){

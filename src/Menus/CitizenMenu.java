@@ -5,8 +5,6 @@ import UserGestion.Blocker;
 import UserGestion.ConfirmContact;
 import Util.Scanner;
 
-import java.io.IOException;
-
 public class CitizenMenu {
     Scanner scanner = new Scanner();
     Blocker blocker = new Blocker();
@@ -30,10 +28,11 @@ public class CitizenMenu {
                         break;
                     case 3:
                         //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
-                        //c.symptomsReport(c.cuil);
+                        c.symptomsReport();
                         break;
                     case 4:
                         //Dar de baja sintomas.
+                        c.solveSymptoms();
                         break;
                     case 5:
                         //Centro de notificaciones.

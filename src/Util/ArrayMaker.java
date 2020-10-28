@@ -27,14 +27,14 @@ public class ArrayMaker {
         return aL;
     }
 
-    //-------------------- Crea el ArrayList<String[]> de la base de datos de usuarios de TraceIT. -----------------------------
-    public ArrayList<String[]> usuariosMaker() {
+    //-------------------- Crea el ArrayList<String[]> de la base de datos de 4 valores. -----------------------------
+    public ArrayList<String[]> fourValueStringMaker(String path) {
         ArrayList<String[]> users = new ArrayList<String[]>();
         String line; //Lee el Users.txt
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/DataBase/ModificableBases/Users.txt"));) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
-                String[] user = line.split(",");     //Copiara los datos de los usuarios a un String[]
+                String[] user = line.split(",");     //Copiara los datos del txt a un String[]
                 users.add(user);                       //Y los agrega al ArrayList<String[]>
             }
         } catch (IOException e) {

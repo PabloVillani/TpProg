@@ -10,13 +10,11 @@ public class PasswordExceptions extends Exception{
     @Override
     public String getMessage(){
         String message="";
-        switch(codeError){
-            case 1:
-                message= "Error, la contraseña tiene que ser mayor a 5 caracteres.";
-                break;
-            case 2:
+        if(codeError == 1) {
+            message = "Error, la contraseña tiene que ser mayor a 5 caracteres.";
+        }
+         if(codeError == 2){
                 message="Error, la contraseña tiene que ser menor a 10 caracteres.";
-                break;
         }
         return message;
     }
