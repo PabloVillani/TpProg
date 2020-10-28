@@ -1,4 +1,2 @@
 CUIL,Symptom,StartDate,Location
 -,-,-,-
-20439209969,Cansancio,1234,Escobar
-20439087749,Fiebre,3421,Zarate
