@@ -28,7 +28,6 @@ public class AdminMenu {
                         System.out.println("El sintoma no existe.");
                     }if(finder.singleValueFinder(symptom, symptoms6)) {
                         System.out.println("Este sintoma ya esta activo.");
-
                     }else{
                         admin.activateSymptom(symptom);
                     }
