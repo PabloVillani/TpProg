@@ -23,15 +23,23 @@ public class AdminMenu {
                     List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/SymptomsBase.txt");
                     System.out.println();
                     String symptom = scanner.getString("Introduzca el nombre del sintoma: ");
+                    List<String> symptoms6 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
                     if(!finder.singleValueFinder(symptom, symptoms)){
                         System.out.println("El sintoma no existe.");
+                    }if(finder.singleValueFinder(symptom, symptoms6)) {
+                        System.out.println("Este sintoma ya esta activo.");
+
                     }else{
                         admin.activateSymptom(symptom);
                     }
                     break;
                 case 2: //Desactivar sintomas.
                     List<String> symptoms2 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
-                    System.out.println();
+                    for (int j = 0; j < symptoms2.size(); j++) {
+                        if(symptoms2.get(i) != ""){
+                            System.out.println(symptoms2.get(i));
+                        }
+                    }
                     String symptom2 = scanner.getString("Introduzca el nombre del sintoma a eliminar: ");
                     if(!finder.singleValueFinder(symptom2, symptoms2)){
                         System.out.println("El sintoma no existe");
@@ -49,6 +57,7 @@ public class AdminMenu {
                     break;
                 case 4: //Estadisticas
 
+                        break;
                 case 5:  //Salir.
                     System.out.println("Gracias por usar TraceIT.");
                     break;

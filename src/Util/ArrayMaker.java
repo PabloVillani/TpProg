@@ -68,8 +68,8 @@ public class ArrayMaker {
             while (line != null) {
                 System.out.println(line); //Imprime la lista de String.
                 line = br.readLine(); //lee la primer linea y despues pasa a la siguiente, si no hay más devuelve null, y se termina el while.
+                list.add(line);//Crea el array de Strings.
             }
-            list.add(line);//Crea el array de Strings.
         } catch (IOException e) {
             e.printStackTrace();
         }
