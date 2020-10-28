@@ -5,8 +5,7 @@ import Events.Symptom;
 import Util.ArrayMaker;
 import Util.Scanner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Location {
     String name;
@@ -15,13 +14,15 @@ public class Location {
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
 
-    public Location(){}
+    public Location() {
+    }
 
-    public Location(String name, ArrayList<Symptom> symptoms, ArrayList<Disease> diseases){
+    public Location(String name, ArrayList<Symptom> symptoms, ArrayList<Disease> diseases) {
         this.name = name;
         this.symptoms = symptoms;
         this.diseases = diseases;
     }
+
     public String locationChooser() {
         List<String> ubications = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
         System.out.println();
@@ -48,5 +49,21 @@ public class Location {
             }
         }
         return linea;
+    }
+
+    public void topSymptoms(String locationName) {
+        List<String> list = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
+        Map<String, Integer> hm = new HashMap<String, Integer>();
+        for (String i : list) {
+            Integer j = hm.get(i);
+            hm.put(i, (j == null) ? 1 : j + 1);
+        }
+        int s = 1;
+        for (Map.Entry<String, Integer> val : hm.entrySet()) {
+            for (int i = 0; i < 2; i++) {
+                System.out.println(s + ". " + val.getKey() + ": " + val.getValue() + " reportes.");
+                s++;
+            }
+        }
     }
 }
