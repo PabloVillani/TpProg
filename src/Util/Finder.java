@@ -57,7 +57,8 @@ public class Finder {
     }
     public int indexOf(String item, ArrayList<String[]> list, int position){
         for(int i= 0; i< list.size(); i++){
-            if(singleValueFinderArray(item, list, position)){
+            String[] line = list.get(i);
+            if(item.equals(line[position])){
                 return i;
             }
         } return -1;
