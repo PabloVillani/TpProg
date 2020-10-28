@@ -44,6 +44,6 @@ public class CitizenMenu {
             }else{
                 System.out.println("Su usuario esta bloqueado. Comuniquese con el equipo de TraceIT.");
             }
-        }while (n != 7) ; //El menu se seguira inicializando hasta que n = 7, o sea, el usuario quiera salir.
+        }while (n != 5) ; //El menu se seguira inicializando hasta que n = 7, o sea, el usuario quiera salir.
     }
 }
