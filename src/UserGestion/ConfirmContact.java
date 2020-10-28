@@ -77,6 +77,38 @@ public class ConfirmContact {
                 if (finder.doubleValueFinder(cuilSender, "4", rejectedReq)) {
                     writer.replace("src/DataBase/ModificableBases/RejectedRequests.txt", cuilSender + ",4", cuilSender + ",5");
                 }
+                writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "");
+                FileChannel src = null;
+                try {
+                    src = new FileInputStream("src/DataBase/ModificableBases/AwaitingContacts.txt").getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                FileChannel dest = null;
+                try {
+                    dest = new FileOutputStream("src/DataBase/ModificableBases/AwaitingContactSupport.txt").getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    dest.transferFrom(src, 0, src.size());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/AwaitingContactSupport.txt"));
+                     PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/AwaitingContacts.txt"))) {
+                    String lineOfText;
+                    while ((lineOfText = inputFile.readLine()) != null) {
+                        lineOfText = lineOfText.trim();
+                        if (!lineOfText.isEmpty()) {
+                            outputFile.println(lineOfText);
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                System.out.println("Numero invalido.");
             }
         }
     }
