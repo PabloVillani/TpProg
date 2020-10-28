@@ -49,6 +49,7 @@ public class AdminMenu {
                     break;
                 case 4: //Estadisticas
 
+                        break;
                 case 5:  //Salir.
                     System.out.println("Gracias por usar TraceIT.");
                     break;

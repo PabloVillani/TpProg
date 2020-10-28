@@ -1,5 +1,4 @@
 
-
 import UserGestion.LoginAdmin;
 import UserGestion.RegisterCitizen;
 import Util.Scanner;

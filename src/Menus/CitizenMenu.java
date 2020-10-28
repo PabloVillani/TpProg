@@ -16,7 +16,7 @@ public class CitizenMenu {
             blocker.blocker(c);
             confirmContact.confirmContact(c);
             if (!c.isBlocked()) {
-                System.out.println("1.Registrar Contacto.\n2. Solicitudes.\n3. Reportar sintomas.\n4. Dar de baja sintoma.\n5. Centro de notificaciones.\n6. Abrir sesion.\n7. Cerrar Sesion.");
+                System.out.println("1.Registrar Contacto.\n2. Reportar sintomas\n3. Dar de baja sintoma. \n4. Abrir Mapa\n5. Cerrar Sesion.");
                 n = scanner.getInt("Elija la operacion a realizar: ");
                 switch (n) {
                     case 1:
@@ -24,23 +24,17 @@ public class CitizenMenu {
                         c.ContactRequest();
                         break;
                     case 2:
-                        //Administrar solicitudes.
-                        break;
-                    case 3:
                         //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
                         c.symptomsReport();
                         break;
-                    case 4:
+                    case 3:
                         //Dar de baja sintomas.
                         c.solveSymptoms();
                         break;
-                    case 5:
-                        //Centro de notificaciones.
-                        break;
-                    case 6:
+                    case 4:
                         //Abrir mapa.
                         break;
-                    case 7:
+                    case 5:
                         System.out.println("Gracias por usar TraceIT.");
                         //Salir.
                         break;
