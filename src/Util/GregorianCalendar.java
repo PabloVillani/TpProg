@@ -105,4 +105,13 @@ public class GregorianCalendar {
         Integer hour = Integer.parseInt(hourArray[0]);
         return new GregorianCalendar(year,month,day,hour);
     }
+    public boolean fourtyEightHoursBetweenDates(GregorianCalendar gc1, GregorianCalendar gc2){
+        if(gc1.getYear() > gc2.getYear() || gc1.getYear() < gc2.getYear()){
+            return false;
+        }
+        if(gc1.getMonth() > gc2.getMonth() || gc1.getMonth() < gc2.getMonth()){
+            return false;
+        }
+        return (gc1.getDay() - gc2.getDay()) <= 2 && endDateMatch(gc1, gc2);
+    }
 }
