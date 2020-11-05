@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.util.HashMap;
 public class HashMapMaker {
     public  HashMap<String, String> cuilAndSymptomsMaker(String path) {
-        HashMap<String, String> cuilAndSymptoms = new HashMap<String, String>();
+        HashMap<String, String> map = new HashMap<String, String>();
         String line; //Lee el txt.
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             String head = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {//Hasta que la linea sea nula (o sea, sin texto)
-                String cuil = line.substring(0, 11);
-                String symptoms = ""; //Copiara los datos en un String[]
-                cuilAndSymptoms.put(cuil, symptoms); //Que luego agregara al HashMap<String,String[]>
+                String key = line.substring(0, 11);
+                String data = ""; //Copiara los datos en un String[]
+                map.put(key, data); //Que luego agregara al HashMap<String,String[]>
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return cuilAndSymptoms;
+        return map;
     }
 }
