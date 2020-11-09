@@ -10,8 +10,12 @@ public class PossibleDiseases {
     Finder finder = new Finder();
     Scanner scanner = new Scanner();
     Writer writer = new Writer();
+
     public void possibleDiseases(Citizen c){
         ArrayList<String[]> symptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
         ArrayList<String[]> diseases = arrayMaker.fourValueStringMaker("src/DataBase/PreexistingBases/DiseasesBase.txt");
+        for (int i = 0; i < symptoms.size(); i++) {
+
+        }
     }
 }
