@@ -40,4 +40,4 @@ public class PossibleDiseases {
             System.out.println("Es probable que usted tenga Neumonia. Le recomendamos consultar con un doctor.");
         }
     }
-}//
+}

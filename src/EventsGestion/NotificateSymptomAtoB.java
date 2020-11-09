@@ -19,7 +19,7 @@ public class NotificateSymptomAtoB {
                 String[] symptomsLine = symptomsReported.get(i);
                 String[] contactsLine = confirmedContacts.get(j);
                 if ((symptomsLine[0].equals(contactsLine[0]) || symptomsLine[0].equals(contactsLine[1])) && !c.getCuil().equals(symptomsLine[0])){
-                    if(gc.fourtyEightHoursBetweenDates(gc.stringToGc(symptomsLine[3]),gc.stringToGc(contactsLine[4]))){
+                    if(gc.fourtyEightHoursBetweenDates(gc.stringToGc(symptomsLine[2]),gc.stringToGc(contactsLine[3]))){
                         if(c.getCuil().equals(contactsLine[0]) || c.getCuil().equals(contactsLine[1])){
                             System.out.println("Una persona con quien ha tenido contacto en los ultimos 2 dias ha reportado el siguiente sintoma: " + symptomsLine[1]);
                         }
