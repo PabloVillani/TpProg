@@ -100,9 +100,9 @@ public class GregorianCalendar {
         String[] dateArray = s.split("-");
         Integer day = Integer.parseInt(dateArray[0]);
         Integer month = Integer.parseInt(dateArray[1]);
-        Integer year = Integer.parseInt(dateArray[2]);
         String[] hourArray = dateArray[3].split("~");
-        Integer hour = Integer.parseInt(hourArray[0]);
+        Integer year = Integer.parseInt(hourArray[0]);
+        Integer hour = Integer.parseInt(hourArray[1]);
         return new GregorianCalendar(year,month,day,hour);
     }
     public boolean fourtyEightHoursBetweenDates(GregorianCalendar gc1, GregorianCalendar gc2){
