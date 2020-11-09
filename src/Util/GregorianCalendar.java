@@ -100,7 +100,7 @@ public class GregorianCalendar {
         String[] dateArray = s.split("-");
         Integer day = Integer.parseInt(dateArray[0]);
         Integer month = Integer.parseInt(dateArray[1]);
-        String[] hourArray = dateArray[3].split("~");
+        String[] hourArray = dateArray[2].split("~");
         Integer year = Integer.parseInt(hourArray[0]);
         Integer hour = Integer.parseInt(hourArray[1]);
         return new GregorianCalendar(year,month,day,hour);
