@@ -100,9 +100,18 @@ public class GregorianCalendar {
         String[] dateArray = s.split("-");
         Integer day = Integer.parseInt(dateArray[0]);
         Integer month = Integer.parseInt(dateArray[1]);
-        Integer year = Integer.parseInt(dateArray[2]);
-        String[] hourArray = dateArray[3].split("~");
-        Integer hour = Integer.parseInt(hourArray[0]);
+        String[] hourArray = dateArray[2].split("~");
+        Integer year = Integer.parseInt(hourArray[0]);
+        Integer hour = Integer.parseInt(hourArray[1]);
         return new GregorianCalendar(year,month,day,hour);
+    }
+    public boolean fourtyEightHoursBetweenDates(GregorianCalendar gc1, GregorianCalendar gc2){
+        if(gc1.getYear() > gc2.getYear() || gc1.getYear() < gc2.getYear()){
+            return false;
+        }
+        if(gc1.getMonth() > gc2.getMonth() || gc1.getMonth() < gc2.getMonth()){
+            return false;
+        }
+        return (gc1.getDay() - gc2.getDay()) <= 2 && endDateMatch(gc1, gc2);
     }
 }
