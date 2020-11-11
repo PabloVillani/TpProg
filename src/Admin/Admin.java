@@ -35,7 +35,7 @@ public class Admin  {
     }
 
     public void unlock(String cuil) {//Desbloquea el usuario.
-        if (finder.doubleValueFinder(cuil, "true", arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt"))) {
+        if (finder.doubleValueFinder(cuil, "true", arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt"))) {
             writer.replace("src/DataBase/ModificableBases/BlockedUsers.txt", cuil + ",true", cuil + ",false");
             System.out.println("Ciudadano desbloqueado.");
         }

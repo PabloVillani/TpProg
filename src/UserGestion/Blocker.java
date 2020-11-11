@@ -13,14 +13,14 @@ public class Blocker {
     Writer writer = new Writer();
 
     public void blocker(Citizen c) {
-        ArrayList<String[]> rejectedRequests = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
+        ArrayList<String[]> rejectedRequests = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
         if (finder.doubleValueFinder(c.cuil, "5", rejectedRequests)) {
-            ArrayList<String[]> blockedUsers = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
+            ArrayList<String[]> blockedUsers = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
             if (!finder.doubleValueFinder(c.cuil, "true", blockedUsers)) {
                 System.out.println("El usuario ya esta bloqueado.");
             } else {
                 writer.replace("src/DataBase/ModificableBases/BlockedUsers.txt", c.cuil + ",false", c.cuil + ",true");
-                blockedUsers = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
+                blockedUsers = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
                 if (finder.doubleValueFinder(c.cuil, "true", blockedUsers)) {
                     c.setBlocked(true);
                 } else {

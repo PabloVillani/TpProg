@@ -16,7 +16,7 @@ public class ConfirmContact {
     Writer writer = new Writer();
     public ConfirmContact(){}
     public void confirmContact(Citizen c){
-        ArrayList<String[]> awaitingContacts = arrayMaker.quintupleStringMaker("src/DataBase/ModificableBases/AwaitingContacts.txt");
+        ArrayList<String[]> awaitingContacts = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/AwaitingContacts.txt");
         if(finder.singleValueFinderArray(c.getCuil(), awaitingContacts, 1)) {
             int index = finder.indexOf(c.getCuil(), awaitingContacts, 1);
             String[] invite = awaitingContacts.get(index);
@@ -61,7 +61,7 @@ public class ConfirmContact {
                 }
             }
             if (i == 2) {
-                ArrayList<String[]> rejectedReq = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
+                ArrayList<String[]> rejectedReq = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
                 if (finder.doubleValueFinder(cuilSender, "0", rejectedReq)) {
                     writer.replace("src/DataBase/ModificableBases/RejectedRequests.txt", cuilSender + ",0", cuilSender + ",1");
                 }

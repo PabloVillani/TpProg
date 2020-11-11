@@ -7,6 +7,7 @@ import Util.*;
 import Util.Writer;
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,7 @@ public class Citizen {
     Writer writer = new Writer();
     Location location = new Location();
     HashMapMaker hashMapMaker = new HashMapMaker();
-    GregorianCalendar gc = new GregorianCalendar();
-    GregorianCalendar gcm = new GregorianCalendar();
+    DateManager gcm = new DateManager();
     Finder finder = new Finder();
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
@@ -62,11 +62,11 @@ public class Citizen {
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
         System.out.println("Inicio del contacto:");
-        GregorianCalendar start = gcm.dateGenerator();
+        LocalDateTime start = gcm.dateGenerator();
         System.out.println("Fin del contacto:");
-        GregorianCalendar end = gcm.dateGenerator();
+        LocalDateTime end = gcm.dateGenerator();
         String locationName = location.locationChooser();
-        writer.fiveValueWriter(this.cuil, contactCitizenCUIL, start.gCToString(start), end.gCToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
+        writer.fiveValueWriter(this.cuil, contactCitizenCUIL, gcm.dateToString(start), gcm.dateToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
     }
 
     public void symptomsReport() {
@@ -75,12 +75,12 @@ public class Citizen {
         try{
             String symptom = scanner.getString("Ingrese su sintoma: ");
             if(finder.singleValueFinder(symptom,activeSymptoms)){
-                ArrayList<String[]> userSymptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+                ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
                 if (!finder.doubleValueFinder(this.cuil, symptom, userSymptoms)) {
                     System.out.println("Inicio del sintoma:");
-                    GregorianCalendar start = gcm.dateGenerator();
+                    LocalDateTime start = gcm.dateGenerator();
                     String locationName = location.locationChooser();
-                    writer.fourValueWriter(this.cuil, symptom, start.gCToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
+                    writer.fourValueWriter(this.cuil, symptom, gcm.dateToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
                     writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
                 } else {
                     throw new SymptomsExceptions(35);
@@ -93,7 +93,7 @@ public class Citizen {
         }
     }
     public void solveSymptoms() {
-        ArrayList<String[]> userSymptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+        ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
         List<String> mySymptoms = new ArrayList<String>();
         System.out.println("Estos son sus sintomas activos:");
         for (int i = 0; i < userSymptoms.size(); i++) {
@@ -106,14 +106,14 @@ public class Citizen {
         String symptom = scanner.getString("Ingrese su sintoma: ");
         if (finder.singleValueFinder(symptom, mySymptoms)){ //Crea el fin del sintoma para imprimirlo en el historial.
             System.out.println("Fecha final del sintoma:");
-            GregorianCalendar end = gcm.dateGenerator();
+            LocalDateTime end = gcm.dateGenerator();
             int j = finder.indexOf2(this.cuil,symptom,userSymptoms);
             if(j != -1){
                 System.out.println();
                 String[] s = userSymptoms.get(j);
                 String startDate = s[2];
                 String location = s[3];
-                writer.fourValueWriter(this.cuil,symptom,startDate,end.gCToString(end),"src/DataBase/ModificableBases/UserSymptomHistory.txt");
+                writer.fourValueWriter(this.cuil,symptom,startDate,gcm.dateToString(end),"src/DataBase/ModificableBases/UserSymptomHistory.txt");
                 writer.replace("src/DataBase/ModificableBases/UsersSymptoms.txt",this.cuil + "," + symptom + "," + startDate + "," + location,"");
                 FileChannel src = null;
                 try {

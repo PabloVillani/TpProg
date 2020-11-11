@@ -10,40 +10,40 @@ import java.util.List;
 public class ArrayMaker {
     public ArrayMaker(){}
 
-    //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
-    public ArrayList<String[]> tripleStringMaker(String path) {
-        ArrayList<String[]> array = new ArrayList<String[]>();
-        String line; //Lee el txt.
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
-            String head = bufferedReader.readLine();
-            while ((line = bufferedReader.readLine()) != null) { //Hasta que la linea sea nula (o sea, sin texto)
-                String[] arr = line.split(","); //Copiara los datos en un String[]
-                array.add(arr);                  //Que luego agregara al  ArrayList<String[]>
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return array;
-    }
+//    //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
+//    public ArrayList<String[]> tripleStringMaker(String path) {
+//        ArrayList<String[]> array = new ArrayList<String[]>();
+//        String line; //Lee el txt.
+//        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
+//            String head = bufferedReader.readLine();
+//            while ((line = bufferedReader.readLine()) != null) { //Hasta que la linea sea nula (o sea, sin texto)
+//                String[] arr = line.split(","); //Copiara los datos en un String[]
+//                array.add(arr);                  //Que luego agregara al  ArrayList<String[]>
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return array;
+//    }
 
-    //-------------------- Crea el ArrayList<String[]> de la base de datos de 4 valores. -----------------------------
-    public ArrayList<String[]> fourValueStringMaker(String path) {
-        ArrayList<String[]> array = new ArrayList<String[]>();
-        String line; //Lee el txt
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
-            String head = bufferedReader.readLine();
-            while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
-                String[] strings = line.split(",");     //Copiara los datos del txt a un String[]
-                array.add(strings);                       //Y los agrega al ArrayList<String[]>
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return array;
-    }
+//    //-------------------- Crea el ArrayList<String[]> de la base de datos de 4 valores. -----------------------------
+//    public ArrayList<String[]> fourValueStringMaker(String path) {
+//        ArrayList<String[]> array = new ArrayList<String[]>();
+//        String line; //Lee el txt
+//        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
+//            String head = bufferedReader.readLine();
+//            while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
+//                String[] strings = line.split(",");     //Copiara los datos del txt a un String[]
+//                array.add(strings);                       //Y los agrega al ArrayList<String[]>
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return array;
+//    }
 
     //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de dos valores.
-    public ArrayList<String[]> doubleStringMaker(String path) {
+    public ArrayList<String[]> arrayListStringMaker(String path) {
         ArrayList<String[]> array = new ArrayList<String[]>();
         String line; //Lee el txt
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
@@ -75,18 +75,18 @@ public class ArrayMaker {
         return list;
     }
 
-    public ArrayList<String[]> quintupleStringMaker(String path) {
-        ArrayList<String[]> array = new ArrayList<String[]>();
-        String line; //Lee el txt
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
-            String head = bufferedReader.readLine();
-            while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
-                String[] strings = line.split(",");//Copiara los datos a un String[]
-                array.add(strings);                           //Y los agrega al ArrayList<String[]>
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return array;
-    }
+//    public ArrayList<String[]> quintupleStringMaker(String path) {
+//        ArrayList<String[]> array = new ArrayList<String[]>();
+//        String line; //Lee el txt
+//        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path));) {
+//            String head = bufferedReader.readLine();
+//            while ((line = bufferedReader.readLine()) != null) { //Mientras que haya texto
+//                String[] strings = line.split(",");//Copiara los datos a un String[]
+//                array.add(strings);                           //Y los agrega al ArrayList<String[]>
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return array;
+//    }
 }
