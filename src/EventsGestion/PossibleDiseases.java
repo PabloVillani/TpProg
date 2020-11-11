@@ -15,8 +15,8 @@ public class PossibleDiseases {
         int coronavirusChance = 0;
         int sarampionChance = 0;
         int neumoniaChance = 0;
-        ArrayList<String[]> symptoms = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
-        ArrayList<String[]> diseases = arrayMaker.fourValueStringMaker("src/DataBase/PreexistingBases/DiseasesBase.txt");
+        ArrayList<String[]> symptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+        ArrayList<String[]> diseases = arrayMaker.arrayListStringMaker("src/DataBase/PreexistingBases/DiseasesBase.txt");
         for (int i = 0; i < symptoms.size(); i++) {
             String[] line = symptoms.get(i);
             for (int j = 0; j < diseases.size(); j++) {
