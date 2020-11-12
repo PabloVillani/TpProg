@@ -38,6 +38,7 @@ public class RegisterCitizen {
                     writer.twoValueWriter(cuil,"0","src/DataBase/ModificableBases/RejectedRequests.txt"); //Anota el CUIL en el RejectedRequests.txt
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CuilOnlyDataBase.txt");
                     writer.twoValueWriter(cuil,"false","src/DataBase/ModificableBases/BlockedUsers.txt");
+                    writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CitizensPerLocation/"+ubication+".txt");
                     Citizen c = new Citizen(cuil,mobile);
                     menu.Menu(c);
                 } else {

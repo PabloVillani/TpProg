@@ -2,10 +2,12 @@ package Citizen;
 
 import Events.Invite;
 import EventsGestion.Location;
+import Exceptions.InputException;
 import Exceptions.SymptomsExceptions;
 import Util.*;
 import Util.Writer;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.channels.FileChannel;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -61,12 +63,27 @@ public class Citizen {
     //-------------------------------------------------------------------------------------
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
-        System.out.println("Inicio del contacto:");
-        LocalDateTime start = gcm.dateGenerator();
-        System.out.println("Fin del contacto:");
-        LocalDateTime end = gcm.dateGenerator();
-        String locationName = location.locationChooser();
-        writer.fiveValueWriter(this.cuil, contactCitizenCUIL, gcm.dateToString(start), gcm.dateToString(end), locationName,"src/DataBase/ModificableBases/AwaitingContacts.txt");
+        ArrayList<String[]> users = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Users.txt");
+        try {
+        if (finder.singleValueFinderArray(contactCitizenCUIL, users,0)) {
+            int i = finder.indexOf(contactCitizenCUIL, users, 0);
+            String[] line = users.get(i);
+            int j = finder.indexOf(this.cuil, users, 0);
+            String[] c = users.get(j);
+            if (line[3].equals(c[3])) {
+                System.out.println("Inicio del contacto:");
+                LocalDateTime start = gcm.dateGenerator();
+                System.out.println("Fin del contacto:");
+                LocalDateTime end = gcm.dateGenerator();
+                String locationName = location.locationChooser();
+                writer.fiveValueWriter(this.cuil, contactCitizenCUIL, gcm.dateToString(start), gcm.dateToString(end), locationName, "src/DataBase/ModificableBases/AwaitingContacts.txt");
+            }else {
+                throw new InputException(81);
+            }
+        }throw new InputException(81);
+        } catch (InputException e) {
+            e.printStackTrace();
+        }
     }
 
     public void symptomsReport() {
@@ -113,7 +130,7 @@ public class Citizen {
                 String[] s = userSymptoms.get(j);
                 String startDate = s[2];
                 String location = s[3];
-                writer.fourValueWriter(this.cuil,symptom,startDate,gcm.dateToString(end),"src/DataBase/ModificableBases/UserSymptomHistory.txt");
+                writer.fiveValueWriter(this.cuil,symptom,startDate,gcm.dateToString(end),location,"src/DataBase/ModificableBases/UserSymptomHistory.txt");
                 writer.replace("src/DataBase/ModificableBases/UsersSymptoms.txt",this.cuil + "," + symptom + "," + startDate + "," + location,"");
                 FileChannel src = null;
                 try {

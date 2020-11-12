@@ -14,13 +14,22 @@ public class Location {
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
 
-    public Location() {
+    public Location(){
+
+    }
+
+    public Location(String name){
+        this.name = name;
     }
 
     public Location(String name, ArrayList<Symptom> symptoms, ArrayList<Disease> diseases) {
         this.name = name;
         this.symptoms = symptoms;
         this.diseases = diseases;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String locationChooser() {
@@ -36,7 +45,7 @@ public class Location {
                 linea = "Escobar";
             }
             if (i == 2) {
-                linea = "Gral. Rodriguez";
+                linea = "Derqui";
             }
             if (i == 3) {
                 linea = "Pilar";
