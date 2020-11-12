@@ -1,1 +1,1 @@
-CUIL,Symptoms,dateStart,dateEnd
+CUIL,Symptoms,dateStart,dateEnd,Location
