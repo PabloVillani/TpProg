@@ -2,3 +2,4 @@ CUIL,Symptom,StartDate,Location
 -,-,-,-
 20439209969,Escalofrios,4-MAY-2020~10:0:0,Escobar
 20439209969,Fiebre,4-MAY-2020~12:0:0,Escobar
+20439209969,Tos con flema,3-JUNE-2020~21:0:0,Escobar

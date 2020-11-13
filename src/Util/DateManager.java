@@ -123,40 +123,40 @@ public class DateManager {
     public String monthNameToString(String month){
         String i = "0";
         switch (month){
-            case "JAN":
+            case "JANUARY":
                 i="1";
                 break;
-            case "FEB":
+            case "FEBRUARY":
                  i="2";
                 break;
-            case "MAR":
+            case "MARCH":
                 i="3";
                 break;
-            case "APR":
+            case "APRIL":
                  i="4";
                 break;
             case "MAY":
                  i="5";
                 break;
-            case "JUN":
+            case "JUNE":
                  i="6";
                 break;
-            case "JUL":
+            case "JULY":
                 i="7";
                 break;
-            case "AUG":
+            case "AUGUST":
                  i="8";
                 break;
-            case "SEP":
+            case "SEPTEMBER":
                  i="9";
                 break;
-            case "OCT":
+            case "OCTOBER":
                  i="10";
                 break;
-            case "NOV":
+            case "NOVEMBER":
                  i="11";
                 break;
-            case "DEC":
+            case "DECEMBER":
                 i="12";
                 break;
         }

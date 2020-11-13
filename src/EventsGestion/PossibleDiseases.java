@@ -7,9 +7,6 @@ import java.util.ArrayList;
 
 public class PossibleDiseases {
     ArrayMaker arrayMaker = new ArrayMaker();
-    Finder finder = new Finder();
-    Scanner scanner = new Scanner();
-    Writer writer = new Writer();
 
     public void possibleDiseases(Citizen c){
         int coronavirusChance = 0;
@@ -20,13 +17,13 @@ public class PossibleDiseases {
         for (int i = 0; i < symptoms.size(); i++) {
             String[] line = symptoms.get(i);
             for (int j = 0; j < diseases.size(); j++) {
-                String[] diseaseSymptoms = diseases.get(i);
-                for (String diseaseSymptom : diseaseSymptoms) {
-                    if (line[1].equals(diseaseSymptom) && diseaseSymptoms[0].equals("Coronavirus")) {
+                String[] diseaseSymptoms = diseases.get(j);
+                for (int k = 0; k < diseaseSymptoms.length; k++) {
+                    if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Coronavirus")) {
                         coronavirusChance++;
-                    } else if (line[1].equals(diseaseSymptom) && diseaseSymptoms[0].equals("Sarampion")) {
+                    } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Sarampion")) {
                         sarampionChance++;
-                    } else if (line[1].equals(diseaseSymptom) && diseaseSymptoms[0].equals("Neumonia")) {
+                    } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Neumonia")) {
                         neumoniaChance++;
                     }
                 }
