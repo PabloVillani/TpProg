@@ -24,7 +24,7 @@ public class NotificateSymptomAtoB {
                     symptoms += symptomsLine[1] + ", ";
                     symptomsReported++;
                     if(dm.fourtyEightHoursBetweenDates(dm.stringToDate(symptomsLine[2]), dm.stringToDate(contactsLine[3])) && symptomsReported >= 2){
-                        if(c.getCuil().equals(contactsLine[0]) || c.getCuil().equals(contactsLine[1])){
+                        if(c.getCuil().equals(contactsLine[0]) || c.getCuil().equals(contactsLine[1]) && symptomsReported >= 2){
                             System.out.println("Una persona con quien ha tenido contacto en los ultimos 2 dias ha reportado el siguiente sintoma: " + symptoms);
                         }
                     }

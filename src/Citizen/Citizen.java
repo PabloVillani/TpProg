@@ -1,28 +1,20 @@
 package Citizen;
 
+import Events.Disease;
 import Events.Invite;
+import Events.Symptom;
 import EventsGestion.Location;
 import Exceptions.InputException;
 import Exceptions.SymptomsExceptions;
 import Util.*;
 import Util.Writer;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.channels.FileChannel;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Citizen {
-
-    public String cuil;
-    private String mobile;
-    private ArrayList<String> symptoms;
-    int rejectedRequests;
-    private boolean blocked;
-
-
 
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
@@ -32,6 +24,18 @@ public class Citizen {
     HashMapMaker hashMapMaker = new HashMapMaker();
     DateManager gcm = new DateManager();
     Finder finder = new Finder();
+
+    public String cuil;
+    private String mobile;
+    private ArrayList<Symptom> symptoms;
+    private ArrayList<Disease> diseases;
+    private int rejectedRequests;
+    private boolean blocked;
+    private Location citizenLocation;
+
+
+
+
     public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
@@ -39,13 +43,17 @@ public class Citizen {
         rejectedRequests = 0;
         blocked = false;
     }
-    public Citizen(String cuil, String mobile, ArrayList<String>symptoms, int rejectedRequests, boolean blocked){ //Un ciudadano con todas las variables.
+
+    public Citizen(String cuil, String mobile, ArrayList<Symptom> symptoms, ArrayList<Disease> diseases, int rejectedRequests, boolean blocked, Location citizenLocation) {
         this.cuil = cuil;
         this.mobile = mobile;
         this.symptoms = symptoms;
+        this.diseases = diseases;
         this.rejectedRequests = rejectedRequests;
         this.blocked = blocked;
+        this.citizenLocation = citizenLocation;
     }
+
     //----------------------------------------GETTERS Y SETTERS---------------------------
     public String getCuil() {
         return cuil;
@@ -53,13 +61,14 @@ public class Citizen {
     public String getMobile() {
         return mobile;
     }
-    public ArrayList<String> getSymptoms() {return symptoms;}
+    public ArrayList<Symptom> getSymptoms() {return symptoms;}
     public boolean isBlocked() {
         return blocked;
     }
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
+    public Location getCitizenLocation(){ return location;}
     //-------------------------------------------------------------------------------------
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
@@ -167,6 +176,15 @@ public class Citizen {
                 throw new SymptomsExceptions(36);
             } catch (SymptomsExceptions symptomsExceptions) {
                 symptomsExceptions.printStackTrace();
+            }
+        }
+    }
+    public void yourSymptoms(){
+        ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+        for (int i = 0; i < userSymptoms.size(); i++) {
+            String[] line = userSymptoms.get(i);
+            if(line[0].equals(getCuil())){
+                getSymptoms().add(new Symptom(line[1]));
             }
         }
     }

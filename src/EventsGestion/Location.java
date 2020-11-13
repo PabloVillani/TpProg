@@ -1,5 +1,6 @@
 package EventsGestion;
 
+import Citizen.Citizen;
 import Events.Disease;
 import Events.Symptom;
 import Util.ArrayMaker;
@@ -9,8 +10,7 @@ import java.util.*;
 
 public class Location {
     String name;
-    ArrayList<Symptom> symptoms;
-    ArrayList<Disease> diseases;
+    ArrayList<Citizen> citizens;
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
 
@@ -22,10 +22,9 @@ public class Location {
         this.name = name;
     }
 
-    public Location(String name, ArrayList<Symptom> symptoms, ArrayList<Disease> diseases) {
+    public Location(String name, ArrayList<Citizen> citizens) {
         this.name = name;
-        this.symptoms = symptoms;
-        this.diseases = diseases;
+        this.citizens = citizens;
     }
 
     public String getName() {

@@ -8,7 +8,8 @@ import java.util.List;
 
 //Crea los diferentes ArrayList<String[]>
 public class ArrayMaker {
-    public ArrayMaker(){}
+    public ArrayMaker() {
+    }
 
 //    //-------------- Crea el ArrayList<String[]> de la base de datos de los archivos de tres valores.
 //    public ArrayList<String[]> tripleStringMaker(String path) {
@@ -74,7 +75,7 @@ public class ArrayMaker {
         }
         return list;
     }
-
+}
 //    public ArrayList<String[]> quintupleStringMaker(String path) {
 //        ArrayList<String[]> array = new ArrayList<String[]>();
 //        String line; //Lee el txt
@@ -89,4 +90,4 @@ public class ArrayMaker {
 //        }
 //        return array;
 //    }
-}
+
