@@ -1,4 +1,4 @@
 diseases, Symptoms
-Coronavirus,1,2,3,8,9
-Sarampion,1,2,4,5
-Neumonia,1,6,7,8
+Coronavirus,Fiebre,Tos seca,Cansancio,Dificultad para respirar,Perdida de olfato/gusto
+Sarampion,Fiebre,Tos seca,Sarpullidos,Inflamacion de los Ojos
+Neumonia,Fiebre,Tos con Flema,Escalofrios,Dificultad para respirar

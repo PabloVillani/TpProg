@@ -10,7 +10,8 @@ public class Symptom {
     public Symptom(String nombre){
         this.name = nombre;
     }
-    Symptom(String nombre,GregorianCalendar inicio, GregorianCalendar finalizo){
+
+    public Symptom(String nombre,GregorianCalendar inicio, GregorianCalendar finalizo){
         this.name = nombre;
         this.start = inicio;
         this.end = finalizo;

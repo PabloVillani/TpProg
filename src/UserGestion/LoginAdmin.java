@@ -12,7 +12,7 @@ public class LoginAdmin {
     Scanner scanner = new Scanner();
     Finder finder = new Finder();
     public void loginAdmin(){
-        ArrayList<String[]> admins = arrayMaker.doubleStringMaker("src/DataBase/ModificableBases/Admins.txt");
+        ArrayList<String[]> admins = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Admins.txt");
         String user = scanner.getString("Usuario: ");
         String password = scanner.getString("Contraseña: ");
         if(finder.doubleValueFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.

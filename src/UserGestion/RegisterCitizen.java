@@ -28,9 +28,9 @@ public class RegisterCitizen {
             registerCitizen(); //Recursion del inicio de sesion
         }
         String ubication = location.locationChooser();
-        ArrayList<String[]> ANSESbase = arrayMaker.tripleStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
+        ArrayList<String[]> ANSESbase = arrayMaker.arrayListStringMaker("src/DataBase/PreexistingBases/ANSESBase.txt"); //Crea el ArrayList<String[]> de la Base de datos del ANSES.
         if (finder.tripleValueFinder(cuil, mobile, ubication, ANSESbase)) { //Busca el CUIL y el celular en la base de datos del ANSES.
-            ArrayList<String[]> users = arrayMaker.fourValueStringMaker("src/DataBase/ModificableBases/Users.txt"); //Crea el ArrayList<String[]> de Usuarios.
+            ArrayList<String[]> users = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Users.txt"); //Crea el ArrayList<String[]> de Usuarios.
             if (!finder.tripleValueFinder(cuil, mobile, ubication, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String password = scanner.getString("Ingrese una contraseña: ");
                 if (PasswordValidator.passwordValidator(password)) { //Verifica que la contraseña cumple con los requisitos.
@@ -38,6 +38,7 @@ public class RegisterCitizen {
                     writer.twoValueWriter(cuil,"0","src/DataBase/ModificableBases/RejectedRequests.txt"); //Anota el CUIL en el RejectedRequests.txt
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CuilOnlyDataBase.txt");
                     writer.twoValueWriter(cuil,"false","src/DataBase/ModificableBases/BlockedUsers.txt");
+                    writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CitizensPerLocation/"+ubication+".txt");
                     Citizen c = new Citizen(cuil,mobile);
                     menu.Menu(c);
                 } else {
