@@ -1,6 +1,7 @@
 package UserGestion;
 
 import Citizen.Citizen;
+import Exceptions.InputException;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Scanner;
@@ -107,8 +108,12 @@ public class ConfirmContact {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else{
-                System.out.println("Numero invalido.");
+            }else if(i != 1 && !(i == 2)){
+                try {
+                    throw new InputException(81);
+                } catch (InputException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

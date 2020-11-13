@@ -93,20 +93,74 @@ public class DateManager {
     public LocalDateTime stringToDate(String s) {
         String[] dateArray = s.split("-");
         Integer day = Integer.parseInt(dateArray[0]);
-        Integer month = Integer.parseInt(dateArray[1]);
-        String[] hourArray = dateArray[2].split("~");
-        Integer year = Integer.parseInt(hourArray[0]);
-        Integer hour = Integer.parseInt(hourArray[1]);
-        return LocalDateTime.of(year, month, day, hour, 0, 0);
+        Integer month = Integer.parseInt(monthNameToString(dateArray[1]));
+        String[] yearHourArray = dateArray[2].split("~");
+        Integer year = Integer.parseInt(yearHourArray[0]);
+        String[] hourArray = yearHourArray[1].split(":");
+        Integer hour = Integer.parseInt(hourArray[0]);
+        Integer minutes = Integer.parseInt(hourArray[1]);
+        Integer seconds = Integer.parseInt(hourArray[2]);
+        return LocalDateTime.of(year, month, day, hour, minutes, seconds);
     }
 
     public boolean fourtyEightHoursBetweenDates(LocalDateTime date1Start, LocalDateTime date2End) {
         if (date1Start.isBefore(date2End)) {
             long hours = ChronoUnit.HOURS.between(date1Start, date2End);
-            return hours >= 48;
+            return hours <= 48;
         } else {
             return false;
         }
+    }
+    public boolean twentyFourHoursBetweenDates(LocalDateTime date1Start, LocalDateTime date2End){
+        if (date1Start.isBefore(date2End)) {
+            long hours = ChronoUnit.HOURS.between(date1Start, date2End);
+            return hours <= 24;
+        } else {
+            return false;
+        }
+    }
+
+    public String monthNameToString(String month){
+        String i = "0";
+        switch (month){
+            case "JAN":
+                i="1";
+                break;
+            case "FEB":
+                 i="2";
+                break;
+            case "MAR":
+                i="3";
+                break;
+            case "APR":
+                 i="4";
+                break;
+            case "MAY":
+                 i="5";
+                break;
+            case "JUN":
+                 i="6";
+                break;
+            case "JUL":
+                i="7";
+                break;
+            case "AUG":
+                 i="8";
+                break;
+            case "SEP":
+                 i="9";
+                break;
+            case "OCT":
+                 i="10";
+                break;
+            case "NOV":
+                 i="11";
+                break;
+            case "DEC":
+                i="12";
+                break;
+        }
+        return i;
     }
 }
 

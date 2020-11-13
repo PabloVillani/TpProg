@@ -89,7 +89,7 @@ public class Citizen {
             }else {
                 throw new InputException(81);
             }
-        }throw new InputException(81);
+        }
         } catch (InputException e) {
             e.printStackTrace();
         }
