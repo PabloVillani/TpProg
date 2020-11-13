@@ -1,5 +1,7 @@
 package EventsGestion;
 
+import Citizen.Citizen;
+import Events.Outbreak;
 import Util.ArrayMaker;
 import Util.Finder;
 import java.util.*;
@@ -51,6 +53,35 @@ public class StatsManager {
         }
         return s;
     }
+
+//    public Outbreak possibleOutbreak(Location location){
+//        ArrayList<String[]> possibleOutbreak = new ArrayList<>();
+//        ArrayList<Citizen> citizensInvolved = new ArrayList<Citizen>();
+//        int a = 0;
+//        int b = 0;
+//        ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagion" + location.getName() + ".txt");
+//        for (int i = 0; i < possibleContagion.size(); i++) {
+//            String[] line1 = possibleContagion.get(i);
+//            for (int j = 0; j < possibleContagion.size(); j++) {
+//                String[] line2 = possibleContagion.get(j);
+//                if(line1[0].equals(line2[0])){
+//                    possibleOutbreak.add(line2);
+//
+//                    a++;
+//                    for (int k = 0; k < possibleContagion.size(); k++) {
+//                        String[] line3 = possibleContagion.get(k);
+//                        if(line2[1].equals(line3[0]) && line1[2].equals(line3[3])){
+//                            possibleOutbreak.add(line3);
+//                            b++;
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }if(a < 4 && a+b >= 5){
+//            return new Outbreak()
+//        }
+//    }
 
 }
 

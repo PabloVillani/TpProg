@@ -35,10 +35,13 @@ public class Citizen {
 
 
 
-
-    public Citizen(String cuil, String mobile){ //Un Ciudadano Base, recien registrado al sistema.
+    public Citizen(String cuil){
+        this.cuil = cuil;
+    }
+    public Citizen(String cuil, String mobile, Location citizenLocation){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
+        this.citizenLocation = citizenLocation;
         symptoms = null;
         rejectedRequests = 0;
         blocked = false;

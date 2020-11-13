@@ -39,7 +39,8 @@ public class RegisterCitizen {
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CuilOnlyDataBase.txt");
                     writer.twoValueWriter(cuil,"false","src/DataBase/ModificableBases/BlockedUsers.txt");
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CitizensPerLocation/"+ubication+".txt");
-                    Citizen c = new Citizen(cuil,mobile);
+                    Location location = new Location(ubication);
+                    Citizen c = new Citizen(cuil,mobile, location);
                     menu.Menu(c);
                 } else {
                     registerCitizen(); //La contraseña no cumple con los requisitos, entonces repite el proceso.
@@ -50,7 +51,8 @@ public class RegisterCitizen {
                 System.out.println("Esta cuenta ya existe.");
                 String password = scanner.getString("Ingrese una contraseña: ");
                 if(userPassword(cuil,mobile,password,ubication,users)){
-                    Citizen c = new Citizen(cuil,mobile);
+                    Location location = new Location(ubication);
+                    Citizen c = new Citizen(cuil,mobile, location);
                     menu.Menu(c);
                 }
             }
