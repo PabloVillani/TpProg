@@ -3,13 +3,13 @@ package EventsGestion;
 import Citizen.Citizen;
 import Events.Outbreak;
 import Util.ArrayMaker;
+import Util.DateManager;
 import Util.Finder;
 import java.util.*;
 
 public class StatsManager {
     ArrayMaker arrayMaker = new ArrayMaker();
-    Finder finder = new Finder();
-    Location location = new Location();
+    DateManager dm = new DateManager();
 
     public HashMap<String, Integer> countSymptoms(Location location) {
         List<String> symptomsLocationList = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/LocationsSymptoms/" + location.getName() + "Symptoms.txt");
@@ -52,34 +52,30 @@ public class StatsManager {
         return s;
     }
 
-//    public Outbreak possibleOutbreak(Location location){
-//        ArrayList<String[]> possibleOutbreak = new ArrayList<>();
-//        ArrayList<Citizen> citizensInvolved = new ArrayList<Citizen>();
-//        int a = 0;
-//        int b = 0;
-//        ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagion" + location.getName() + ".txt");
-//        for (int i = 0; i < possibleContagion.size(); i++) {
-//            String[] line1 = possibleContagion.get(i);
-//            for (int j = 0; j < possibleContagion.size(); j++) {
-//                String[] line2 = possibleContagion.get(j);
-//                if(line1[0].equals(line2[0])){
-//                    possibleOutbreak.add(line2);
-//
-//                    a++;
-//                    for (int k = 0; k < possibleContagion.size(); k++) {
-//                        String[] line3 = possibleContagion.get(k);
-//                        if(line2[1].equals(line3[0]) && line1[2].equals(line3[3])){
-//                            possibleOutbreak.add(line3);
-//                            b++;
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }if(a < 4 && a+b >= 5){
-//            return new Outbreak()
-//        }
-//    }
-
+    public Outbreak possibleOutbreak(Citizen citizen, Location location){
+        Integer citizensInvolved = 0;
+        ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion" + location.getName() + ".txt");
+        int a = 1; //El paciente 0 es el primer involucrado, entonces a = 1 (sino, el sistema lo estaba ignorando).
+        int b = 0;
+        for (int i = 0; i < possibleContagion.size(); i++) {
+            String[] contagiador1 = possibleContagion.get(i);
+            if(contagiador1[0].equals(citizen.getCuil())){
+                a++;
+                for (int j = 0; j < possibleContagion.size(); j++) {
+                    String[] contagiador2 = possibleContagion.get(j);
+                    if(contagiador2[0].equals(contagiador1[1]) && contagiador2[2].equals(contagiador1[2]) && dm.fourtyEightHoursBetweenDates(dm.stringToDate(contagiador1[3]),dm.stringToDate(contagiador2[3]))){
+                        b++;
+                    }
+                }
+            }
+        }
+        System.out.println(a+b);
+        if(a+b >= 5){
+            return new Outbreak(a+b,location);
+        }
+        else {
+            return null;
+        }
+    }
 }
 
