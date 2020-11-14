@@ -65,6 +65,7 @@ public class Citizen {
         return mobile;
     }
     public ArrayList<Symptom> getSymptoms() {return symptoms;}
+    public ArrayList<Disease> getDiseases() {return diseases;}
     public boolean isBlocked() {
         return blocked;
     }

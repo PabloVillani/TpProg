@@ -31,15 +31,13 @@ public class StatsManager {
 
     public String top3Symptoms(Location location) {
         HashMap<String, Integer> hm = countSymptoms(location);
-        String s = "";
+        String s = "Top 3 sintomas de " + location.getName() + ": \n";
         List<Map.Entry<String, Integer>> list =
                 new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2) {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return (o2.getValue()).compareTo(o1.getValue());
-            }
-        });
+            }});
         HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
         for (Map.Entry<String, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());

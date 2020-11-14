@@ -1,14 +1,17 @@
 package EventsGestion;
 
 import Citizen.Citizen;
+import Events.Disease;
 import Util.*;
 
 import java.util.ArrayList;
 
 public class PossibleDiseases {
     ArrayMaker arrayMaker = new ArrayMaker();
+    Disease disease = new Disease();
+    Finder finder = new Finder();
 
-    public void possibleDiseases(Citizen c){
+    public void possibleDiseases(Citizen c) {
         int coronavirusChance = 0;
         int sarampionChance = 0;
         int neumoniaChance = 0;
@@ -29,12 +32,24 @@ public class PossibleDiseases {
                 }
             }
         }
-        if(coronavirusChance >= 3){
-            System.out.println("Es probable que usted tenga Coronavirus. Le recomendamos consultar con un doctor.");
-        }if(sarampionChance >= 3){
-            System.out.println("Es probable que usted tenga Sarampion. Le recomendamos consultar con un doctor.");
-        }if(neumoniaChance >= 3){
-            System.out.println("Es probable que usted tenga Neumonia. Le recomendamos consultar con un doctor.");
+        if (coronavirusChance >= 3) {
+            if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
+                System.out.println("Es probable que usted tenga Coronavirus. Le recomendamos consultar con un doctor.");
+                c.getDiseases().add(disease.coronavirus());
+            }
         }
+        if (sarampionChance >= 3) {
+            if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
+                System.out.println("Es probable que usted tenga Sarampion. Le recomendamos consultar con un doctor.");
+                c.getDiseases().add(disease.neumonia());
+            }
+        }
+            if (neumoniaChance >= 3) {
+                if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
+                    System.out.println("Es probable que usted tenga Neumonia. Le recomendamos consultar con un doctor.");
+                    c.getDiseases().add(disease.sarampion());
+                }
+            }
     }
 }
+
