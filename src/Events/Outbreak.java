@@ -11,11 +11,32 @@ public class Outbreak {
     //Si 5 personas tienen el mismo sintoma, y estan relacionadas, es un brote
     ArrayMaker arrayMaker = new ArrayMaker();
     Finder finder = new Finder();
-    Integer citizensInvolved;
-    Location location;
+    private Integer citizensInvolved;
+    private Location location;
+    private ArrayList<String> citizenCuils;
+    private Symptom symptom;
 
-    public Outbreak(Integer citizensInvolved, Location location) {
+    public Outbreak(ArrayList<String> citizenCuils, Integer citizensInvolved, Location location, Symptom symptom) {
         this.citizensInvolved = citizensInvolved;
         this.location = location;
+        this.citizenCuils = citizenCuils;
+        this.symptom = symptom;
     }
+
+    public Integer getCitizensInvolved() {
+        return citizensInvolved;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public ArrayList<String> getCitizenCuils() {
+        return citizenCuils;
+    }
+
+    public Symptom getSymptom() {
+        return symptom;
+    }
+
 }

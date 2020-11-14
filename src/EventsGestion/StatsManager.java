@@ -2,6 +2,7 @@ package EventsGestion;
 
 import Citizen.Citizen;
 import Events.Outbreak;
+import Events.Symptom;
 import Util.ArrayMaker;
 import Util.DateManager;
 import Util.Finder;
@@ -52,29 +53,46 @@ public class StatsManager {
         return s;
     }
 
-    public Outbreak possibleOutbreak(Citizen citizen, Location location){
-        Integer citizensInvolved = 0;
+    public Outbreak possibleOutbreak(Citizen citizen, Location location, Symptom symptom){
         ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion" + location.getName() + ".txt");
-        int a = 1; //El paciente 0 es el primer involucrado, entonces a = 1 (sino, el sistema lo estaba ignorando).
-        int b = 0;
+        ArrayList<String>  citizenCuils = new ArrayList<>();
+        Integer a = 1; //El paciente 0 es el primer involucrado, entonces a = 1 (sino, el sistema lo estaba ignorando).
+        Integer b = 0;
         for (int i = 0; i < possibleContagion.size(); i++) {
             String[] contagiador1 = possibleContagion.get(i);
-            if(contagiador1[0].equals(citizen.getCuil())){
+            if(contagiador1[0].equals(citizen.getCuil()) && contagiador1[2].equals(symptom.getName())){
                 a++;
+                if(!citizenCuils.contains(contagiador1[0])) {
+                    citizenCuils.add(contagiador1[0]);
+                }
                 for (int j = 0; j < possibleContagion.size(); j++) {
                     String[] contagiador2 = possibleContagion.get(j);
                     if(contagiador2[0].equals(contagiador1[1]) && contagiador2[2].equals(contagiador1[2]) && dm.fourtyEightHoursBetweenDates(dm.stringToDate(contagiador1[3]),dm.stringToDate(contagiador2[3]))){
                         b++;
+                        if(!citizenCuils.contains(contagiador2[0])) {
+                            citizenCuils.add(contagiador2[0]);
+                        }
+                        if(!citizenCuils.contains(contagiador2[1])) {
+                            citizenCuils.add(contagiador1[1]);
+                        }
                     }
                 }
             }
         }
         System.out.println(a+b);
         if(a+b >= 5){
-            return new Outbreak(a+b,location);
+            return new Outbreak(citizenCuils,a+b,location,symptom);
         }
         else {
             return null;
+        }
+    }
+
+    public boolean alreadyOutbreak(Citizen citizen, Outbreak outbreak, Symptom symptom){
+        if(outbreak.getCitizenCuils().contains(citizen.getCuil()) && outbreak.getSymptom().equals(symptom)){
+            return true;
+        }else{
+            return false;
         }
     }
 }

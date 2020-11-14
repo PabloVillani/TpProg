@@ -10,7 +10,6 @@ public class AdminTest {
     @Test
     public void test01_TheRemovedSymptomShouldBeEliminated(){
         Admin admin = new Admin();
-
         admin.deactivateSymptom("Cansancio");
 
     }

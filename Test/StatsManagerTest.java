@@ -1,7 +1,6 @@
 import EventsGestion.Location;
 import EventsGestion.StatsManager;
 import org.junit.Test;
-
 import java.util.HashMap;
 
 public class StatsManagerTest {
