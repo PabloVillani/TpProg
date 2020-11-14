@@ -9,7 +9,6 @@ import Util.ArrayMaker;
 import Util.Finder;
 import Util.Scanner;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class LoginCitizen {
@@ -40,7 +39,8 @@ public class LoginCitizen {
                 registerCitizen.registerCitizen();
             }
             System.out.println("Bienvenido.");
-            Citizen c = new Citizen(cuil, mobile);
+            Location citizenLocation = new Location(ubication);
+            Citizen c = new Citizen(cuil, mobile, citizenLocation);
             menu.Menu(c); //Abre el Menu del ciudadano.
         } else {
             System.out.println("CUIL/Celular/Ubicacion incorrecto."); //Si no se encuentra en la base ANSES, recursion del inicio de sesion.

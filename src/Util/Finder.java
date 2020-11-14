@@ -1,5 +1,7 @@
 package Util;
 
+import Events.Disease;
+
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +81,16 @@ public class Finder {
                 if(a[position].equals(value1)){
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean diseaseFinder(Disease value1, List<Disease> list) {
+        Iterator<Disease> i = list.iterator();
+        for (Disease a : list) {
+            if (value1.equals(a)) {
+                return true;
             }
         }
         return false;
