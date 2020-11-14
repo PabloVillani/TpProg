@@ -4,13 +4,14 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-public class StatsTests {
+public class StatsManagerTest {
     StatsManager statsManager = new StatsManager();
 
     @Test
-    public void test01_CountSymptoms(){
+    public void test01_AllTheSymptomsShoulBeCounted(){
         HashMap<String,Integer> hm = statsManager.countSymptoms(new Location("Derqui"));
     }
+
     @Test
     public void test02_Top3SymptomsPrintedCorrectly(){
         String s = statsManager.top3Symptoms(new Location("Derqui"));
