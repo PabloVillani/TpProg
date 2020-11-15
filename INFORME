@@ -28,17 +28,27 @@ Citizen:
 DataBase:
     Dentro de esta carpeta se encuentran las bases de datos:
     Modificables Bases: contiene a todas las bases que pueden ser escritas y modificadas por el “sistema”.
-    Dentro de ésta se encuentran dos carpetas:
+    Dentro de ésta se encuentran estas carpetas:
         “Location Symptoms” que nos indica qué y cuántos síntomas hay por cada ciudad.
         “Diseases” que nos muestra las enfermedades.
+        "CitizenPerLocation" Indica los ciudadanos pertenecientes a la zona.
+        "confirmedContagionsInLocation" muestra los contagios confirmados en cada localidad
+        "OutbreaksLocation" indica la ubicacion de los brotes de efermedades
             PreexistingBases: contiene a todas las bases que no pueden ser escritas y/o modificadas por el “sistema”.
 
 Events:
     En esta carpeta se encuentran tanto las enfermedades, síntomas e invitaciones y contactos de ciudadanos.
-    Diseases : constructor de una enfermedad por su nombre y síntomas.
-    Encounter : formaliza un encuentro entre dos ciudadanos a través de una fecha, sus Cuils y locación.
-    Invite : genera una invitacion para cada ciudadano
-    Symptom : genera un síntoma con su nombre, tiempo de inicio y de fín.
+        Diseases:
+            constructor de una enfermedad por su nombre y síntomas.
+        Encounter:
+            formaliza un encuentro entre dos ciudadanos a través de una fecha, sus Cuils y locación.
+        Invite:
+            genera una invitacion para cada ciudadano
+        Symptom:
+            genera un síntoma con su nombre, tiempo de inicio y de fín.
+        Outbreak:
+            se encarga de crear un brote desde el sintoma, ciudadanos involucrados ,  localidad , dia y hora(fecha).
+
 
 
 
@@ -49,32 +59,38 @@ EventsGestion:
                 -addSymptom() Se encarga de añadir síntomas deseados.
                 -remove() Se encarga de eliminar síntomas.
                 -mod() Se encarga de modificar dichos síntomas
-
-Location:
-	En esta clase se encuentran las localidades.
-		-locationChooser() Se encarga de que el usuario elija una ciudad .
-		-topSymptoms() Se encarga de crear la lista de síntomas más comunes dentro de una zona.
-    NotificateSymptomAtoB:
-        Se encarga de notificar que una persona tuvo dos síntomas en menos de un día a menos de 48 horas del contacto con el otro usuario,y notificarlo.
-    PossibleDiseases:
-        Se encarga de avisarle al usuario que debido a una suma de síntomas tenga que ir al doctor por una posible enfermedad.
+        Location
+	        En esta clase se encuentran las localidades.
+		        -locationChooser() Se encarga de que el usuario elija una ciudad .
+		        -topSymptoms() Se encarga de crear la lista de síntomas más comunes dentro de una zona.
+        NotificateSymptomAtoB
+            Se encarga de notificar que una persona tuvo dos síntomas en menos de un día a menos de 48 horas del contacto con el otro usuario,y notificarlo.
+        PossibleDiseases
+            Se encarga de avisarle al usuario que debido a una suma de síntomas tenga que ir al doctor por una posible enfermedad.
+        StatsMananger
+            Se encarga de que crear y ver los posibles outbreaks y añadirlos en un documento de texto dentro de la carpeta "OutbreaksINLocation".
+            Ordenar a travez de la mayor cantidad de afectados es decir el nivel de contagio hacia el menor.
+            Tambien se enccarga de ordenar los 3 sintomas con mayor cantidad de infectados por zona.
 
 
 
 Exceptions:
     Se constituye de las excepciones que pueden llegar a generarse:
            CUILExceptions “soluciona” errores asociados al cuil.
-            InputExceptions  “soluciona” errores asociados a COMPLETAR
-            MobileExceptions  “soluciona” errores asociados al celular.
-            PasswordExceptions  “soluciona” errores asociados a la contraseña.
-            SymptomsExceptions  “soluciona” errores asociados a los síntomas.
+           InputExceptions  “soluciona” errores asociados a COMPLETAR
+           MobileExceptions  “soluciona” errores asociados al celular.
+           PasswordExceptions  “soluciona” errores asociados a la contraseña.
+           SymptomsExceptions  “soluciona” errores asociados a los síntomas.
 
 Menus:
 	Contiene los menús del Admin y el Ciudadano.
-        AdminMenu:
+        AdminMenu
             Imprime un menú que le permite seleccionar entre una variedad de acciones como activar, modificar o desactivar un síntoma, dar de alta ciudadanos, mostrar estadísticas, etc.
-        CitizenMenu:
+        CitizenMenu
             Imprime un menú que le permite seleccionar entre una variedad de acciones como reportar que se posee un síntoma, si se tuvo contacto con otro ciudadano, dar de baja un síntoma que no se posee más.
+        StatsMenu
+            Imprime un menú que le permite seleccionar entre una variedad de acciones como reportar los 3 sintomas mas importantes, ordenar los brotes de mayor a menor y volver al menu correspondiente.
+
 
 UserGestion:
     ABM:
@@ -95,10 +111,10 @@ UserGestion:
 
 Util:
 	Contiene a las clases que manejan lo que tiene que ver con generar un array, writers, buscadores, scanners,etc.(Utilidad).
-        ArrayMaker :
-            posee 5 métodos, y cada uno de ellos genera un array de 1 hasta 5 espacios.
-        DateManager:
-            crea fechas a partir de un año, mes, día y hora (rellenando minuto y segundo con 0).
+        ArrayMaker
+            Posee 5 métodos, y cada uno de ellos genera un array de 1 hasta 5 espacios.
+        DateManager
+            Crea fechas a partir de un año, mes, día y hora (rellenando minuto y segundo con 0).
                 -validMonth() corrobora que un mes sea válido para su ingreso.
                 -validDate() corrobora que un día “exista” dentro del mes seleccionado. (Ej 30 de febrero).
                 -validHour() corrobora que la hora válida para su ingreso.
@@ -107,34 +123,31 @@ Util:
                 -dateToString() al ingresar una fecha nos la devuelve como String.
                 -stringToDate() al ingresar un String(que cumpla con las “variables” de una fecha) nos lo devuelve como fecha.
                 -fourtyEightHoursBetweenDates() nos devuelve una boolean que indica si pasaron 48 horas entre dos fechas(true) o no(false).
-        Finder:
-            busca coincidencias y/o posiciones en listas y/o arrays.
+        Finder
+            Busca coincidencias y/o posiciones en listas y/o arrays.
                 -*ValueFinder() busca desde 1 hasta 4 valores.
                 -*IndexOf() retorna las posiciones de 1 o 2 valores.
-        Scanner:
-            es la clase de java que nos permite ingresar variables para utilizarlas.
-        Writer :
-            genera escritores que nos permiten ingresar caracteres para formar documentos de texto.
+        Scanner
+            Es la clase de java que nos permite ingresar variables para utilizarlas.
+        Writer
+            Genera escritores que nos permiten ingresar caracteres para formar documentos de texto.
                 -*ValueWriter() permite crear writers que escriban desde 1 hasta 5 líneas, en un archivo de texto seleccionado.
                 -replace() permite sobreescribir en un archivo una cadena de texto por una nueva.
+        OutbreakComparator
+            Se encarga de comparar los brotes entre si.Seleccionando el de mayor cantidad de infectados primero
 
 Validators:
-    CuilValidator:
+    CuilValidator
 	    Se encarga de comprobar que en la base de datos de el anses del programa concuerde el Cuil con uno ya existente.
-     MobileValidator:
+    MobileValidator
 	    Se encarga de comprobar que el número de teléfono ingresado sea existente, debido a que solo ingrese numeros y que la longitud máxima de números sea 10(longitud máxima en Argentina).
-	 PasswordValidator:
+	PasswordValidator
 	    Es una clase encargada de comprobar que la contraseña sea válida,es decir que tenga más de 5 caracteres y menos de 10.
 
 Main:
 	Su función es correr el código llamando a las demás clases y sus métodos, mostrando la interacción de mensajes entre objetos.
 
 
-	Carpeta Test:
-			Es una carpeta encargada de testear distintos métodos de distintas clase a través del uso de JUnits
-			Dentro de esta clase se encuentran test de Admins, Ctizens, Outbreaks, PossibleDiseases, Stats Mananger y ABMSysmptoms
-
-
-
-
-
+Carpeta Test:
+	Es una carpeta encargada de testear distintos métodos de distintas clase a través del uso de JUnits
+	Dentro de esta clase se encuentran test de Outbreaks, PossibleDiseases, Stats Mananger y ABMSysmptoms.
