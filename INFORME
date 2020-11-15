@@ -1,0 +1,140 @@
+INFORME TP PROGRAMACION
+
+INTEGRANTES: Guido Molaro,Santiago Gomez Riaño, Pablo Villani, Juan Bedini, Franco Redivo
+
+
+Explicación de las clases:
+
+Admin:
+    El admin se registra con nombre de usuario y contraseña.
+    En caso de estar registrado se ingresan los datos.
+    Posee los siguientes métodos:
+        -unlock() nos permite desbloquear a un ciudadano que se encuentra previamente bloqueado, sino lanzará un error.
+        -desactivateSymptom() nos permite desactivar un síntoma previamente activado, sino lanzará un error.
+        -activateSymptom() nos permite activar un síntoma que se encuentre en la lista y/o no esté activado
+        -modificateSymptom() nos permite modificar un síntoma.
+
+
+Citizen:
+	El ciudadano se registra con número de Cuil,teléfono,ciudad y contraseña.
+	En caso de ya estar registrado inicia sesión ingresando los mismos datos.
+	Posee los siguientes métodos:
+	    -ContactRequest() se encarga de generar una petición de contacto hacia otro usuario ingresando su Cuil,inicio y fin de contacto.
+	    -sysmtomsReport() este método se encarga de que el ciudadano reporte un síntoma, dando inicio y fin,y a su vez el lugar.
+	    -solveSymptoms() lo que hace es dar de baja síntomas , dados por un ciudadano.
+
+
+
+DataBase:
+    Dentro de esta carpeta se encuentran las bases de datos:
+    Modificables Bases: contiene a todas las bases que pueden ser escritas y modificadas por el “sistema”.
+    Dentro de ésta se encuentran dos carpetas:
+        “Location Symptoms” que nos indica qué y cuántos síntomas hay por cada ciudad.
+        “Diseases” que nos muestra las enfermedades.
+            PreexistingBases: contiene a todas las bases que no pueden ser escritas y/o modificadas por el “sistema”.
+
+Events:
+    En esta carpeta se encuentran tanto las enfermedades, síntomas e invitaciones y contactos de ciudadanos.
+    Diseases : constructor de una enfermedad por su nombre y síntomas.
+    Encounter : formaliza un encuentro entre dos ciudadanos a través de una fecha, sus Cuils y locación.
+    Invite : genera una invitacion para cada ciudadano
+    Symptom : genera un síntoma con su nombre, tiempo de inicio y de fín.
+
+
+
+EventsGestion:
+	Dentro de esta carpeta se encuentran 4 clases con las que se gestionan los eventos, las cuales son:
+        ABMSymptoms
+            Síntomas ya precargados
+                -addSymptom() Se encarga de añadir síntomas deseados.
+                -remove() Se encarga de eliminar síntomas.
+                -mod() Se encarga de modificar dichos síntomas
+
+Location:
+	En esta clase se encuentran las localidades.
+		-locationChooser() Se encarga de que el usuario elija una ciudad .
+		-topSymptoms() Se encarga de crear la lista de síntomas más comunes dentro de una zona.
+    NotificateSymptomAtoB:
+        Se encarga de notificar que una persona tuvo dos síntomas en menos de un día a menos de 48 horas del contacto con el otro usuario,y notificarlo.
+    PossibleDiseases:
+        Se encarga de avisarle al usuario que debido a una suma de síntomas tenga que ir al doctor por una posible enfermedad.
+
+
+
+Exceptions:
+    Se constituye de las excepciones que pueden llegar a generarse:
+           CUILExceptions “soluciona” errores asociados al cuil.
+            InputExceptions  “soluciona” errores asociados a COMPLETAR
+            MobileExceptions  “soluciona” errores asociados al celular.
+            PasswordExceptions  “soluciona” errores asociados a la contraseña.
+            SymptomsExceptions  “soluciona” errores asociados a los síntomas.
+
+Menus:
+	Contiene los menús del Admin y el Ciudadano.
+        AdminMenu:
+            Imprime un menú que le permite seleccionar entre una variedad de acciones como activar, modificar o desactivar un síntoma, dar de alta ciudadanos, mostrar estadísticas, etc.
+        CitizenMenu:
+            Imprime un menú que le permite seleccionar entre una variedad de acciones como reportar que se posee un síntoma, si se tuvo contacto con otro ciudadano, dar de baja un síntoma que no se posee más.
+
+UserGestion:
+    ABM:
+	    Se encarga de dar de alta y baja admins,sus métodos:
+            -add() Se encarga de añadir admins.
+            -remove() Se encarga de eliminar admins.
+            -mod() Se encarga de modificar admins
+    Blocker:
+	    Tiene como función que los admins puedan bloquear,es decir , sacar cualquier permiso a un ciudadano dentro de la app.
+    ConfirmContact:
+	    Esta clase consta de un solo método el cual se encarga de confirmar una petición de contacto realizada por otro usuario.
+    LoginAdmin:
+	    Su función como lo dice su nombre es que el admin pueda iniciar sesión una vez que está registrado.
+	LoginCitizen:
+	    Su función como lo dice su nombre es que el citizen pueda iniciar sesión una vez que está registrado,ingresando número de Cuil, teléfono, localidad y contraseña.
+    RegisterCitizen:
+        La función de esta clase es registrar a un ciudadano pidiéndole que ingrese su cuil, teléfono , localidad y escriba una contraseña.
+
+Util:
+	Contiene a las clases que manejan lo que tiene que ver con generar un array, writers, buscadores, scanners,etc.(Utilidad).
+        ArrayMaker :
+            posee 5 métodos, y cada uno de ellos genera un array de 1 hasta 5 espacios.
+        DateManager:
+            crea fechas a partir de un año, mes, día y hora (rellenando minuto y segundo con 0).
+                -validMonth() corrobora que un mes sea válido para su ingreso.
+                -validDate() corrobora que un día “exista” dentro del mes seleccionado. (Ej 30 de febrero).
+                -validHour() corrobora que la hora válida para su ingreso.
+                -daysInAMonth() devuelve la cantidad de días que hay en un mes.
+                -isLeapYear() devuelve un boolean que varía dependiendo de si el año es bisiesto(true) o no(false).
+                -dateToString() al ingresar una fecha nos la devuelve como String.
+                -stringToDate() al ingresar un String(que cumpla con las “variables” de una fecha) nos lo devuelve como fecha.
+                -fourtyEightHoursBetweenDates() nos devuelve una boolean que indica si pasaron 48 horas entre dos fechas(true) o no(false).
+        Finder:
+            busca coincidencias y/o posiciones en listas y/o arrays.
+                -*ValueFinder() busca desde 1 hasta 4 valores.
+                -*IndexOf() retorna las posiciones de 1 o 2 valores.
+        Scanner:
+            es la clase de java que nos permite ingresar variables para utilizarlas.
+        Writer :
+            genera escritores que nos permiten ingresar caracteres para formar documentos de texto.
+                -*ValueWriter() permite crear writers que escriban desde 1 hasta 5 líneas, en un archivo de texto seleccionado.
+                -replace() permite sobreescribir en un archivo una cadena de texto por una nueva.
+
+Validators:
+    CuilValidator:
+	    Se encarga de comprobar que en la base de datos de el anses del programa concuerde el Cuil con uno ya existente.
+     MobileValidator:
+	    Se encarga de comprobar que el número de teléfono ingresado sea existente, debido a que solo ingrese numeros y que la longitud máxima de números sea 10(longitud máxima en Argentina).
+	 PasswordValidator:
+	    Es una clase encargada de comprobar que la contraseña sea válida,es decir que tenga más de 5 caracteres y menos de 10.
+
+Main:
+	Su función es correr el código llamando a las demás clases y sus métodos, mostrando la interacción de mensajes entre objetos.
+
+
+	Carpeta Test:
+			Es una carpeta encargada de testear distintos métodos de distintas clase a través del uso de JUnits
+			Dentro de esta clase se encuentran test de Admins, Ctizens, Outbreaks, PossibleDiseases, Stats Mananger y ABMSysmptoms
+
+
+
+
+
