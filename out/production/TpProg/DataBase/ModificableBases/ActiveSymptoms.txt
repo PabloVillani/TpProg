@@ -2,3 +2,4 @@ ActiveSymptoms
 Escalofrios
 Fiebre
 Tos con flema
+Tos seca
