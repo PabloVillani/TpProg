@@ -7,7 +7,7 @@ public class StatsManagerTest {
     StatsManager statsManager = new StatsManager();
 
     @Test
-    public void test01_AllTheSymptomsShoulBeCounted(){
+    public void test01_AllTheSymptomsShouldBeCounted(){
         HashMap<String,Integer> hm = statsManager.countSymptoms(new Location("Derqui"));
     }
 

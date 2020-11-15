@@ -33,23 +33,29 @@ public class PossibleDiseases {
             }
         }
         if (coronavirusChance >= 3) {
-            if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
-                System.out.println("Es probable que usted tenga Coronavirus. Le recomendamos consultar con un doctor.");
-                c.getDiseases().add(disease.coronavirus());
-            }
-        }
-        if (sarampionChance >= 3) {
-            if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
-                System.out.println("Es probable que usted tenga Sarampion. Le recomendamos consultar con un doctor.");
-                c.getDiseases().add(disease.neumonia());
-            }
-        }
-            if (neumoniaChance >= 3) {
+            if(c.getDiseases() != null) {
                 if (!finder.diseaseFinder(disease.coronavirus(), c.getDiseases())) {
-                    System.out.println("Es probable que usted tenga Neumonia. Le recomendamos consultar con un doctor.");
+                    System.out.println("Es probable que usted tenga Coronavirus. Le recomendamos consultar con un doctor.");
+                    c.getDiseases().add(disease.coronavirus());
+                }
+            }
+        }
+        if(c.getDiseases() != null) {
+            if (sarampionChance >= 3) {
+                if (!finder.diseaseFinder(disease.sarampion(), c.getDiseases())) {
+                    System.out.println("Es probable que usted tenga Sarampion. Le recomendamos consultar con un doctor.");
                     c.getDiseases().add(disease.sarampion());
                 }
             }
+        }
+        if(c.getDiseases() != null) {
+            if (neumoniaChance >= 3) {
+                if (!finder.diseaseFinder(disease.neumonia(), c.getDiseases())) {
+                    System.out.println("Es probable que usted tenga Neumonia. Le recomendamos consultar con un doctor.");
+                    c.getDiseases().add(disease.neumonia());
+                }
+            }
+        }
     }
 }
 
