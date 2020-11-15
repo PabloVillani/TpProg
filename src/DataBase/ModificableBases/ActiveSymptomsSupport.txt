@@ -1,4 +1,6 @@
 ActiveSymptoms
-Escalofrios
-Cansancio
+
+Fiebre
+Tos con flema
+Tos seca
 
