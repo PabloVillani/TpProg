@@ -44,6 +44,18 @@ public class Writer {
             e.printStackTrace();
         }
     }
+
+    public void threeValueWriter(String value1, String value2, String value3, String path) {
+        try {
+            File archive = new File(path);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archive, true));
+            bw.write("\n" + value1 + "," + value2 + "," + value3);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void replace(String path, String oldString, String newString){
         File file = new File(path);
         StringBuilder oldContent = new StringBuilder();

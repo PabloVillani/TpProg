@@ -95,6 +95,15 @@ public class Finder {
         }
         return false;
     }
+
+    public int indexOf2ByPosition(String item, String item2,int position1, int position2, ArrayList<String[]> list){
+        for(int i= 0; i< list.size(); i++){
+            String[] line = list.get(i);
+            if(item.equals(line[position1]) && item2.equals(line[position2])){
+                return i;
+            }
+        } return -1;
+    }
 }
 
 

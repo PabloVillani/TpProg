@@ -39,41 +39,41 @@ public class CitizenMenu {
             for (int i = 0; i < citizens.size(); i++) {
                 for (int j = 0; j < symptoms.size(); j++) {
                     Outbreak outbreak = statsManager.possibleOutbreak(citizens.get(i),citizens.get(i).getCitizenLocation(),symptoms.get(j));
-                    if(outbreak != null){
-                        String outbreakString = statsManager.outbreakToString(outbreak);
-                        System.out.println(outbreakString);
-                    }
                 }
             }
-
-                System.out.println("1.Registrar Contacto.\n2. Reportar sintomas\n3. Dar de baja sintoma. \n4. Abrir Mapa\n5. Cerrar Sesion.");
-                n = scanner.getInt("Elija la operacion a realizar: ");
-                switch (n) {
-                    case 1:
-                        //Registra contacto con otro ciudadano
-                        c.ContactRequest();
-                        break;
-                    case 2:
-                        //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
-                        c.symptomsReport();
-                        break;
-                    case 3:
-                        //Dar de baja sintomas.
-                        c.solveSymptoms();
-                        break;
-                    case 4:
-                        //Abrir mapa.
-                        break;
-                    case 5:
-                        System.out.println("Gracias por usar TraceIT.");
-                        //Salir.
-                        break;
-                    default:
-                        System.out.println("Opcion invalida.");
+            ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+                for (int i = 0; i < outbreaks.size(); i++) {
+                    String[] line = outbreaks.get(i);
+                    System.out.println("BROTE REPORTADO!\nSINTOMA: " + line[0] + "\nCIUDADANOS AFECTADOS: " + line[1] + "\nUBICACION: " + line[2]);
+                }
+            System.out.println("1.Registrar Contacto.\n2. Reportar sintomas\n3. Dar de baja sintoma. \n4. Abrir Mapa\n5. Cerrar Sesion.");
+            n = scanner.getInt("Elija la operacion a realizar: ");
+            switch (n) {
+                case 1:
+                    //Registra contacto con otro ciudadano
+                    c.ContactRequest();
+                    break;
+                case 2:
+                    //Reporta un sintoma, y lo agrega al UsersSymptoms.txt
+                    c.symptomsReport();
+                    break;
+                case 3:
+                    //Dar de baja sintomas.
+                    c.solveSymptoms();
+                    break;
+                case 4:
+                    //Abrir mapa.
+                    break;
+                case 5:
+                    System.out.println("Gracias por usar TraceIT.");
+                    //Salir.
+                    break;
+                default:
+                    System.out.println("Opcion invalida.");
                 }
             }else{
                 System.out.println("Su usuario esta bloqueado. Comuniquese con el equipo de TraceIT.");
             }
-        }while (n != 5) ; //El menu se seguira inicializando hasta que n = 7, o sea, el usuario quiera salir.
+        }while (n != 5) ; //El menu se seguira inicializando hasta que n = 5, o sea, el usuario quiera salir.
     }
 }

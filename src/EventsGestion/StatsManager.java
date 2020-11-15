@@ -6,12 +6,16 @@ import Events.Symptom;
 import Util.ArrayMaker;
 import Util.DateManager;
 import Util.Finder;
+import Util.Writer;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class StatsManager {
     ArrayMaker arrayMaker = new ArrayMaker();
     DateManager dm = new DateManager();
-
+    Writer writer = new Writer();
+    Finder finder = new Finder();
     public HashMap<String, Integer> countSymptoms(Location location) {
         List<String> symptomsLocationList = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/LocationsSymptoms/" + location.getName() + "Symptoms.txt");
         List<String> baseSymptoms = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/SymptomsBase.txt");
@@ -53,50 +57,50 @@ public class StatsManager {
         return s;
     }
 
-    public Outbreak possibleOutbreak(Citizen citizen, Location location, Symptom symptom){
+    public Outbreak possibleOutbreak(Citizen citizen, Location location, Symptom symptom) {
         ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion" + location.getName() + ".txt");
-        ArrayList<String>  citizenCuils = new ArrayList<>();
+        ArrayList<String> citizenCuils = new ArrayList<>();
         Integer a = 1; //El paciente 0 es el primer involucrado, entonces a = 1 (sino, el sistema lo estaba ignorando).
         Integer b = 0;
         for (int i = 0; i < possibleContagion.size(); i++) {
             String[] contagiador1 = possibleContagion.get(i);
-            if(contagiador1[0].equals(citizen.getCuil()) && contagiador1[2].equals(symptom.getName())){
+            if (contagiador1[0].equals(citizen.getCuil()) && contagiador1[2].equals(symptom.getName())) {
                 a++;
-                if(!citizenCuils.contains(contagiador1[0])) {
+                if (!citizenCuils.contains(contagiador1[0])) {
                     citizenCuils.add(contagiador1[0]);
                 }
                 for (int j = 0; j < possibleContagion.size(); j++) {
                     String[] contagiador2 = possibleContagion.get(j);
-                    if(contagiador2[0].equals(contagiador1[1]) && contagiador2[2].equals(contagiador1[2]) && dm.fourtyEightHoursBetweenDates(dm.stringToDate(contagiador1[3]),dm.stringToDate(contagiador2[3]))){
+                    if (contagiador2[0].equals(contagiador1[1]) && contagiador2[2].equals(contagiador1[2]) && dm.fourtyEightHoursBetweenDates(dm.stringToDate(contagiador1[3]), dm.stringToDate(contagiador2[3]))) {
                         b++;
-                        if(!citizenCuils.contains(contagiador2[0])) {
+                        if (!citizenCuils.contains(contagiador2[0])) {
                             citizenCuils.add(contagiador2[0]);
                         }
-                        if(!citizenCuils.contains(contagiador2[1])) {
+                        if (!citizenCuils.contains(contagiador2[1])) {
                             citizenCuils.add(contagiador1[1]);
                         }
                     }
                 }
             }
         }
-        if(a+b >= 5){
-            return new Outbreak(citizenCuils,a+b,location,symptom);
-        }
-        else {
+        if (a + b >= 5) {
+            int i = finder.indexOf2ByPosition(citizen.getCuil(), symptom.getName(), 0, 2, possibleContagion);
+            String[] line = possibleContagion.get(i);
+            LocalDateTime date = dm.stringToDate(line[3]);
+            Outbreak outbreak = new Outbreak(citizenCuils, a + b, location, symptom, date);
+            ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+            if (!finder.tripleValueFinder(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), outbreaks)) {
+                addOutbreakToTXT(outbreak);
+                return outbreak;
+            }else{
+                return null;
+            }
+        } else {
             return null;
         }
     }
-
-    public boolean alreadyOutbreak(Citizen citizen, Outbreak outbreak, Symptom symptom){
-        if(outbreak.getCitizenCuils().contains(citizen.getCuil()) && outbreak.getSymptom().equals(symptom)){
-            return true;
-        }else{
-            return false;
+        public void addOutbreakToTXT (Outbreak outbreak){
+            writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/Outbreaks.txt");
         }
     }
-
-    public String outbreakToString(Outbreak outbreak){
-        return "BROTE REPORTADO!\n" + "SINTOMA: " + outbreak.getSymptom().getName() + "\n UBICACION: " + outbreak.getLocation().getName() + "\n CANTIDAD DE CIUDADANOS AFECTADOS: " + outbreak.getCitizensInvolved();
-    }
-}
 

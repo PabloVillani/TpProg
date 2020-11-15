@@ -5,6 +5,7 @@ import EventsGestion.Location;
 import Util.ArrayMaker;
 import Util.Finder;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Outbreak {
@@ -15,14 +16,16 @@ public class Outbreak {
     private Location location;
     private ArrayList<String> citizenCuils;
     private Symptom symptom;
+    private LocalDateTime date;
 
     public Outbreak(){}
 
-    public Outbreak(ArrayList<String> citizenCuils, Integer citizensInvolved, Location location, Symptom symptom) {
+    public Outbreak(ArrayList<String> citizenCuils, Integer citizensInvolved, Location location, Symptom symptom, LocalDateTime date) {
         this.citizensInvolved = citizensInvolved;
         this.location = location;
         this.citizenCuils = citizenCuils;
         this.symptom = symptom;
+        this.date = date;
     }
 
     public Integer getCitizensInvolved() {
