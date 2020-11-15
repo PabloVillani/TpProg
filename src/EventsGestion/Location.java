@@ -33,7 +33,9 @@ public class Location {
 
     public String locationChooser() {
         List<String> ubications = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
-        System.out.println();
+        for (int i = 0; i < ubications.size(); i++) {
+            System.out.println(ubications.get(i));
+        }
         String linea = "";
         int i = scanner.getInt("Elija su ubicacion: ");
         if (i < 0 || i > 5) {

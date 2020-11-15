@@ -21,7 +21,9 @@ public class AdminMenu {
             switch (i) {
                 case 1:  //Activar sintoma.
                     List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/SymptomsBase.txt");
-                    System.out.println();
+                    for (int j = 0; j < symptoms.size(); j++) {
+                        System.out.println(symptoms.get(j));
+                    }
                     String symptom = scanner.getString("Introduzca el nombre del sintoma: ");
                     List<String> symptoms6 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
                     if(!finder.singleValueFinder(symptom, symptoms)){
@@ -36,7 +38,7 @@ public class AdminMenu {
                     List<String> symptoms2 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
                     for (int j = 0; j < symptoms2.size(); j++) {
                         if(symptoms2.get(i) != ""){
-                            System.out.println(symptoms2.get(i));
+                            System.out.println(symptoms2.get(j));
                         }
                     }
                     String symptom2 = scanner.getString("Introduzca el nombre del sintoma a eliminar: ");

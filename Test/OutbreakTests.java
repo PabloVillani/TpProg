@@ -1,5 +1,6 @@
 import Citizen.Citizen;
 import Events.Outbreak;
+import Events.Symptom;
 import EventsGestion.Location;
 import EventsGestion.StatsManager;
 import org.junit.Assert;
@@ -13,7 +14,7 @@ public class OutbreakTests {
     @Test
     public void test01_OutbreakCreatedCorrectly(){
         Location derqui =  new Location("Derqui");
-        Outbreak outbreak = statsManager.possibleOutbreak(new Citizen("1","2",derqui),derqui );
+        Outbreak outbreak = statsManager.possibleOutbreak(new Citizen("1","2","3",derqui),derqui,new Symptom("Fiebre"));
         Assert.assertNotNull(outbreak);
     }
 

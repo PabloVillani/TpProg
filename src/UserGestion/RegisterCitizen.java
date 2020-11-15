@@ -39,8 +39,9 @@ public class RegisterCitizen {
                     writer.singleValueWriter(cuil,"src/DataBase/ModificableBases/CuilOnlyDataBase.txt");
                     writer.twoValueWriter(cuil,"false","src/DataBase/ModificableBases/BlockedUsers.txt");
                     writer.fourValueWriter(cuil, mobile, password, ubication,"src/DataBase/ModificableBases/CitizensPerLocation/"+ ubication +".txt"); //Lo registra en su ciudad
+                    System.out.println("Bienvenido.");
                     Location location = new Location(ubication);
-                    Citizen c = new Citizen(cuil,mobile, location);
+                    Citizen c = new Citizen(cuil,mobile, password, location);
                     menu.Menu(c);
                 } else {
                     registerCitizen(); //La contraseña no cumple con los requisitos, entonces repite el proceso.
@@ -52,7 +53,8 @@ public class RegisterCitizen {
                 String password = scanner.getString("Ingrese una contraseña: ");
                 if(userPassword(cuil,mobile,password,ubication,users)){
                     Location location = new Location(ubication);
-                    Citizen c = new Citizen(cuil,mobile, location);
+                    System.out.println("Bienvenido.");
+                    Citizen c = new Citizen(cuil,mobile,password, location);
                     menu.Menu(c);
                 }
             }

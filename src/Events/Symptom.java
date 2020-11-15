@@ -1,17 +1,17 @@
 package Events;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
 
 public class Symptom {
     String name;
-    GregorianCalendar start;
-    GregorianCalendar end;
+    LocalDateTime start;
+    LocalDateTime end;
 
     public Symptom(String nombre){
         this.name = nombre;
     }
 
-    public Symptom(String nombre,GregorianCalendar inicio, GregorianCalendar finalizo){
+    public Symptom(String nombre, LocalDateTime inicio, LocalDateTime finalizo){
         this.name = nombre;
         this.start = inicio;
         this.end = finalizo;
@@ -24,5 +24,6 @@ public class Symptom {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

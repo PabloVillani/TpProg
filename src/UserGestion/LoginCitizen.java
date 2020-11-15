@@ -34,14 +34,14 @@ public class LoginCitizen {
             if (finder.tripleValueFinder(cuil, mobile, ubication, users)) { //Busca el CUIL y el celular en la base de datos de TraceIT.
                 String password = scanner.getString("Contraseña: "); //Si existe, le pide la contraseña.
                 userPassword(cuil, mobile, password, ubication, users); //Verifica la contraseña.
+                System.out.println("Bienvenido.");
+                Location citizenLocation = new Location(ubication);
+                Citizen c = new Citizen(cuil, mobile,password, citizenLocation);
+                menu.Menu(c); //Abre el Menu del ciudadano.
             } else {
                 System.out.println("No esta registrado."); //Si no lo encuentra, le pide que se registre.
                 registerCitizen.registerCitizen();
             }
-            System.out.println("Bienvenido.");
-            Location citizenLocation = new Location(ubication);
-            Citizen c = new Citizen(cuil, mobile, citizenLocation);
-            menu.Menu(c); //Abre el Menu del ciudadano.
         } else {
             System.out.println("CUIL/Celular/Ubicacion incorrecto."); //Si no se encuentra en la base ANSES, recursion del inicio de sesion.
             loginCitizen();

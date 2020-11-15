@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CitizenTest {
 
-    Citizen citizen = new Citizen("1","2",new Location("Derqui"));
+    Citizen citizen = new Citizen("1","2","3",new Location("Derqui"));
 
 
      @Test

@@ -79,7 +79,6 @@ public class StatsManager {
                 }
             }
         }
-        System.out.println(a+b);
         if(a+b >= 5){
             return new Outbreak(citizenCuils,a+b,location,symptom);
         }
@@ -94,6 +93,10 @@ public class StatsManager {
         }else{
             return false;
         }
+    }
+
+    public String outbreakToString(Outbreak outbreak){
+        return "BROTE REPORTADO!\n" + "SINTOMA: " + outbreak.getSymptom().getName() + "\n UBICACION: " + outbreak.getLocation().getName() + "\n CANTIDAD DE CIUDADANOS AFECTADOS: " + outbreak.getCitizensInvolved();
     }
 }
 

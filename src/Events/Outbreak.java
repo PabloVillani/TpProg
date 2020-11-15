@@ -16,6 +16,8 @@ public class Outbreak {
     private ArrayList<String> citizenCuils;
     private Symptom symptom;
 
+    public Outbreak(){}
+
     public Outbreak(ArrayList<String> citizenCuils, Integer citizensInvolved, Location location, Symptom symptom) {
         this.citizensInvolved = citizensInvolved;
         this.location = location;

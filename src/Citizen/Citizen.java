@@ -32,16 +32,19 @@ public class Citizen {
     private int rejectedRequests;
     private boolean blocked;
     private Location citizenLocation;
+    private String password;
 
-
+    public Citizen(){}
 
     public Citizen(String cuil){
         this.cuil = cuil;
     }
-    public Citizen(String cuil, String mobile, Location citizenLocation){ //Un Ciudadano Base, recien registrado al sistema.
+
+    public Citizen(String cuil, String mobile, String password, Location citizenLocation){ //Un Ciudadano Base, recien registrado al sistema.
         this.cuil = cuil;
         this.mobile = mobile;
         this.citizenLocation = citizenLocation;
+        this.password = password;
         symptoms = null;
         rejectedRequests = 0;
         blocked = false;
@@ -72,7 +75,8 @@ public class Citizen {
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
-    public Location getCitizenLocation(){ return location;}
+    public Location getCitizenLocation(){ return citizenLocation;}
+    public String getPassword(){return password;}
     //-------------------------------------------------------------------------------------
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
@@ -101,7 +105,9 @@ public class Citizen {
 
     public void symptomsReport() {
         List<String> activeSymptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
-        String line;
+        for (int i = 0; i < activeSymptoms.size(); i++) {
+            System.out.println(activeSymptoms.get(i));
+        }
         try{
             String symptom = scanner.getString("Ingrese su sintoma: ");
             if(finder.singleValueFinder(symptom,activeSymptoms)){
@@ -183,6 +189,7 @@ public class Citizen {
             }
         }
     }
+
     public void yourSymptoms(){
         ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
         for (int i = 0; i < userSymptoms.size(); i++) {
