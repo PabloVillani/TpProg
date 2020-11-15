@@ -1,1 +1,4 @@
-Symptom,CitizensInvolved,Location
+Symptom,CitizensInvolved,Location,Date
+Fiebre,5,Derqui,3-MAY-2020~18:0:0
+Escalofrios,6,Escobar,3-MAY-2020~18:0:0
+Fiebre,3,Escobar,3-MAY-2020~18:0:0

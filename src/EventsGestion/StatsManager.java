@@ -3,15 +3,11 @@ package EventsGestion;
 import Citizen.Citizen;
 import Events.Outbreak;
 import Events.Symptom;
-import Util.ArrayMaker;
-import Util.DateManager;
-import Util.Finder;
-import Util.Writer;
-
+import Util.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class StatsManager {
+public class StatsManager implements Comparable<String[]>{
     ArrayMaker arrayMaker = new ArrayMaker();
     DateManager dm = new DateManager();
     Writer writer = new Writer();
@@ -58,7 +54,7 @@ public class StatsManager {
     }
 
     public Outbreak possibleOutbreak(Citizen citizen, Location location, Symptom symptom) {
-        ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion" + location.getName() + ".txt");
+        ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagions" + location.getName() + ".txt");
         ArrayList<String> citizenCuils = new ArrayList<>();
         Integer a = 1; //El paciente 0 es el primer involucrado, entonces a = 1 (sino, el sistema lo estaba ignorando).
         Integer b = 0;
@@ -99,8 +95,23 @@ public class StatsManager {
             return null;
         }
     }
-        public void addOutbreakToTXT (Outbreak outbreak){
-            writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/Outbreaks.txt");
-        }
+    public void addOutbreakToTXT(Outbreak outbreak){
+        writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/Outbreaks.txt");
     }
+
+    public void biggestOutbreaks(){
+        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+        Collections.sort(outbreaks, new OutbreakComparator(outbreaks));
+    }
+
+    public ArrayList<String[]> printBiggestOutbreaks(){
+        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+        Collections.sort(outbreaks, new OutbreakComparator(outbreaks));
+        return outbreaks;
+    }
+    @Override
+    public int compareTo(String[] o) {
+        return 0;
+    }
+}
 
