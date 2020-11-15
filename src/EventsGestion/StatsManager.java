@@ -83,8 +83,8 @@ public class StatsManager implements Comparable<String[]>{
             int i = finder.indexOf2ByPosition(citizen.getCuil(), symptom.getName(), 0, 2, possibleContagion);
             String[] line = possibleContagion.get(i);
             LocalDateTime date = dm.stringToDate(line[3]);
-            Outbreak outbreak = new Outbreak(citizenCuils, a + b, location, symptom, date);
-            ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+            Outbreak outbreak = new Outbreak(symptom, a+b, location, date);
+            ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
             if (!finder.tripleValueFinder(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), outbreaks)) {
                 addOutbreakToTXT(outbreak);
                 return outbreak;
@@ -96,16 +96,11 @@ public class StatsManager implements Comparable<String[]>{
         }
     }
     public void addOutbreakToTXT(Outbreak outbreak){
-        writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/Outbreaks.txt");
+        writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
     }
 
-    public void biggestOutbreaks(){
-        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
-        Collections.sort(outbreaks, new OutbreakComparator(outbreaks));
-    }
-
-    public ArrayList<String[]> printBiggestOutbreaks(){
-        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Outbreaks.txt");
+    public ArrayList<String[]> biggestOutbreaks(Location location){
+        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+ location.getName() +".txt");
         Collections.sort(outbreaks, new OutbreakComparator(outbreaks));
         return outbreaks;
     }

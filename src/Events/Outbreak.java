@@ -7,23 +7,20 @@ import Util.Finder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Outbreak {
     //Si 5 personas tienen el mismo sintoma, y estan relacionadas, es un brote
-    ArrayMaker arrayMaker = new ArrayMaker();
-    Finder finder = new Finder();
     private Integer citizensInvolved;
     private Location location;
-    private ArrayList<String> citizenCuils;
     private Symptom symptom;
     private LocalDateTime date;
 
     public Outbreak(){}
 
-    public Outbreak(ArrayList<String> citizenCuils, Integer citizensInvolved, Location location, Symptom symptom, LocalDateTime date) {
+    public Outbreak(Symptom symptom, Integer citizensInvolved, Location location,LocalDateTime date) {
         this.citizensInvolved = citizensInvolved;
         this.location = location;
-        this.citizenCuils = citizenCuils;
         this.symptom = symptom;
         this.date = date;
     }
@@ -36,12 +33,11 @@ public class Outbreak {
         return location;
     }
 
-    public ArrayList<String> getCitizenCuils() {
-        return citizenCuils;
-    }
-
     public Symptom getSymptom() {
         return symptom;
     }
 
+    public LocalDateTime getDate(){
+        return date;
+    }
 }

@@ -2,8 +2,10 @@ package Citizen;
 
 import Events.Disease;
 import Events.Invite;
+import Events.Outbreak;
 import Events.Symptom;
 import EventsGestion.Location;
+import EventsGestion.StatsManager;
 import Exceptions.InputException;
 import Exceptions.SymptomsExceptions;
 import Util.*;
@@ -18,17 +20,16 @@ public class Citizen {
 
     ArrayMaker arrayMaker = new ArrayMaker();
     Scanner scanner = new Scanner();
-    Invite invite = new Invite();
     Writer writer = new Writer();
     Location location = new Location();
-    HashMapMaker hashMapMaker = new HashMapMaker();
     DateManager dm = new DateManager();
     Finder finder = new Finder();
+    StatsManager statsManager = new StatsManager();
 
     public String cuil;
     private String mobile;
     private ArrayList<Symptom> symptoms;
-    private ArrayList<Disease> diseases;
+    private ArrayList<Disease> diseases = new ArrayList<>();
     private int rejectedRequests;
     private boolean blocked;
     private Location citizenLocation;
@@ -78,6 +79,7 @@ public class Citizen {
     public Location getCitizenLocation(){ return citizenLocation;}
     public String getPassword(){return password;}
     //-------------------------------------------------------------------------------------
+
     public void ContactRequest() {
         String contactCitizenCUIL = scanner.getString("Ingrese el CUIL del ciudadano con el que ha tenido contacto: ");
         ArrayList<String[]> users = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/Users.txt");
@@ -118,11 +120,13 @@ public class Citizen {
                     String locationName = location.locationChooser();
                     writer.fourValueWriter(this.cuil, symptom, dm.dateToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
                     writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
-                    ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PosibleContagion"+getCitizenLocation().getName()+".txt");
+                    ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion"+getCitizenLocation().getName()+".txt");
                     int i = finder.indexOf2ByPosition(getCuil(),symptom,1,2,possibleContagion); //Busca un posible contagio
-                    String[] line = possibleContagion.get(i);
-                    if(dm.fourtyEightHoursBetweenDates(start,dm.stringToDate(line[3]))){ //Se fija si en el contagio y el reporte hay menos 48 horas de diferencia
-                        writer.fourValueWriter(line[0],getCuil(),symptom,line[3],"src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagion" + getCitizenLocation().getName() + ".txt");
+                    if(i != -1) {
+                        String[] line = possibleContagion.get(i);
+                        if (dm.fourtyEightHoursBetweenDates(start, dm.stringToDate(line[3]))) { //Se fija si en el contagio y el reporte hay menos 48 horas de diferencia
+                            writer.fourValueWriter(line[0], getCuil(), symptom, line[3], "src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagion" + getCitizenLocation().getName() + ".txt");
+                        }
                     }
                 } else {
                     throw new SymptomsExceptions(35);

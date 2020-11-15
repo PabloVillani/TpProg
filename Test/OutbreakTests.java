@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class OutbreakTests {
     StatsManager statsManager = new StatsManager();
@@ -21,7 +20,7 @@ public class OutbreakTests {
 
     @Test
     public void test02_OutbreaksSortedCorrectly(){
-        ArrayList<String[]> outbreaks = statsManager.printBiggestOutbreaks();
+        ArrayList<String[]> outbreaks = statsManager.biggestOutbreaks(new Location("Escobar"));
         for (int i = 1; i <= outbreaks.size(); i++) {
             String[] line = outbreaks.get(i);
             System.out.println(i + "." + "s: " + line[0] + " ci: " + line[1] + " l:" + line[2] + " d:" + line[3]);

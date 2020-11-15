@@ -15,7 +15,6 @@ public class Location {
     Scanner scanner = new Scanner();
 
     public Location(){
-
     }
 
     public Location(String name){

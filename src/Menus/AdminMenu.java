@@ -1,10 +1,13 @@
 package Menus;
 
 import Admin.Admin;
+import EventsGestion.Location;
+import Exceptions.InputException;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Scanner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 //Despliega el menu del administrador en el Main.
@@ -13,6 +16,8 @@ public class AdminMenu {
     Scanner scanner = new Scanner();
     ArrayMaker arrayMaker = new ArrayMaker();
     Finder finder = new Finder();
+    StatsMenu statsMenu = new StatsMenu();
+    Location location = new Location();
     public void Menu() {
         int i = 0;
         do { //Presenta las opciones a realizar:
@@ -57,13 +62,19 @@ public class AdminMenu {
                     }
                     break;
                 case 4: //Estadisticas
-
-                        break;
+                    System.out.println("Ubicaciones a analizar");
+                    Location location2 = new Location(location.locationChooser());
+                    statsMenu.Menu(location2);
+                    break;
                 case 5:  //Salir.
                     System.out.println("Gracias por usar TraceIT.");
                     break;
                 default:
-                    System.out.println("Opcion invalida.");
+                    try {
+                        throw new InputException(81);
+                    } catch (InputException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
 
