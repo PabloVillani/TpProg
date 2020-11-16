@@ -15,10 +15,13 @@ public class ConfirmContact {
     Finder finder = new Finder();
     Scanner scanner = new Scanner();
     Writer writer = new Writer();
-    public ConfirmContact(){}
-    public void confirmContact(Citizen c){
+
+    public ConfirmContact() {
+    }
+
+    public void confirmContact(Citizen c) {
         ArrayList<String[]> awaitingContacts = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/AwaitingContacts.txt");
-        if(finder.singleValueFinderArray(c.getCuil(), awaitingContacts, 1)) {
+        if (finder.singleValueFinderArray(c.getCuil(), awaitingContacts, 1)) {
             int index = finder.indexOf(c.getCuil(), awaitingContacts, 1);
             String[] invite = awaitingContacts.get(index);
             String cuilSender = invite[0];
@@ -31,35 +34,6 @@ public class ConfirmContact {
             if (i == 1) {
                 writer.fiveValueWriter(cuilSender, cuilReceiver, startDate, endDate, location, "src/DataBase/ModificableBases/ConfirmedContacts.txt");
                 writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "-,-,-,-,-");
-                FileChannel src = null;
-                try {
-                    src = new FileInputStream("src/DataBase/ModificableBases/AwaitingContacts.txt").getChannel();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                FileChannel dest = null;
-                try {
-                    dest = new FileOutputStream("src/DataBase/ModificableBases/AwaitingContactSupport.txt").getChannel();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    dest.transferFrom(src, 0, src.size());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/AwaitingContactSupport.txt"));
-                     PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/AwaitingContacts.txt"))) {
-                    String lineOfText;
-                    while ((lineOfText = inputFile.readLine()) != null) {
-                        lineOfText = lineOfText.trim();
-                        if (!lineOfText.isEmpty()) {
-                            outputFile.println(lineOfText);
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
             if (i == 2) {
                 ArrayList<String[]> rejectedReq = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
@@ -79,41 +53,6 @@ public class ConfirmContact {
                     writer.replace("src/DataBase/ModificableBases/RejectedRequests.txt", cuilSender + ",4", cuilSender + ",5");
                 }
                 writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "-,-,-,-,-");
-                FileChannel src = null;
-                try {
-                    src = new FileInputStream("src/DataBase/ModificableBases/AwaitingContacts.txt").getChannel();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                FileChannel dest = null;
-                try {
-                    dest = new FileOutputStream("src/DataBase/ModificableBases/AwaitingContactSupport.txt").getChannel();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    dest.transferFrom(src, 0, src.size());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/AwaitingContactSupport.txt"));
-                     PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/AwaitingContacts.txt"))) {
-                    String lineOfText;
-                    while ((lineOfText = inputFile.readLine()) != null) {
-                        lineOfText = lineOfText.trim();
-                        if (!lineOfText.isEmpty()) {
-                            outputFile.println(lineOfText);
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }else if(i != 1 && !(i == 2)){
-                try {
-                    throw new InputException(81);
-                } catch (InputException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }

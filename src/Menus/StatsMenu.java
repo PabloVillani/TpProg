@@ -21,9 +21,11 @@ public class StatsMenu {
                     break;
                 case 2:
                     ArrayList<String[]> outbreaks = statsManager.biggestOutbreaks(location);
+                    int j = 1;
                     for (int i = 0; i < outbreaks.size(); i++) {
                         String[] line = outbreaks.get(i);
-                        System.out.println("\n"+ i+1 + "." + "Sintoma: " + line[0] + "\nCiudadanos Afectados: " + line[1] + "\nUbicacion:" + line[2] + "\nFecha Reportada:" + line[3]);
+                        System.out.println("\n" + j+ "." + " Sintoma: " + line[0] + "\nCiudadanos Afectados: " + line[1] + "\nUbicacion:" + line[2] + "\nFecha Reportada:" + line[3]);
+                        j++;
                     }
                     break;
                 case 3:

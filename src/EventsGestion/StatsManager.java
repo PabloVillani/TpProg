@@ -23,7 +23,7 @@ public class StatsManager implements Comparable<String[]>{
         }
         for (int j = 0; j < symptomsLocationList.size(); j++) {
             String symptom = symptomsLocationList.get(j);
-            if (symptom != null) {
+            if (symptom != null && !symptom.equals("Symptom")) {
                 hm.put(symptom, hm.get(symptom) + 1);
             }
         }
@@ -85,7 +85,7 @@ public class StatsManager implements Comparable<String[]>{
             LocalDateTime date = dm.stringToDate(line[3]);
             Outbreak outbreak = new Outbreak(symptom, a+b, location, date);
             ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
-            if (!finder.tripleValueFinder(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), outbreaks)) {
+            if (!finder.fourValueFinder(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(),dm.dateToString(outbreak.getDate()),outbreaks)) {
                 addOutbreakToTXT(outbreak);
                 return outbreak;
             }else{
@@ -95,10 +95,12 @@ public class StatsManager implements Comparable<String[]>{
             return null;
         }
     }
-    public void addOutbreakToTXT(Outbreak outbreak){
-        writer.fourValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(),dm.dateToString(outbreak.getDate()), "src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
+    public void addOutbreakToTXT(Outbreak outbreak) {
+        ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
+        if (!finder.fourValueFinder(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), dm.dateToString(outbreak.getDate()), outbreaks)) {
+                writer.fourValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), dm.dateToString(outbreak.getDate()), "src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks" + outbreak.getLocation().getName() + ".txt");
+        }
     }
-
     public ArrayList<String[]> biggestOutbreaks(Location location){
         ArrayList<String[]> outbreaks = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+ location.getName() +".txt");
         Collections.sort(outbreaks, new OutbreakComparator(outbreaks));

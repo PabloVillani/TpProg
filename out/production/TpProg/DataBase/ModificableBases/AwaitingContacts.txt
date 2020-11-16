@@ -1,1 +1,4 @@
 CuilSender,CuilReceiver,DateStart,DateEnd,Location
+-,-,-,-,-
+-,-,-,-,-
+20439087749,20543919439,6-MAY-2020~19:00:00,6-MAY-2020~17:00:00,Zarate

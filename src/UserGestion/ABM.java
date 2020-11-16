@@ -19,29 +19,16 @@ public class ABM {
     public ABM() {
     }
 
-    public void add(String user, String password) throws IOException {
+    public void add(String user, String password){
         Admin admin = new Admin(user, password);
         admins.add(admin);
         writer.twoValueWriter(user, password, "src/DataBase/ModificableBases/Admins.txt");
     }
 
-    public void remove(String user, String password) throws IOException {
+    public void remove(String user, String password){
         Admin admin = new Admin(user, password);
         admins.remove(admin);
         writer.replace("src/DataBase/ModificableBases/Admins.txt", user + "," + password, "-,-");
-        FileChannel src = new FileInputStream("src/DataBase/ModificableBases/Admins.txt").getChannel();
-        FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/AdminsSupport.txt").getChannel();
-        dest.transferFrom(src, 0, src.size());
-        try (BufferedReader inputFile = new BufferedReader(new FileReader("src/DataBase/ModificableBases/AdminsSupport.txt"));
-             PrintWriter outputFile = new PrintWriter(new FileWriter("src/DataBase/ModificableBases/Admins.txt"))) {
-            String lineOfText;
-            while ((lineOfText = inputFile.readLine()) != null) {
-                lineOfText = lineOfText.trim();
-                if (!lineOfText.isEmpty()) {
-                    outputFile.println(lineOfText);
-                }
-            }
-        }
     }
 
     public void mod(String user, String password) {

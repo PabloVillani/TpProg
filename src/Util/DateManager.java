@@ -104,7 +104,9 @@ public class DateManager {
         if (date1Start.isBefore(date2End)) {
             long hours = ChronoUnit.HOURS.between(date1Start, date2End);
             return hours <= 48;
-        } else {
+        } if(date1Start.isEqual(date2End)){
+            return true;
+        }else {
             return false;
         }
     }
@@ -112,7 +114,9 @@ public class DateManager {
         if (date1Start.isBefore(date2End)) {
             long hours = ChronoUnit.HOURS.between(date1Start, date2End);
             return hours <= 24;
-        } else {
+        }if(date1Start.isEqual(date2End)){
+            return true;
+        }else{
             return false;
         }
     }

@@ -27,7 +27,9 @@ public class AdminMenu {
                 case 1:  //Activar sintoma.
                     List<String> symptoms = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/SymptomsBase.txt");
                     for (int j = 0; j < symptoms.size(); j++) {
-                        System.out.println(symptoms.get(j));
+                        if (symptoms.get(i) != null) {
+                            System.out.println(symptoms.get(j));
+                        }
                     }
                     String symptom = scanner.getString("Introduzca el nombre del sintoma: ");
                     List<String> symptoms6 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
@@ -42,8 +44,10 @@ public class AdminMenu {
                 case 2: //Desactivar sintomas.
                     List<String> symptoms2 = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
                     for (int j = 0; j < symptoms2.size(); j++) {
-                        if(symptoms2.get(i) != ""){
-                            System.out.println(symptoms2.get(j));
+                        if(symptoms2.get(i) != null) {
+                            if (!symptoms2.get(i).equals("-")) {
+                                System.out.println(symptoms2.get(j));
+                            }
                         }
                     }
                     String symptom2 = scanner.getString("Introduzca el nombre del sintoma a eliminar: ");
