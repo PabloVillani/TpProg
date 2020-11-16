@@ -30,7 +30,7 @@ public class ConfirmContact {
             int i = scanner.getInt("Este contacto existio?\n1. Si\n2. No\n");
             if (i == 1) {
                 writer.fiveValueWriter(cuilSender, cuilReceiver, startDate, endDate, location, "src/DataBase/ModificableBases/ConfirmedContacts.txt");
-                writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "");
+                writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "-,-,-,-,-");
                 FileChannel src = null;
                 try {
                     src = new FileInputStream("src/DataBase/ModificableBases/AwaitingContacts.txt").getChannel();
@@ -78,7 +78,7 @@ public class ConfirmContact {
                 if (finder.doubleValueFinder(cuilSender, "4", rejectedReq)) {
                     writer.replace("src/DataBase/ModificableBases/RejectedRequests.txt", cuilSender + ",4", cuilSender + ",5");
                 }
-                writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "");
+                writer.replace("src/DataBase/ModificableBases/AwaitingContacts.txt", cuilSender + "," + cuilReceiver + "," + startDate + "," + endDate + "," + location, "-,-,-,-,-");
                 FileChannel src = null;
                 try {
                     src = new FileInputStream("src/DataBase/ModificableBases/AwaitingContacts.txt").getChannel();

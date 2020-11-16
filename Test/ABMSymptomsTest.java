@@ -18,7 +18,7 @@ public class ABMSymptomsTest {
     }
 
     @Test
-    public void test03_RemoveShouldDeleteAnExistingSymptom() throws IOException {//*no lo pude hacer
+    public void test02_RemoveShouldDeleteAnExistingSymptom() throws IOException {
         Symptom symptom = new Symptom("Escalofrios");
         ABMSymptoms abm = new ABMSymptoms();
         abm.addSymptom(symptom);

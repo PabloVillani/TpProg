@@ -1,7 +1,5 @@
 package Util;
 
-import Events.Outbreak;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 

@@ -1,5 +1,6 @@
 package UserGestion;
 
+import Admin.Admin;
 import Menus.AdminMenu;
 import Util.ArrayMaker;
 import Util.Finder;
@@ -16,7 +17,8 @@ public class LoginAdmin {
         String user = scanner.getString("Usuario: ");
         String password = scanner.getString("Contraseña: ");
         if(finder.doubleValueFinder(user,password,admins)){ //Busca el usuario y la contraseña en el  ArrayList<String[]> admins.
-            menu.Menu(); //Si se encuentra, se ejecuta el menu.
+            Admin admin = new Admin(user,password);
+            menu.Menu(admin); //Si se encuentra, se ejecuta el menu.
         }
         else{
             System.out.println("El usuario o la contraseña es incorrecta.");

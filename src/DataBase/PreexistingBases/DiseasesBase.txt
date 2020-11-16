@@ -1,4 +1,4 @@
 diseases, Symptoms
 Coronavirus,Fiebre,Tos seca,Cansancio,Dificultad para respirar,Perdida de olfato/gusto
 Sarampion,Fiebre,Tos seca,Sarpullidos,Inflamacion de los Ojos,-
-Neumonia,Fiebre,Tos con Flema,Escalofrios,Dificultad para respirar,-
+Neumonia,Fiebre,Tos con flema,Escalofrios,Dificultad para respirar,-

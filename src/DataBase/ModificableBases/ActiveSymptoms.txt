@@ -1,5 +1,10 @@
 ActiveSymptoms
+Tos seca
+Cansancio
+Sarpullidos
+Inflamacion de los ojos
+Tos con flema
 Escalofrios
 Fiebre
-Tos con flema
-Tos seca
+Dificultad para respirar
+Perdida de olfato/gusto

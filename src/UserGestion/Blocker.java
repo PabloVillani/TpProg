@@ -4,7 +4,6 @@ import Citizen.Citizen;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Writer;
-
 import java.util.ArrayList;
 
 public class Blocker {
@@ -14,19 +13,16 @@ public class Blocker {
 
     public void blocker(Citizen c) {
         ArrayList<String[]> rejectedRequests = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/RejectedRequests.txt");
+        ArrayList<String[]> blockedUsers = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
         if (finder.doubleValueFinder(c.cuil, "5", rejectedRequests)) {
-            ArrayList<String[]> blockedUsers = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
             if (!finder.doubleValueFinder(c.cuil, "true", blockedUsers)) {
-                System.out.println("El usuario ya esta bloqueado.");
-            } else {
                 writer.replace("src/DataBase/ModificableBases/BlockedUsers.txt", c.cuil + ",false", c.cuil + ",true");
                 blockedUsers = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/BlockedUsers.txt");
-                if (finder.doubleValueFinder(c.cuil, "true", blockedUsers)) {
-                    c.setBlocked(true);
-                } else {
-                    System.out.println("Error. No se pudo bloquear al usuario.");
-                }
+            }
+            if (finder.doubleValueFinder(c.cuil, "true", blockedUsers)) {
+                c.setBlocked(true);
             }
         }
     }
 }
+

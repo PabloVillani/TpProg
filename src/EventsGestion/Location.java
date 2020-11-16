@@ -1,8 +1,6 @@
 package EventsGestion;
 
 import Citizen.Citizen;
-import Events.Disease;
-import Events.Symptom;
 import Util.ArrayMaker;
 import Util.Scanner;
 
@@ -33,7 +31,9 @@ public class Location {
     public String locationChooser() {
         List<String> ubications = arrayMaker.singleStringMaker("src/DataBase/PreexistingBases/Ubications.txt");
         for (int i = 0; i < ubications.size(); i++) {
-            System.out.println(ubications.get(i));
+            if (ubications.get(i) != null) {
+                System.out.println(ubications.get(i));
+            }
         }
         String linea = "";
         int i = scanner.getInt("Elija su ubicacion: ");
@@ -58,21 +58,5 @@ public class Location {
             }
         }
         return linea;
-    }
-
-    public void topSymptoms(String locationName) {
-        List<String> list = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
-        Map<String, Integer> hm = new HashMap<String, Integer>();
-        for (String i : list) {
-            Integer j = hm.get(i);
-            hm.put(i, (j == null) ? 1 : j + 1);
-        }
-        int s = 1;
-        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-            for (int i = 0; i < 2; i++) {
-                System.out.println(s + ". " + val.getKey() + ": " + val.getValue() + " reportes.");
-                s++;
-            }
-        }
     }
 }

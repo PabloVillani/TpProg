@@ -3,7 +3,6 @@ package EventsGestion;
 import Events.Symptom;
 import Util.Scanner;
 import Util.Writer;
-
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class ABMSymptoms {
 
     public void remove(Symptom s) throws IOException {
         symptoms.remove(s);
-        writer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt",s.getName(), "");
+        writer.replace("src/DataBase/ModificableBases/ActiveSymptoms.txt",s.getName(), "-");
         FileChannel src = new FileInputStream("src/DataBase/ModificableBases/ActiveSymptoms.txt").getChannel();
         FileChannel dest = new FileOutputStream("src/DataBase/ModificableBases/ActiveSymptomsSupport.txt").getChannel();
         dest.transferFrom(src, 0, src.size());

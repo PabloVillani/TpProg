@@ -3,13 +3,10 @@ package Util;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-
 public class DateManager {
     Scanner scanner = new Scanner();
-    ArrayMaker arrayMaker = new ArrayMaker();
 
-    public DateManager() {
-    }
+    public DateManager() { }
 
     public LocalDateTime dateGenerator() {
         Integer year;
@@ -20,7 +17,7 @@ public class DateManager {
         month = scanner.getInt("Introduzca el mes en numeros:");
         month = validMonth(month);
         day = scanner.getInt("Introduzca el dia: ");
-        //day = validDay(month,day);
+        day = validDay(year,month,day);
         hour = scanner.getInt("Introduzca la hora: ");
         hour = validHour(hour);
         return LocalDateTime.of(year, month, day, hour, 0, 0);
@@ -63,7 +60,7 @@ public class DateManager {
                 return 30;
             case 2:
                 if (isleapYear(year)) {
-                    return 30;
+                    return 29;
                 } else {
                     return 28;
                 }

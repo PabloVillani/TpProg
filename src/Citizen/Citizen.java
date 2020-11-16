@@ -1,8 +1,6 @@
 package Citizen;
 
 import Events.Disease;
-import Events.Invite;
-import Events.Outbreak;
 import Events.Symptom;
 import EventsGestion.Location;
 import EventsGestion.StatsManager;
@@ -28,7 +26,7 @@ public class Citizen {
 
     public String cuil;
     private String mobile;
-    private ArrayList<Symptom> symptoms;
+    private ArrayList<Symptom> symptoms = new ArrayList<>();
     private ArrayList<Disease> diseases = new ArrayList<>();
     private int rejectedRequests;
     private boolean blocked;
@@ -46,7 +44,6 @@ public class Citizen {
         this.mobile = mobile;
         this.citizenLocation = citizenLocation;
         this.password = password;
-        symptoms = null;
         rejectedRequests = 0;
         blocked = false;
     }
@@ -94,8 +91,7 @@ public class Citizen {
                 LocalDateTime start = dm.dateGenerator();
                 System.out.println("Fin del contacto:");
                 LocalDateTime end = dm.dateGenerator();
-                String locationName = location.locationChooser();
-                writer.fiveValueWriter(this.cuil, contactCitizenCUIL, dm.dateToString(start), dm.dateToString(end), locationName, "src/DataBase/ModificableBases/AwaitingContacts.txt");
+                writer.fiveValueWriter(this.cuil, contactCitizenCUIL, dm.dateToString(start), dm.dateToString(end), getCitizenLocation().getName(), "src/DataBase/ModificableBases/AwaitingContacts.txt");
             }else {
                 throw new InputException(81);
             }
@@ -108,7 +104,9 @@ public class Citizen {
     public void symptomsReport() {
         List<String> activeSymptoms = arrayMaker.singleStringMaker("src/DataBase/ModificableBases/ActiveSymptoms.txt");
         for (int i = 0; i < activeSymptoms.size(); i++) {
-            System.out.println(activeSymptoms.get(i));
+            if (activeSymptoms.get(i) != null) {
+                System.out.println(activeSymptoms.get(i));
+            }
         }
         try{
             String symptom = scanner.getString("Ingrese su sintoma: ");
@@ -117,15 +115,14 @@ public class Citizen {
                 if (!finder.doubleValueFinder(this.cuil, symptom, userSymptoms)) {
                     System.out.println("Inicio del sintoma:");
                     LocalDateTime start = dm.dateGenerator();
-                    String locationName = location.locationChooser();
-                    writer.fourValueWriter(this.cuil, symptom, dm.dateToString(start), locationName, "src/DataBase/ModificableBases/UsersSymptoms.txt");
-                    writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/LocationsSymptoms/" + locationName + "Symptoms.txt");
+                    writer.fourValueWriter(this.cuil, symptom, dm.dateToString(start), getCitizenLocation().getName(), "src/DataBase/ModificableBases/UsersSymptoms.txt");
+                    writer.singleValueWriter(symptom, "src/DataBase/ModificableBases/LocationsSymptoms/" + getCitizenLocation().getName() + "Symptoms.txt");
                     ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/PossibleContagionInLocation/PossibleContagion"+getCitizenLocation().getName()+".txt");
                     int i = finder.indexOf2ByPosition(getCuil(),symptom,1,2,possibleContagion); //Busca un posible contagio
                     if(i != -1) {
                         String[] line = possibleContagion.get(i);
-                        if (dm.fourtyEightHoursBetweenDates(start, dm.stringToDate(line[3]))) { //Se fija si en el contagio y el reporte hay menos 48 horas de diferencia
-                            writer.fourValueWriter(line[0], getCuil(), symptom, line[3], "src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagion" + getCitizenLocation().getName() + ".txt");
+                        if (dm.fourtyEightHoursBetweenDates(dm.stringToDate(line[3]), start)) { //Se fija si en el contagio y el reporte hay menos 48 horas de diferencia
+                            writer.fourValueWriter(line[0], getCuil(), symptom, line[3], "src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagions" + getCitizenLocation().getName() + ".txt");
                         }
                     }
                 } else {
@@ -144,9 +141,9 @@ public class Citizen {
         System.out.println("Estos son sus sintomas activos:");
         for (int i = 0; i < userSymptoms.size(); i++) {
             String[] line = userSymptoms.get(i);
-            if(this.cuil.equals(line[0])){ //Busca solo los sintomas del usuario y se los imprime para elegir.
-                System.out.println(line[1]);
-                mySymptoms.add(line[1]);
+            if(this.cuil.equals(line[0])) { //Busca solo los sintomas del usuario y se los imprime para elegir.
+                    System.out.println(line[1]);
+                    mySymptoms.add(line[1]);
             }
         }
         String symptom = scanner.getString("Ingrese su sintoma: ");
@@ -160,7 +157,7 @@ public class Citizen {
                 String startDate = s[2];
                 String location = s[3];
                 writer.fiveValueWriter(this.cuil,symptom,startDate, dm.dateToString(end),location,"src/DataBase/ModificableBases/UserSymptomHistory.txt");
-                writer.replace("src/DataBase/ModificableBases/UsersSymptoms.txt",this.cuil + "," + symptom + "," + startDate + "," + location,"");
+                writer.replace("src/DataBase/ModificableBases/UsersSymptoms.txt",this.cuil + "," + symptom + "," + startDate + "," + location,"-,-,-,-");
                 FileChannel src = null;
                 try {
                     src = new FileInputStream("src/DataBase/ModificableBases/UsersSymptoms.txt").getChannel();
@@ -201,6 +198,17 @@ public class Citizen {
     }
 
     public void yourSymptoms(){
+        ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
+        for (int i = 0; i < userSymptoms.size(); i++) {
+            String[] line = userSymptoms.get(i);
+            if(line[0].equals(getCuil())){
+                getSymptoms().add(new Symptom(line[1]));
+                System.out.println(line[1]);
+            }
+        }
+    }
+
+    public void yourSymptomsBegin(){
         ArrayList<String[]> userSymptoms = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
         for (int i = 0; i < userSymptoms.size(); i++) {
             String[] line = userSymptoms.get(i);

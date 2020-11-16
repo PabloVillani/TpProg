@@ -1,7 +1,6 @@
 package Util;
 
 import Events.Disease;
-
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,7 @@ public class Finder {
         }
         return false;
     }
+
     //Busca datos en un array de dos valores por su usuario y contraseña en una lista.
     public boolean doubleValueFinder(String value1, String value2, ArrayList<String[]> list){
         Iterator i = list.iterator();

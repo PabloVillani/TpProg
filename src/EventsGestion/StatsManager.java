@@ -96,7 +96,7 @@ public class StatsManager implements Comparable<String[]>{
         }
     }
     public void addOutbreakToTXT(Outbreak outbreak){
-        writer.threeValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(), "src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
+        writer.fourValueWriter(outbreak.getSymptom().getName(), outbreak.getCitizensInvolved().toString(), outbreak.getLocation().getName(),dm.dateToString(outbreak.getDate()), "src/DataBase/ModificableBases/OutbreaksInLocation/Outbreaks"+outbreak.getLocation().getName()+".txt");
     }
 
     public ArrayList<String[]> biggestOutbreaks(Location location){

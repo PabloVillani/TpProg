@@ -3,11 +3,10 @@ package Menus;
 import Admin.Admin;
 import EventsGestion.Location;
 import Exceptions.InputException;
+import UserGestion.ABM;
 import Util.ArrayMaker;
 import Util.Finder;
 import Util.Scanner;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 //Despliega el menu del administrador en el Main.
@@ -18,10 +17,11 @@ public class AdminMenu {
     Finder finder = new Finder();
     StatsMenu statsMenu = new StatsMenu();
     Location location = new Location();
-    public void Menu() {
+    ABM abm = new ABM();
+    public void Menu(Admin a) {
         int i = 0;
         do { //Presenta las opciones a realizar:
-            System.out.println("1. Activar sintoma\n2. Desactivar sintoma\n3. Desbloquear usuario\n4. Estadisticas\n5. Cerrar sesion.");
+            System.out.println("1. Activar sintoma\n2. Desactivar sintoma\n3. Desbloquear usuario\n4. Estadisticas\n5. Editar usuario/contraseña\n6. Cerrar sesion.");
             i = scanner.getInt("Que operacion desea realizar?:"); //Pregunta que opcion realizar
             switch (i) {
                 case 1:  //Activar sintoma.
@@ -66,7 +66,10 @@ public class AdminMenu {
                     Location location2 = new Location(location.locationChooser());
                     statsMenu.Menu(location2);
                     break;
-                case 5:  //Salir.
+                case 5:
+                    abm.mod(a.getUser(),a.getPassword());
+                    break;
+                case 6:  //Salir.
                     System.out.println("Gracias por usar TraceIT.");
                     break;
                 default:
@@ -78,6 +81,6 @@ public class AdminMenu {
                     break;
             }
 
-        }while (i != 5); //No saldra del sistema hasta que introduzca el valor de 4.
+        }while (i != 6); //No saldra del sistema hasta que introduzca el valor de 4.
     }
 }

@@ -26,6 +26,7 @@ public class Main {
             registerCitizen.registerCitizen();
         }
     }
+
     public static int chooser(int k){
         Scanner scanner = new Scanner();
         int a;
@@ -39,4 +40,5 @@ public class Main {
         }
         return a;
     }
+
 }

@@ -3,7 +3,6 @@ package EventsGestion;
 import Citizen.Citizen;
 import Events.Disease;
 import Util.*;
-
 import java.util.ArrayList;
 
 public class PossibleDiseases {
@@ -19,15 +18,17 @@ public class PossibleDiseases {
         ArrayList<String[]> diseases = arrayMaker.arrayListStringMaker("src/DataBase/PreexistingBases/DiseasesBase.txt");
         for (int i = 0; i < symptoms.size(); i++) {
             String[] line = symptoms.get(i);
+            if (line[0].equals(c.getCuil())) {
             for (int j = 0; j < diseases.size(); j++) {
                 String[] diseaseSymptoms = diseases.get(j);
                 for (int k = 0; k < diseaseSymptoms.length; k++) {
-                    if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Coronavirus")) {
-                        coronavirusChance++;
-                    } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Sarampion")) {
-                        sarampionChance++;
-                    } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Neumonia")) {
-                        neumoniaChance++;
+                        if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Coronavirus")) {
+                            coronavirusChance++;
+                        } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Sarampion")) {
+                            sarampionChance++;
+                        } else if (line[1].equals(diseaseSymptoms[k]) && diseaseSymptoms[0].equals("Neumonia")) {
+                            neumoniaChance++;
+                        }
                     }
                 }
             }

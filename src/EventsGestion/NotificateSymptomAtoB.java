@@ -2,7 +2,6 @@ package EventsGestion;
 
 import Citizen.Citizen;
 import Util.*;
-
 import java.util.ArrayList;
 
 public class NotificateSymptomAtoB {
@@ -13,7 +12,6 @@ public class NotificateSymptomAtoB {
     public void notificateSymptomAtoB(Citizen c) {
        ArrayList<String[]> symptomsReported = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/UsersSymptoms.txt");
        ArrayList<String[]> confirmedContacts = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/ConfirmedContacts.txt");
-       int counter = 0;
         for (int i = 0; i < symptomsReported.size(); i++) {
             for (int j = 0; j < symptomsReported.size(); j++) {
                String[] line1 = symptomsReported.get(i);

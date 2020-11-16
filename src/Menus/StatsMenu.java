@@ -4,11 +4,9 @@ import EventsGestion.Location;
 import EventsGestion.StatsManager;
 import Exceptions.InputException;
 import Util.Scanner;
-
 import java.util.ArrayList;
 
 public class StatsMenu {
-    private Location location;
     StatsManager statsManager = new StatsManager();
     Scanner scanner = new Scanner();
 
