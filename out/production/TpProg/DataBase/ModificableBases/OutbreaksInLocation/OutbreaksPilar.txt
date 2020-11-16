@@ -1,1 +1,4 @@
 Symptom,CitizensInvolved,Location,Date
+Tos seca,7,Pilar,3-MAY-2020~17:00:00
+Fiebre,5,Pilar,5-MAY-2020~13:00:00
+Escalofrios,10,Pilar,6-MAY-2020~14:00:00
