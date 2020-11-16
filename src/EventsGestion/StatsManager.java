@@ -30,29 +30,6 @@ public class StatsManager implements Comparable<String[]>{
         return hm;
     }
 
-    public String top3Symptoms(Location location) {
-        HashMap<String, Integer> hm = countSymptoms(location);
-        String s = "Top 3 sintomas de " + location.getName() + ": \n";
-        List<Map.Entry<String, Integer>> list =
-                new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return (o2.getValue()).compareTo(o1.getValue());
-            }});
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        int i = 1;
-        for (String key : temp.keySet()) {
-            if (i < 4) {
-                s += i + "." + key + ": " + temp.get(key) + "\n";
-                i++;
-            }
-        }
-        return s;
-    }
-
     public Outbreak possibleOutbreak(Citizen citizen, Location location, Symptom symptom) {
         ArrayList<String[]> possibleContagion = arrayMaker.arrayListStringMaker("src/DataBase/ModificableBases/ConfirmedContagionsInLocation/ConfirmedContagions" + location.getName() + ".txt");
         ArrayList<String> citizenCuils = new ArrayList<>();
@@ -106,6 +83,30 @@ public class StatsManager implements Comparable<String[]>{
         Collections.sort(outbreaks, new OutbreakComparator(outbreaks));
         return outbreaks;
     }
+
+    public String top3Symptoms(Location location) {
+        HashMap<String, Integer> hm = countSymptoms(location);
+        String s = "Top 3 sintomas de " + location.getName() + ": \n";
+        List<Map.Entry<String, Integer>> list =
+                new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }});
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        int i = 1;
+        for (String key : temp.keySet()) {
+            if (i < 4) {
+                s += i + "." + key + ": " + temp.get(key) + "\n";
+                i++;
+            }
+        }
+        return s;
+    }
+
     @Override
     public int compareTo(String[] o) {
         return 0;
